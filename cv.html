@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Anna Oliveras Tous — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  @page{ size:A4; margin:13mm 18mm; }
+  *{ box-sizing:border-box; }
+  :root{
+    --ink:       #121A20;
+    --ink-soft:  #4A5761;
+    --ink-faint: #7C8890;
+    --teal:      #0B6D82;
+    --teal-deep: #073E4A;
+    --marker:    #B23A72;
+    --line:      #D2D9D6;
+    --serif: "Source Serif 4", Georgia, serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono:  "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  }
+  body{
+    margin:0; font-family:var(--sans); color:var(--ink); font-size:9.6px; line-height:1.4;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{ margin:0; }
+  a{ color:var(--teal); text-decoration:none; }
+
+  header.cv-header{ display:flex; justify-content:space-between; align-items:flex-end; border-bottom:2px solid var(--ink); padding-bottom:7px; margin-bottom:11px; }
+  .cv-name{ font-family:var(--serif); font-weight:600; font-size:24px; letter-spacing:-0.01em; margin-bottom:3px; }
+  .cv-role{ font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:0.05em; color:var(--teal-deep); }
+  .cv-contact{ text-align:right; font-family:var(--mono); font-size:8.5px; color:var(--ink-soft); line-height:1.6; }
+  .cv-contact a{ color:var(--ink-soft); }
+
+  section{ margin-bottom:10px; break-inside:avoid-page; }
+  .cv-h{
+    font-family:var(--mono); font-size:9.5px; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--marker); border-bottom:1px solid var(--line); padding-bottom:3px; margin-bottom:7px;
+  }
+  .summary{ color:var(--ink-soft); font-size:9.6px; max-width:100%; }
+
+  .entry{ margin-bottom:7px; break-inside:avoid; }
+  .entry:last-child{ margin-bottom:0; }
+  .entry-top{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; }
+  .entry-role{ font-family:var(--serif); font-weight:600; font-size:11.3px; color:var(--ink); }
+  .entry-date{ font-family:var(--mono); font-size:8.4px; color:var(--ink-faint); white-space:nowrap; }
+  .entry-org{ font-size:9.5px; color:var(--teal-deep); font-weight:500; margin:1px 0 2px; }
+  .entry ul{ margin:2px 0 0; padding-left:14px; color:var(--ink-soft); }
+  .entry li{ margin-bottom:1px; }
+
+  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:0 26px; }
+
+  .pub-entry{ margin-bottom:6px; break-inside:avoid; }
+  .pub-entry:last-child{ margin-bottom:0; }
+  .pub-entry-title{ font-family:var(--serif); font-weight:600; font-size:10.3px; color:var(--ink); }
+  .pub-entry-meta{ font-family:var(--mono); font-size:8.6px; color:var(--ink-faint); margin-top:1px; }
+
+  .skills-row{ display:flex; gap:8px; flex-wrap:wrap; margin-top:2px; }
+  .skill-item{ font-family:var(--mono); font-size:9px; color:var(--ink-soft); border:1px solid var(--line); border-radius:3px; padding:2px 7px; }
+
+  .distinctions ul{ margin:0; padding-left:14px; color:var(--ink-soft); }
+  .distinctions li{ margin-bottom:2px; }
+
+  footer.cv-footer{ margin-top:14px; padding-top:8px; border-top:1px solid var(--line); font-family:var(--mono); font-size:8px; color:var(--ink-faint); text-align:center; }
+</style>
+</head>
+<body>
+
+<header class="cv-header">
+  <div>
+    <div class="cv-name">Anna Oliveras Tous</div>
+    <div class="cv-role">PhD Researcher — Generative AI for Medical Imaging</div>
+  </div>
+  <div class="cv-contact">
+    aoliverastous@gmail.com<br>
+    github.com/aolivtous · linkedin.com/in/anna-oliveras-tous<br>
+    Barcelona, Spain
+  </div>
+</header>
+
+<section>
+  <div class="cv-h">Profile</div>
+  <p class="summary">Master's in Computer Vision (UAB) and Bachelor's in Telecommunications Engineering (UPC), with expertise in signal processing, machine learning and deep learning built across industry roles and research internships in Barcelona and Lausanne. Currently a PhD researcher at Universitat de Barcelona &amp; Eurecat, supervised by Prof. Petia Radeva and Dr. Vicent Ribas, working on generative models for synthetic medical imaging — primarily CT and MRI.</p>
+</section>
+
+<section>
+  <div class="cv-h">Experience</div>
+
+  <div class="entry">
+    <div class="entry-top">
+      <div class="entry-role">PhD Researcher, Generative AI for Digital Health</div>
+      <div class="entry-date">Dec 2024 — Present</div>
+    </div>
+    <div class="entry-org">Universitat de Barcelona × Eurecat · Barcelona, Spain</div>
+    <ul>
+      <li>PhD in Mathematics &amp; Computer Science (UB), co-supervised with Eurecat's Digital Health Unit — advised by Prof. Petia Radeva and Dr. Vicent Ribas.</li>
+      <li>Researching generative synthesis of medical images, primarily CT and MRI, including latent diffusion models for 3D chest CT.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-top">
+      <div class="entry-role">Computer Vision Engineer</div>
+      <div class="entry-date">Nov 2023 — Nov 2024</div>
+    </div>
+    <div class="entry-org">Intek Medical · Barcelona, Spain</div>
+    <ul>
+      <li>Built AI-driven software for automated hair and skin analysis, supporting personalized, patient-centric treatment plans.</li>
+      <li>Applied deep learning to human 3D reconstruction to extract anthropometric measurements.</li>
+      <li>Designed AI-assisted data acquisition and annotation tools to scale up training dataset creation.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-top">
+      <div class="entry-role">Research Intern</div>
+      <div class="entry-date">May 2023 — Sept 2023</div>
+    </div>
+    <div class="entry-org">Computer Vision Center (CVC) · Barcelona, Spain</div>
+    <ul>
+      <li>Applied large language models to Document Visual Question Answering with PyTorch and Hugging Face.</li>
+      <li>Improved performance by injecting spatial layout information (bounding boxes) into prompts.</li>
+      <li>Added a Vision Transformer module so the language model could interpret visual tokens directly.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-top">
+      <div class="entry-role">Research Intern</div>
+      <div class="entry-date">Jun 2022 — Aug 2022</div>
+    </div>
+    <div class="entry-org">LTS5, EPFL · Lausanne, Switzerland</div>
+    <ul>
+      <li>Contributed to the "3T-study" cervical cancer screening program with the Geneva University Hospitals (HUG) and Dschang District Hospital, Cameroon.</li>
+      <li>Built deep learning models to detect strong motion artifacts in smartphone-captured VIA screening videos.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="cv-h">Education</div>
+
+  <div class="entry">
+    <div class="entry-top">
+      <div class="entry-role">Master's Degree in Computer Vision</div>
+      <div class="entry-date">Sep 2022 — Sep 2023</div>
+    </div>
+    <div class="entry-org">Autonomous University of Barcelona (UAB)</div>
+    <div class="summary">Grade: 8.9/10 — Top 5 best students award. Relevant courses: Machine Learning, Deep Learning, 3D Vision, Video Analysis.</div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-top">
+      <div class="entry-role">Bachelor's Degree in Telecommunications Engineering</div>
+      <div class="entry-date">Sep 2018 — Jun 2022</div>
+    </div>
+    <div class="entry-org">Polytechnic University of Catalonia (UPC)</div>
+    <div class="summary">Grade: 7.9/10 — Top 10% of class. Relevant courses: Signal Processing, Audiovisual Processing, Networks, Programming.</div>
+  </div>
+</section>
+
+<section>
+  <div class="cv-h">Publications</div>
+
+  <div class="pub-entry">
+    <div class="pub-entry-title">Anatomically Guided Latent Diffusion for High-Resolution 3D Chest CT Synthesis</div>
+    <div class="pub-entry-meta">Oliveras, A., Marí, R., Redondo, R., et al. — Scientific Reports, 2026 — doi.org/10.1038/s41598-026-51634-4</div>
+  </div>
+
+  <div class="pub-entry">
+    <div class="pub-entry-title">Automated Cervix Region Detection for Cervical Cancer Screening</div>
+    <div class="pub-entry-meta">Oliveras, A. (supervised by Prof. J-P. Thiran) — MICAD 2023, endorsed by the MICCAI Society</div>
+  </div>
+</section>
+
+<section class="two-col">
+  <div>
+    <div class="cv-h">Skills</div>
+    <div class="skills-row">
+      <span class="skill-item">Python</span><span class="skill-item">PyTorch</span><span class="skill-item">TensorFlow</span><span class="skill-item">Keras</span><span class="skill-item">OpenCV</span><span class="skill-item">Scikit-Learn</span><span class="skill-item">C / C++</span><span class="skill-item">Java</span><span class="skill-item">MATLAB</span><span class="skill-item">Blender</span><span class="skill-item">MeshLab</span>
+    </div>
+    <div class="cv-h" style="margin-top:10px;">Languages</div>
+    <div class="skills-row">
+      <span class="skill-item">Catalan — Native</span><span class="skill-item">Spanish — Native</span><span class="skill-item">English — C2</span><span class="skill-item">French — A2</span>
+    </div>
+  </div>
+  <div>
+    <div class="cv-h">Distinctions</div>
+    <div class="distinctions">
+      <ul>
+        <li>Top 5 MCV List Award (Sep 2023) — top 5 GPA, Master's in Computer Vision, UAB</li>
+        <li>Recognition for the university entrance exams, PAU (Jun 2018)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="cv-footer">Full portfolio with project pages and up-to-date publications available on request</footer>
+
+</body>
+</html>

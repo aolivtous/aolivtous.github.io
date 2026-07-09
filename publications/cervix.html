@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-processing for Automatic Cervical Cancer Screening: Image Segmentation and Movement Detection — Anna Oliveras Tous</title>
+<meta name="description" content="Bachelor's thesis work at LTS5, EPFL: a YOLOv5-based model to automatically crop the cervix region of interest and detect strong movement for VIA screening. Presented at MICAD 2022.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script src="../site.js" defer></script>
+<noscript><style>.reveal-up{ opacity:1 !important; transform:none !important; }</style></noscript>
+</head>
+<body class="publication-page">
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="../index.html" style="color:inherit;"><strong>ANNA OLIVERAS TOUS</strong> <span class="dot">·</span> CV / RESEARCH</a>
+    <nav>
+      <a href="../index.html#hero">Profile</a>
+      <a href="../index.html#research">Research</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="pub-page-header">
+    <div class="section-inner reveal-up">
+      <a class="back-link" href="../index.html#research">Back to publications</a>
+      <div class="eyebrow">Presented — MICAD 2023, University of Leicester</div>
+      <h1 class="pub-page-title">Pre-processing for Automatic Cervical Cancer Screening: Image Segmentation and Movement Detection</h1>
+      <p class="pub-authors">
+        <span class="me">Anna Oliveras</span><sup>1,3</sup>,
+        Magali Cattin<sup>1</sup>,
+        Roser Viñals<sup>1</sup>,
+        Jean-Philippe Thiran<sup>1,2</sup>
+      </p>
+      <p class="pub-affiliations">
+        <span class="aff-line"><sup>1</sup>Signal Processing Laboratory 5 (LTS5), École Polytechnique Fédérale de Lausanne (EPFL), Lausanne, Switzerland</span><br>
+        <span class="aff-line"><sup>2</sup>Department of Radiology, University Hospital Center (CHUV) and University of Lausanne, Lausanne, Switzerland</span><br>
+        <span class="aff-line"><sup>3</sup>ETSETB, Universitat Politècnica de Catalunya (UPC), Barcelona, Spain</span>
+      </p>
+      <div class="aff-logos">
+        <a href="https://www.epfl.ch/labs/lts5/" target="_blank" rel="noopener"><img src="../figs/logo-epfl.png" alt="EPFL"></a>
+        <a href="https://telecos.upc.edu/en" target="_blank" rel="noopener"><img src="../figs/logo-upc.png" alt="UPC"></a>
+      </div>
+      <div class="link-row" style="margin-top:22px;">
+        <a class="pill pill-primary" href="https://upcommons.upc.edu/entities/publication/3271764d-cbc6-4c20-b017-a81ba8fef159" target="_blank" rel="noopener">Read full thesis</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="pub-page-section">
+    <div class="section-inner reveal-up">
+      <p>Bachelor's thesis work at <a href="https://www.epfl.ch/labs/lts5/" target="_blank" rel="noopener">LTS5, EPFL</a>: fine-tuned YOLOv5 to automatically crop the cervix region of interest for VIA screening, reaching a 0.96 Dice score robust to blood, mucus, low light and blur.</p>
+    </div>
+  </section>
+
+  <section class="pub-page-section">
+    <div class="section-inner reveal-up">
+      <h2>Abstract</h2>
+      <p>Cervical cancer remains a major burden in settings where access to healthcare is limited. A smartphone-based artificial intelligence tool was developed to automatically detect and localize precancerous cervical lesions, using the pixels' whitening evolution from videos taken during visual inspection with acetic acid. While around 23.5% of the videos could not be used because of strong movement, this approach also required manual segmentation of the region of interest (ROI). The current work automatizes these pre-processing steps.</p>
+      <p>Our solution uses 120s videos where the cervical ROIs were annotated in the central frames. A neural network was adapted from You Only Look Once (YOLO) and trained with 650 annotated videos. Cross-validation with nine folds and data augmentation is used. As a result, an ROI is detected within each video frame.</p>
+      <p>Videos containing strong movement have then been manually identified and used to develop a method able to distinguish them. The ROIs of all the video frames are overlapped to generate a heatmap which is automatically processed to quantify the movement.</p>
+      <p>The segmentation algorithm achieves a Dice coefficient of 0.957 ± 0.004. The ROI is even detected in videos with blood, mucus, low-light, and blurriness. Strong movement is identified with accuracy, precision and recall of 0.980, 0.961 and 1.0, respectively. Integration of this pre-processing pipeline into the classification tool highly reduces the manual pre-processing required.</p>
+      <div class="tag-row">
+        <span class="tag">Segmentation</span><span class="tag">YOLOv5</span><span class="tag">Medical Imaging</span><span class="tag">Global Health</span>
+      </div>
+    </div>
+  </section>
+  
+  <section class="pub-page-section">
+    <div class="section-inner reveal-up">
+      <h2>Talks</h2>
+
+      <div class="pub pub-talk">
+        <div class="pub-body">
+          <div class="pub-status"><span class="status-dot presented"></span> MICAD - November 2022, University of Leicester, United Kingdom</div>
+          <h3 class="pub-title">Pre-processing for Automatic Cervical Cancer Screening: Image Segmentation and Movement Detection</h3>
+          <p class="pub-venue">MICAD 3rd Conference on Medical Imaging and Computer-Aided Diagnosis</p>
+          <div class="pub-links">
+            <a class="pill" href="https://www.micad.org/2022/index.html" target="_blank" rel="noopener">Event page ↗</a>
+            <a class="pill pill-icon" href="https://www.youtube.com/watch?v=uEgjukwbEYc" target="_blank" rel="noopener" aria-label="Watch on YouTube"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 7.2a3.03 3.03 0 0 0-2.13-2.15C19.49 4.5 12 4.5 12 4.5s-7.49 0-9.37.55A3.03 3.03 0 0 0 .5 7.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 4.8 3.03 3.03 0 0 0 2.13 2.15c1.88.55 9.37.55 9.37.55s7.49 0 9.37-.55a3.03 3.03 0 0 0 2.13-2.15A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-4.8ZM9.6 15.08V8.92L15.2 12 9.6 15.08Z"/></svg></a>
+            <img class="pub-event-logo" src="../figs/logo-micad.png" alt="MICAD logo">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-note">© 2026 Anna Oliveras Tous · Barcelona, Spain</div>
+    <div class="footer-aside"><a href="../index.html">← Back to portfolio</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

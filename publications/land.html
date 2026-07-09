@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAND: Anatomically Guided Latent Diffusion for 3D Chest CT Synthesis — Anna Oliveras Tous</title>
+<meta name="description" content="LAND (Lung and Nodule Diffusion) — an anatomically guided latent diffusion framework for synthesizing high-resolution 3D chest CT volumes. Published in Scientific Reports, 2026.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script src="../site.js" defer></script>
+<noscript><style>.reveal-up{ opacity:1 !important; transform:none !important; }</style></noscript>
+</head>
+<body class="publication-page" data-disable-toc-rail>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="../index.html" style="color:inherit;"><strong>ANNA OLIVERAS TOUS</strong> <span class="dot">·</span> CV / RESEARCH</a>
+    <nav>
+      <a href="../index.html#hero">Profile</a>
+      <a href="../index.html#research">Research</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="pub-page-header" id="overview" data-toc="Overview">
+    <div class="section-inner reveal-up">
+      <a class="back-link" href="../index.html#research">Back to publications</a>
+      <div class="eyebrow">Published — Scientific Reports, 2026</div>
+      <h1 class="pub-page-title">Anatomically Guided Latent Diffusion for High-Resolution 3D Chest CT Synthesis</h1>
+      <p class="pub-authors">
+        <span class="me">Anna Oliveras</span><sup>1,2</sup>,
+        <a href="https://rogermm14.github.io/" target="_blank" rel="noopener">Roger Marí</a><sup>1</sup>,
+        <a href="https://scholar.google.es/citations?user=QKaQVQkAAAAJ&hl=es" target="_blank" rel="noopener">Rafael Redondo</a><sup>1</sup>,
+        <a href="https://scholar.google.com/citations?user=ZKpO5C0AAAAJ&hl=es" target="_blank" rel="noopener">Oriol Guardià</a><sup>1</sup>,
+        <a href="https://scholar.google.com/citations?user=H4JkQrEAAAAJ&hl=it" target="_blank" rel="noopener">Cynthia Ifeyinwa Ugwu</a><sup>1</sup>,
+        <a href="https://www.researchgate.net/profile/Ana-Tost" target="_blank" rel="noopener">Ana Tost</a><sup>1</sup>,
+        <span style="white-space:nowrap;"><a href="https://www.bsc.es/nagarajan-bhalaji" target="_blank" rel="noopener">Bhalaji Nagarajan</a><sup>3</sup>,</span>
+        <a href="https://scholar.google.com/citations?user=VcXRxRUAAAAJ&hl=en" target="_blank" rel="noopener">Carolina Migliorelli</a><sup>1</sup>,
+        <a href="https://scholar.google.com/citations?user=1Gf8UfQAAAAJ&hl=es" target="_blank" rel="noopener">Vicent Ribas</a><sup>1</sup>,
+        <a href="https://www.ub.edu/aiba/petiaradeva/" target="_blank" rel="noopener">Petia Radeva</a><sup>2,4</sup>
+      </p>
+      <p class="pub-affiliations">
+        <span class="aff-line"><sup>1</sup><a href="https://eurecat.org/en/" target="_blank" rel="noopener">Eurecat, Centre Tecnològic de Catalunya, Barcelona, Spain</a></span><br>
+        <span class="aff-line"><sup>2</sup><a href="https://mat.ub.edu/" target="_blank" rel="noopener">Dept. de Matemàtiques i Informàtica, Universitat de Barcelona, Spain</a></span><br>
+        <span class="aff-line"><sup>3</sup><a href="https://www.bsc.es/" target="_blank" rel="noopener">Barcelona Supercomputing Center (BSC), Spain</a></span><br>
+        <span class="aff-line"><sup>4</sup><a href="https://www.neurociencies.ub.edu/" target="_blank" rel="noopener">Institut de Neurociències, Universitat de Barcelona, Barcelona, Spain</a></span>
+      </p>
+      <div class="aff-logos">
+        <a href="https://eurecat.org/home/en/" target="_blank" rel="noopener"><img src="../figs/logo-eurecat.png" alt="Eurecat"></a>
+        <a href="https://www.ub.edu/" target="_blank" rel="noopener"><img src="../figs/logo-ub.png" alt="Universitat de Barcelona"></a>
+        <a href="https://www.bsc.es/" target="_blank" rel="noopener"><img src="../figs/logo-bsc.png" alt="Barcelona Supercomputing Center"></a>
+      </div>
+      <div class="link-row" style="margin-top:22px;">
+        <a class="pill pill-primary" href="https://doi.org/10.1038/s41598-026-51634-4" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8L14 2Zm0 2.5L18.5 9H14V4.5ZM8 13h8v1.6H8V13Zm0 3.2h8v1.6H8v-1.6Z"/></svg>Paper</a>
+        <a class="pill" href="https://github.com/aolivtous/LAND_3DChestCT" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-1.96c-3.2.7-3.88-1.36-3.88-1.36-.52-1.31-1.27-1.66-1.27-1.66-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.3 1.18-3.11-.12-.29-.51-1.47.11-3.06 0 0 .97-.31 3.17 1.19a10.93 10.93 0 0 1 5.77 0c2.2-1.5 3.17-1.19 3.17-1.19.62 1.59.23 2.77.11 3.06.73.81 1.18 1.85 1.18 3.11 0 4.43-2.69 5.41-5.25 5.69.42.36.79 1.06.79 2.15v3.19c0 .31.21.67.79.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>GitHub ↗</a>
+        <a class="pill" href="#citation"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.17 6C4.87 8.1 3.5 10.9 3.5 14c0 2.2 1.3 3.5 3 3.5 1.5 0 2.7-1.2 2.7-2.7 0-1.4-1-2.5-2.4-2.6-.1-1.6.8-3.4 2.4-4.7L7.17 6zm9 0c-2.3 2.1-3.7 4.9-3.7 8 0 2.2 1.3 3.5 3 3.5 1.5 0 2.7-1.2 2.7-2.7 0-1.4-1-2.5-2.4-2.6-.1-1.6.8-3.4 2.4-4.7L16.17 6z"></path></svg>Cite</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="pub-page-section" id="diagram" data-toc="Diagram">
+    <div class="section-inner reveal-up">
+      <figure class="pub-page-figure">
+        <div class="fig1-interactive" id="fig1-interactive">
+          <img src="../figs/land-fig1.png" alt="Overview of the LAND pipeline: a 3D VAE encodes CT volumes into a latent space, where a denoising U-Net performs the diffusion process, optionally conditioned on an anatomical mask of the lungs and nodules via cross-attention." draggable="false">
+          <div class="fig1-hotspot" tabindex="0" style="left:0.68%; top:8.88%; width:11.53%; height:31.56%;" data-label="Input CT volume — a full-resolution 256×256×256 chest CT scan, encoded into the latent space by the VAE."></div>
+          <div class="fig1-hotspot" tabindex="0" style="left:12.54%; top:11.83%; width:8.81%; height:20.71%;" data-label="VAE Encoder — compresses the CT volume into a compact latent representation."></div>
+          <div class="fig1-hotspot" tabindex="0" style="left:24.07%; top:14.79%; width:5.76%; height:17.75%;" data-label="Latent code z — a 4×64×64×64 representation of the CT volume, far cheaper to model than raw voxels."></div>
+          <div class="fig1-hotspot" tabindex="0" style="left:34.58%; top:14.79%; width:39.32%; height:17.75%;" data-label="Diffusion process — during training, noise is progressively added to the latent code until it becomes pure noise."></div>
+          <div class="fig1-hotspot" tabindex="0" style="left:77.97%; top:14.79%; width:7.46%; height:17.75%;" data-label="Noisy latent z_T — pure Gaussian noise; the starting point for sampling a new volume at inference."></div>
+          <div class="fig1-hotspot" tabindex="0" style="left:87.46%; top:2.96%; width:12.54%; height:37.48%;" data-label="Anatomical mask — a 256×256×256 volume marking the lung and nodule regions, used to condition generation. It can also encode the nodule's texture."></div>
+          <div class="fig1-hotspot" tabindex="0" style="left:55.93%; top:33.53%; width:17.97%; height:37.48%;" data-label="Denoising 3D U-Net — predicts the noise to remove at each step, using cross-attention (CA) to attend to the mask condition."></div>
+          <div class="fig1-hotspot" tabindex="0" style="left:34.58%; top:39.45%; width:21.36%; height:21.70%;" data-label="Reverse diffusion — the U-Net's predictions are applied step by step, denoising the latent from z_T back down to a clean z."></div>
+          <div class="fig1-hotspot" tabindex="0" style="left:12.54%; top:44.38%; width:8.81%; height:26.63%;" data-label="VAE Decoder — reconstructs a full-resolution CT volume from the denoised latent code."></div>
+          <div class="fig1-hotspot" tabindex="0" style="left:0.68%; top:41.42%; width:11.53%; height:32.54%;" data-label="Generated CT volume — the final synthesized (or reconstructed) 256×256×256 chest CT."></div>
+          <div class="fig1-hotspot" tabindex="0" style="left:77.97%; top:73.96%; width:7.46%; height:15.78%;" data-label="Mask feature m — the encoded mask representation, injected into the U-Net via concatenation and cross-attention."></div>
+          <div class="fig1-hotspot" tabindex="0" style="left:86.44%; top:71.99%; width:13.56%; height:26.63%;" data-label="Mask encoder — either simple max-pooling or a dedicated mask VAE that embeds the anatomical mask."></div>
+        </div>
+        <div class="fig1-hint" id="fig1-hint">Hover over the diagram to see what each component does.</div>
+        <figcaption>Overview of the LAND pipeline. A 3D VAE encodes CT volumes into a latent space, and a 3D U-Net performs the denoising diffusion process, optionally conditioned on an anatomical mask of the lung and nodule regions.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="pub-page-section" id="abstract" data-toc="Abstract">
+    <div class="section-inner reveal-up">
+      <h2>Abstract</h2>
+      <p>Accurate and automated analysis of chest Computed Tomography (CT) scans is critical for early detection and risk stratification of lung cancer, the leading cause of cancer-related mortality worldwide. However, the development of robust deep learning models for lung nodule analysis is hindered by the limited availability of large, diverse, and well-annotated 3D CT datasets.</p>
+      <p>This work presents an anatomically guided latent diffusion framework for synthesizing high-quality three-dimensional chest CT volumes. The proposed approach, termed LAND (Lung and Nodule Diffusion), conditions the generative process on 3D anatomical masks of the lungs and pulmonary nodules to ensure accurate spatial localization and realistic anatomical structure. A dedicated variational autoencoder (VAE) encodes anatomical masks into a latent representation that preserves fine-grained nodule morphology. In addition, conditional texture modeling within masked nodule regions enables controlled variation in lesion appearance.</p>
+      <p>Compared with existing 3D diffusion-based methods, LAND substantially reduces computational requirements and generates 256×256×256 volumes at 1&nbsp;mm isotropic resolution using 10–16&nbsp;GB of GPU memory during training and less than 8&nbsp;GB during inference. Experimental results demonstrate high visual fidelity and anatomical realism, further supported by improved performance in downstream lung nodule segmentation and classification tasks. These findings indicate that LAND provides a practical and efficient framework for anatomically guided 3D medical image synthesis and data augmentation.</p>
+      <div class="tag-row">
+        <span class="tag">Diffusion Models</span><span class="tag">3D Medical Imaging</span><span class="tag">Chest CT</span><span class="tag">Synthetic Data</span><span class="tag">Variational Autoencoders</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="pub-page-section" id="contributions" data-toc="Contributions">
+    <div class="section-inner reveal-up">
+      <h2>Contributions</h2>
+      <ul class="contrib-list">
+        <li><span class="hl">LAND</span>, an anatomically guided latent diffusion model that synthesizes <span class="hl">high-resolution (256×256×256 at 1&nbsp;mm isotropic)</span> 3D chest CT volumes conditioned on 3D lung and nodule masks.</li>
+        <li>A dedicated <span class="hl">mask VAE</span> that embeds anatomical masks into a latent representation preserving fine-grained nodule morphology, which is especially important for smaller nodules.</li>
+        <li><span class="hl">Conditional texture modeling</span> within masked nodule regions, enabling controlled variation in lesion appearance and solidity.</li>
+        <li>Demonstrated downstream utility: models trained on LAND-augmented data achieve <span class="hl">superior lung nodule segmentation and classification</span> performance, particularly in low-data and unbalanced regimes.</li>
+        <li>High computational efficiency, enabling both training and inference on a <span class="hl">single 20&nbsp;GB GPU</span> — substantially less than existing 3D diffusion approaches.</li>
+      </ul>
+
+      <p style="margin-top:28px;">These contributions are realized through five model variants, each adding one conditioning capability on top of the last:</p>
+      <div class="variant-table-wrap">
+        <table class="variant-table">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Mask cond.</th>
+              <th>Mask encoding</th>
+              <th>Texture cond.</th>
+              <th>FID ↓</th>
+              <th>MMD ↓</th>
+              <th>Dice ↑</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>LAND</code></td>
+              <td><span class="vt-no">–</span></td>
+              <td><span class="vt-no">–</span></td>
+              <td><span class="vt-no">–</span></td>
+              <td>2.271</td>
+              <td>0.114</td>
+              <td><span class="vt-no">–</span></td>
+            </tr>
+            <tr>
+              <td><code>LAND-Mask</code></td>
+              <td><span class="vt-check" aria-label="Yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></td>
+              <td>Downsampled</td>
+              <td><span class="vt-no">–</span></td>
+              <td>1.780</td>
+              <td>0.083</td>
+              <td>0.518</td>
+            </tr>
+            <tr>
+              <td><code>LAND-LatentMask</code></td>
+              <td><span class="vt-check" aria-label="Yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></td>
+              <td>Latent mask VAE</td>
+              <td><span class="vt-no">–</span></td>
+              <td>1.767</td>
+              <td>0.082</td>
+              <td>0.684</td>
+            </tr>
+            <tr>
+              <td><code>LAND-Mask+</code></td>
+              <td><span class="vt-check" aria-label="Yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></td>
+              <td>Downsampled</td>
+              <td><span class="vt-check" aria-label="Yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></td>
+              <td>1.881</td>
+              <td>0.087</td>
+              <td>0.518</td>
+            </tr>
+            <tr>
+              <td><code>LAND-LatentMask+</code></td>
+              <td><span class="vt-check" aria-label="Yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></td>
+              <td>Latent mask VAE</td>
+              <td><span class="vt-check" aria-label="Yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></td>
+              <td>1.765</td>
+              <td>0.085</td>
+              <td>0.628</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="pub-page-section" id="results" data-toc="Results">
+    <div class="section-inner reveal-up">
+      <h2>Results</h2>
+      <p>LAND synthesizes realistic, anatomically consistent chest CT volumes both unconditionally and conditioned on lung and nodule masks, while also supporting controlled texture variation within nodule regions. Explore real generated samples below.</p>
+
+      <h3>Unconditional Generation</h3>
+      <p>Against 3D diffusion baselines, LAND achieves the lowest FID and MMD, producing sharper, more anatomically coherent volumes without sacrificing sample diversity. Browse real generated volumes across all three anatomical planes at once below. Scrub the slider or hit play to sweep through all 256 slices, and scroll on any panel to zoom.</p>
+
+      <div class="viewer" id="viewer-unconditional">
+        <div class="viewer-toolbar">
+          <button type="button" class="help-btn" aria-label="How this viewer works">?
+            <span class="help-tooltip">Three anatomical views of the same generated volume, shown side by side. Scroll on any panel to zoom, drag to pan, double-click to reset. Use the slider or play button to scrub through slices, and the arrows/dots below to switch case.</span>
+          </button>
+        </div>
+        <div class="viewer-stage texture-stage">
+          <div class="scrubber-panel" data-axis="axial">
+            <div class="scrubber-player">
+              <div class="scrubber-zoom">
+                <img class="scrubber-frame" alt="Axial view of an unconditionally generated LAND CT slice" draggable="false">
+              </div>
+            </div>
+            <div class="scrubber-panel-label">Axial</div>
+          </div>
+          <div class="scrubber-panel" data-axis="coronal">
+            <div class="scrubber-player">
+              <div class="scrubber-zoom">
+                <img class="scrubber-frame" alt="Coronal view of an unconditionally generated LAND CT slice" draggable="false">
+              </div>
+            </div>
+            <div class="scrubber-panel-label">Coronal</div>
+          </div>
+          <div class="scrubber-panel" data-axis="sagittal">
+            <div class="scrubber-player">
+              <div class="scrubber-zoom">
+                <img class="scrubber-frame" alt="Sagittal view of an unconditionally generated LAND CT slice" draggable="false">
+              </div>
+            </div>
+            <div class="scrubber-panel-label">Sagittal</div>
+          </div>
+        </div>
+        <div class="viewer-controls">
+          <button type="button" class="scrubber-play" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor" class="icon-play" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor" class="icon-pause" aria-hidden="true" style="display:none;"><path d="M6 5h4v14H6zm8 0h4v14h-4z"></path></svg></button>
+          <input type="range" class="scrubber-slider" min="0" max="255" value="0" aria-label="Slice position">
+          <span class="scrubber-count">1 / 256</span>
+        </div>
+        <div class="viewer-samplebar">
+          <div class="viewer-samplebar-row">
+            <button type="button" class="gallery-arrow scrubber-prev-sample" aria-label="Previous sample">‹</button>
+            <div class="gallery-dots"></div>
+            <button type="button" class="gallery-arrow scrubber-next-sample" aria-label="Next sample">›</button>
+          </div>
+          <span class="viewer-samplebar-label">Sample</span>
+        </div>
+      </div>
+
+      <h3>Conditional Generation</h3>
+      <p>Encoding the anatomical mask through a dedicated latent VAE (<strong>LAND-LatentMask</strong>) instead of simple downsampling (<strong>LAND-Mask</strong>) substantially improves shape fidelity to the conditioning mask, Dice rises from 0.518 to 0.684 and IoU from 0.385 to 0.543 on LIDC dataset, while overall image realism stays about the same. Each panel below is independently configurable: pick the model, the view plane, and the mask overlay opacity, so you can compare whatever you like side by side. </p>
+
+      <div class="viewer" id="scrubber-conditional">
+        <div class="viewer-toolbar">
+          <div class="viewer-legend"><span class="dot-lung"></span>Lung<span class="dot-nodule"></span>Nodule</div>
+          <button type="button" class="overlay-toggle scrubber-zoom-nodule">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            <span>Zoom on nodule</span>
+          </button>
+          <button type="button" class="help-btn" aria-label="How this viewer works">?
+            <span class="help-tooltip">Each panel has its own model (with/without mask VAE), view plane, and mask overlay opacity — set them independently to compare whatever you like. Hit "Zoom on nodule" to snap both panels to their nodule, scroll on a panel to zoom manually, drag to pan, double-click to reset. The slider/play and the arrows/dots below are shared and control both panels together.</span>
+          </button>
+        </div>
+        <div class="viewer-stage">
+          <div class="scrubber-panel" data-panel="0">
+            <div class="panel-toolbar">
+              <div class="overlay-control">
+                <span>Mask</span>
+                <input type="range" class="overlay-opacity-slider" min="0" max="1" step="0.05" value="1" aria-label="Overlay opacity">
+              </div>
+              <select class="panel-select-native panel-model-select"></select>
+              <select class="panel-select-native panel-axis-select"></select>
+            </div>
+            <div class="scrubber-player">
+              <div class="scrubber-zoom">
+                <img class="scrubber-frame" alt="Slice from a LAND-generated CT volume" draggable="false">
+                <img class="scrubber-overlay" alt="" draggable="false">
+              </div>
+            </div>
+          </div>
+          <div class="scrubber-panel" data-panel="1">
+            <div class="panel-toolbar">
+              <div class="overlay-control">
+                <span>Mask</span>
+                <input type="range" class="overlay-opacity-slider" min="0" max="1" step="0.05" value="1" aria-label="Overlay opacity">
+              </div>
+              <select class="panel-select-native panel-model-select"></select>
+              <select class="panel-select-native panel-axis-select"></select>
+            </div>
+            <div class="scrubber-player">
+              <div class="scrubber-zoom">
+                <img class="scrubber-frame" alt="Slice from a LAND-generated CT volume" draggable="false">
+                <img class="scrubber-overlay" alt="" draggable="false">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="viewer-controls">
+          <button type="button" class="scrubber-play" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor" class="icon-play" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor" class="icon-pause" aria-hidden="true" style="display:none;"><path d="M6 5h4v14H6zm8 0h4v14h-4z"></path></svg></button>
+          <input type="range" class="scrubber-slider" min="0" max="255" value="0" aria-label="Slice position">
+          <span class="scrubber-count">1 / 256</span>
+        </div>
+        <div class="viewer-samplebar">
+          <div class="viewer-samplebar-row">
+            <button type="button" class="gallery-arrow scrubber-prev-sample" aria-label="Previous sample">‹</button>
+            <div class="gallery-dots"></div>
+            <button type="button" class="gallery-arrow scrubber-next-sample" aria-label="Next sample">›</button>
+          </div>
+          <span class="viewer-samplebar-label">Sample</span>
+        </div>
+      </div>
+
+      <h3>Texture Conditioning</h3>
+      <p><strong>LAND-LatentMask+</strong> additionally conditions on nodule texture, letting you steer solidity from non-solid (1) to solid (5). This adds only a small trade-off in shape fidelity (Dice 0.684 → 0.628) relative to LAND-LatentMask, in exchange for fine-grained control over nodule appearance. Explore samples generated with all five texture levels side by side below.</p>
+
+      <div class="viewer" id="viewer-texture">
+        <div class="viewer-toolbar">
+          <div class="viewer-legend"><span class="dot-lung"></span>Lung<span class="dot-nodule"></span>Nodule</div>
+          <select class="panel-select-native viewer-axis-select"></select>
+          <div class="overlay-control">
+            <span>Mask</span>
+            <input type="range" class="overlay-opacity-slider texture-overlay-opacity" min="0" max="1" step="0.05" value="1" aria-label="Overlay opacity">
+          </div>
+          <button type="button" class="overlay-toggle texture-zoom-nodule">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            <span>Zoom on nodule</span>
+          </button>
+          <button type="button" class="help-btn" aria-label="How this viewer works">?
+            <span class="help-tooltip">Five texture levels of the same case, shown side by side and kept in sync. Adjust the mask overlay opacity, or hit "Zoom on nodule" to snap every panel to a 64×64 crop centered on it. Scroll on any panel to zoom manually, drag to pan, double-click to reset. The slider/play and arrows/dots below control all panels together.</span>
+          </button>
+        </div>
+        <div class="viewer-stage texture-stage">
+          <div class="scrubber-panel" data-texture="1">
+            <div class="scrubber-player">
+              <div class="scrubber-zoom">
+                <img class="scrubber-frame" alt="Texture level 1" draggable="false">
+                <img class="scrubber-overlay" alt="" draggable="false">
+              </div>
+            </div>
+            <div class="scrubber-panel-label">Texture 1</div>
+          </div>
+          <div class="scrubber-panel" data-texture="2">
+            <div class="scrubber-player">
+              <div class="scrubber-zoom">
+                <img class="scrubber-frame" alt="Texture level 2" draggable="false">
+                <img class="scrubber-overlay" alt="" draggable="false">
+              </div>
+            </div>
+            <div class="scrubber-panel-label">Texture 2</div>
+          </div>
+          <div class="scrubber-panel" data-texture="3">
+            <div class="scrubber-player">
+              <div class="scrubber-zoom">
+                <img class="scrubber-frame" alt="Texture level 3" draggable="false">
+                <img class="scrubber-overlay" alt="" draggable="false">
+              </div>
+            </div>
+            <div class="scrubber-panel-label">Texture 3</div>
+          </div>
+          <div class="scrubber-panel" data-texture="4">
+            <div class="scrubber-player">
+              <div class="scrubber-zoom">
+                <img class="scrubber-frame" alt="Texture level 4" draggable="false">
+                <img class="scrubber-overlay" alt="" draggable="false">
+              </div>
+            </div>
+            <div class="scrubber-panel-label">Texture 4</div>
+          </div>
+          <div class="scrubber-panel" data-texture="5">
+            <div class="scrubber-player">
+              <div class="scrubber-zoom">
+                <img class="scrubber-frame" alt="Texture level 5" draggable="false">
+                <img class="scrubber-overlay" alt="" draggable="false">
+              </div>
+            </div>
+            <div class="scrubber-panel-label">Texture 5</div>
+          </div>
+        </div>
+        <div class="viewer-controls">
+          <button type="button" class="scrubber-play" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor" class="icon-play" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor" class="icon-pause" aria-hidden="true" style="display:none;"><path d="M6 5h4v14H6zm8 0h4v14h-4z"></path></svg></button>
+          <input type="range" class="scrubber-slider" min="0" max="255" value="0" aria-label="Slice position">
+          <span class="scrubber-count">1 / 256</span>
+        </div>
+        <div class="viewer-samplebar">
+          <div class="viewer-samplebar-row">
+            <button type="button" class="gallery-arrow scrubber-prev-sample" aria-label="Previous sample">‹</button>
+            <div class="gallery-dots"></div>
+            <button type="button" class="gallery-arrow scrubber-next-sample" aria-label="Next sample">›</button>
+          </div>
+          <span class="viewer-samplebar-label">Sample</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pub-page-section" id="citation" data-toc="Cite">
+    <div class="section-inner reveal-up">
+      <h2>Cite</h2>
+      <div class="citation-wrap">
+        <button type="button" class="copy-btn" id="copy-cite" aria-label="Copy citation" title="Copy citation">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+        <pre class="citation-block" id="bibtex">@article{Oliveras2026,
+  author  = {Oliveras, Anna and Marí, Roger and Redondo, Rafael and Guardià, Oriol and Ugwu, Cynthia Ifeyinwa and Tost, Ana and Nagarajan, Bhalaji and Migliorelli, Carolina and Ribas, Vicent and Radeva, Petia},
+  title   = {Anatomically guided latent diffusion for high-resolution 3D chest CT synthesis},
+  journal = {Scientific Reports},
+  year    = {2026},
+  doi     = {10.1038/s41598-026-51634-4}
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="pub-page-section" id="talks" data-toc="Talks">
+    <div class="section-inner reveal-up">
+      <h2>Talks</h2>
+
+      <div class="pub pub-talk">
+        <div class="pub-body">
+          <div class="pub-status"><span class="status-dot presented"></span> CIDAI - May 2026, Barcelona, Spain</div>
+          <h3 class="pub-title">Phase IV-AI LAND: 3D Thoracic CT Synthesis with Anatomical Guidance via Lung and Nodule Diffusion</h3>
+          <p class="pub-venue">CIDAI - Centre of Innovation for Data Tech and Artificial Intelligence · Presentation of Proofs of Concept in Data and AI.</p>
+          <div class="pub-links">
+            <a class="pill" href="https://cidai.eu/en/events/proofs-of-concept-in-data-and-ai/" target="_blank" rel="noopener">Event page ↗</a>
+            <a class="pill pill-icon" href="https://www.youtube.com/watch?v=joK72yMtApc" target="_blank" rel="noopener" aria-label="Watch on YouTube"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 7.2a3.03 3.03 0 0 0-2.13-2.15C19.49 4.5 12 4.5 12 4.5s-7.49 0-9.37.55A3.03 3.03 0 0 0 .5 7.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 4.8 3.03 3.03 0 0 0 2.13 2.15c1.88.55 9.37.55 9.37.55s7.49 0 9.37-.55a3.03 3.03 0 0 0 2.13-2.15A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-4.8ZM9.6 15.08V8.92L15.2 12 9.6 15.08Z"/></svg></a>
+            <a class="pill pill-icon" href="https://www.linkedin.com/posts/anaivazquez_el-cidai-centre-of-innovation-for-data-activity-7459878681650409472-LFVI?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC6CkD0BG5WxA6KKOiSNaygobBhr2nI9YpQ" target="_blank" rel="noopener" aria-label="View on LinkedIn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.94 8.75H3.56V20h3.38V8.75ZM5.25 3.5a1.97 1.97 0 1 0 0 3.94 1.97 1.97 0 0 0 0-3.94ZM20.44 13.56c0-3.39-1.81-4.97-4.23-4.97-1.95 0-2.82 1.07-3.31 1.83V8.75H9.56V20h3.34v-5.57c0-1.47.28-2.89 2.1-2.89 1.79 0 1.82 1.68 1.82 2.99V20h3.62v-6.44Z"/></svg></a>
+            <img class="pub-event-logo" src="../figs/logo-cidai.png" alt="CIDAI logo">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pub-page-section" id="posters" data-toc="Posters">
+    <div class="section-inner reveal-up">
+      <h2>Posters</h2>
+
+      <div class="pub pub-talk">
+        <div class="pub-body">
+          <div class="pub-status"><span class="status-dot presented"></span> Phase IV-AI Final Conference - June 2026, University of Turku, Finland</div>
+          <h3 class="pub-title">Phase IV-AI LAND: 3D Thoracic CT Synthesis with Anatomical Guidance via Lung and Nodule Diffusion</h3>
+          <p class="pub-venue">Phase IV-AI Project Ending Conference</p>
+          <div class="pub-links">
+            <a class="pill" href="../5_EURECAT_LAND_poster.pdf" target="_blank" rel="noopener">Poster ↗</a>
+            <a class="pill" href="https://www.phase4ai-project.eu/?p=2738" target="_blank" rel="noopener">Event page ↗</a>
+            <a class="pill pill-icon" href="https://www.linkedin.com/posts/phaseivai-artificialintelligence-healthdata-ugcPost-7470460254128877568-rEEa/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC6CkD0BG5WxA6KKOiSNaygobBhr2nI9YpQ" target="_blank" rel="noopener" aria-label="View on LinkedIn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.94 8.75H3.56V20h3.38V8.75ZM5.25 3.5a1.97 1.97 0 1 0 0 3.94 1.97 1.97 0 0 0 0-3.94ZM20.44 13.56c0-3.39-1.81-4.97-4.23-4.97-1.95 0-2.82 1.07-3.31 1.83V8.75H9.56V20h3.34v-5.57c0-1.47.28-2.89 2.1-2.89 1.79 0 1.82 1.68 1.82 2.99V20h3.62v-6.44Z"/></svg></a>
+            <img class="pub-event-logo" src="../figs/logo-phase4ai.png" alt="Phase IV-AI logo">
+          </div>
+        </div>
+      </div>
+
+      <div class="pub pub-talk">
+        <div class="pub-body">
+          <div class="pub-status"><span class="status-dot presented"></span> MedEurIPS - December 2025, University of Copenhagen, Denmark</div>
+          <h3 class="pub-title">LAND: 3D Thoracic CT Synthesis with Anatomical Guidance via Lung and Nodule Diffusion</h3>
+          <p class="pub-venue">MedEurIPS Workshop: Medical Imaging meets EurIPS</p>
+          <div class="pub-links">
+            <a class="pill" href="../5_EURECAT_LAND_poster.pdf" target="_blank" rel="noopener">Poster ↗</a>
+            <a class="pill" href="https://www.medeurips.com/" target="_blank" rel="noopener">Event page ↗</a>
+            <a class="pill pill-icon" href="https://www.linkedin.com/posts/aiba-consolidated-research-group-273288309_medeurips-eurips-aiba-activity-7404998678853181440-A0ZZ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC6CkD0BG5WxA6KKOiSNaygobBhr2nI9YpQ" target="_blank" rel="noopener" aria-label="View on LinkedIn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.94 8.75H3.56V20h3.38V8.75ZM5.25 3.5a1.97 1.97 0 1 0 0 3.94 1.97 1.97 0 0 0 0-3.94ZM20.44 13.56c0-3.39-1.81-4.97-4.23-4.97-1.95 0-2.82 1.07-3.31 1.83V8.75H9.56V20h3.34v-5.57c0-1.47.28-2.89 2.1-2.89 1.79 0 1.82 1.68 1.82 2.99V20h3.62v-6.44Z"/></svg></a>
+            <img class="pub-event-logo" src="../figs/logo-medeurips.png" alt="MedEurIPS logo">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pub-page-section" id="acknowledgements" data-toc="Acknowledgements">
+    <div class="section-inner reveal-up">
+      <h2>Acknowledgements</h2>
+      <p>A.O. acknowledges support from Eurecat's "Vicente López" PhD grant program, the computer resources at Finis Terrae III (CESGA), and the technical support from Barcelona Supercomputing Center (RES-BCV-2025-2-0043).</p>
+      <h2 style="margin-top:36px;">Funding</h2>
+      <p>B.N. received support through the AI4S fellowship within the "Generación D" initiative by Red.es, Ministerio para la Transformación Digital y de la Función Pública (C005/24-ED CV1), funded by NextGenerationEU through PRTR. C.M. and R.R. acknowledge that this research was conducted within the <a href="https://www.phase4ai-project.eu/?page_id=757" target="_blank" rel="noopener">PHASE IV AI</a> project, funded by the European Union's Horizon Europe research and innovation programme (grant agreement No. 101095384). P.R. received support from 2021-SGR-01094 (AGAUR), ICREA Academia 2022 (Generalitat de Catalunya), and the IDEATE project (AEI-MICINN, PID2022-141566NB-I00).</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-note">© 2026 Anna Oliveras Tous · Barcelona, Spain</div>
+    <div class="footer-aside"><a href="../index.html">← Back to portfolio</a></div>
+  </div>
+</footer>
+
+<script>
+  const copyBtn = document.getElementById('copy-cite');
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(document.getElementById('bibtex').innerText).then(() => {
+      copyBtn.classList.add('copied');
+      copyBtn.setAttribute('title', 'Copied!');
+      setTimeout(() => {
+        copyBtn.classList.remove('copied');
+        copyBtn.setAttribute('title', 'Copy citation');
+      }, 1500);
+    });
+  });
+
+  (function initFig1Hotspots() {
+    const hintEl = document.getElementById('fig1-hint');
+    if (!hintEl) return;
+    const defaultHint = hintEl.textContent;
+    const setHint = (text) => {
+      hintEl.style.opacity = 0;
+      setTimeout(() => { hintEl.textContent = text; hintEl.style.opacity = 1; }, 110);
+    };
+    document.querySelectorAll('.fig1-hotspot').forEach(spot => {
+      const show = () => setHint(spot.dataset.label);
+      const hide = () => setHint(defaultHint);
+      spot.addEventListener('mouseenter', show);
+      spot.addEventListener('mouseleave', hide);
+      spot.addEventListener('focus', show);
+      spot.addEventListener('blur', hide);
+    });
+  })();
+
+  function attachZoomPan(player, zoomWrap, onManualChange) {
+    const zoom = { scale: 1, tx: 0, ty: 0 };
+
+    function applyZoom() {
+      zoomWrap.style.transform = `scale(${zoom.scale}) translate(${zoom.tx}px, ${zoom.ty}px)`;
+      player.classList.toggle('zoomed', zoom.scale > 1);
+    }
+
+    player.addEventListener('wheel', e => {
+      e.preventDefault();
+      const rect = player.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+
+      const oldScale = zoom.scale;
+      const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+      const newScale = Math.min(4, Math.max(1, oldScale * factor));
+      if (newScale === oldScale) return;
+
+      // content-space point currently under the cursor, anchor it there after rescaling
+      const contentX = mx / oldScale - zoom.tx;
+      const contentY = my / oldScale - zoom.ty;
+
+      zoom.scale = newScale;
+      zoom.tx = mx / newScale - contentX;
+      zoom.ty = my / newScale - contentY;
+
+      if (newScale === 1) { zoom.tx = 0; zoom.ty = 0; }
+      applyZoom();
+      if (onManualChange) onManualChange();
+    }, { passive: false });
+
+    let dragging = false, lastX = 0, lastY = 0;
+    player.addEventListener('mousedown', e => {
+      if (zoom.scale <= 1) return;
+      e.preventDefault();
+      dragging = true;
+      lastX = e.clientX; lastY = e.clientY;
+      player.classList.add('dragging');
+    });
+    player.addEventListener('dragstart', e => e.preventDefault());
+    window.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      zoom.tx += (e.clientX - lastX) / zoom.scale;
+      zoom.ty += (e.clientY - lastY) / zoom.scale;
+      lastX = e.clientX; lastY = e.clientY;
+      applyZoom();
+      if (onManualChange) onManualChange();
+    });
+    window.addEventListener('mouseup', () => {
+      dragging = false;
+      player.classList.remove('dragging');
+    });
+
+    player.addEventListener('dblclick', () => {
+      zoom.scale = 1; zoom.tx = 0; zoom.ty = 0;
+      applyZoom();
+      if (onManualChange) onManualChange();
+    });
+
+    function zoomToPoint(fx, fy, targetScale) {
+      const rect = player.getBoundingClientRect();
+      const w = rect.width, h = rect.height;
+      zoom.scale = targetScale;
+      zoom.tx = w * (0.5 / targetScale - fx);
+      zoom.ty = h * (0.5 / targetScale - fy);
+      applyZoom();
+    }
+
+    function reset() {
+      zoom.scale = 1; zoom.tx = 0; zoom.ty = 0;
+      applyZoom();
+    }
+
+    return { zoom, apply: applyZoom, zoomToPoint, reset };
+  }
+
+  function attachViewerAutoplay(root, play, stop) {
+    if (!root || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          play();
+        } else {
+          stop();
+        }
+      });
+    }, {
+      threshold: [0.5],
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stop();
+    });
+
+    observer.observe(root);
+  }
+
+  function initTripleAxisViewer(root, sampleIds, manifest, basePathRoot) {
+    let sampleIdx = 0;
+    let frame = 0;
+    let playing = false;
+    let timer = null;
+
+    const slider = root.querySelector('.scrubber-slider');
+    const count = root.querySelector('.scrubber-count');
+    const playBtn = root.querySelector('.scrubber-play');
+    const iconPlay = playBtn.querySelector('.icon-play');
+    const iconPause = playBtn.querySelector('.icon-pause');
+    const dotsEl = root.querySelector('.gallery-dots');
+    const prevBtn = root.querySelector('.scrubber-prev-sample');
+    const nextBtn = root.querySelector('.scrubber-next-sample');
+
+    const panelEls = Array.from(root.querySelectorAll('.scrubber-panel'));
+    const panels = panelEls.map(el => {
+      const player = el.querySelector('.scrubber-player');
+      const zoomWrap = el.querySelector('.scrubber-zoom');
+      const zoomApi = attachZoomPan(player, zoomWrap);
+      return { axis: el.dataset.axis, frameImg: el.querySelector('.scrubber-frame'), zoomApi };
+    });
+
+    function sampleId() { return sampleIds[sampleIdx]; }
+    function pad(n) { return String(n).padStart(3, '0'); }
+    function framePath(panel) { return `${basePathRoot}/${String(sampleId()).padStart(5, '0')}/${panel.axis}/${pad(frame)}.jpg`; }
+    function frameCount() { return manifest[sampleId()].axial.frames; }
+    function resetZooms() { panels.forEach(p => p.zoomApi.reset()); }
+
+    function renderDots() {
+      dotsEl.innerHTML = '';
+      sampleIds.forEach((id, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'gallery-dot' + (i === sampleIdx ? ' active' : '');
+        dot.setAttribute('aria-label', `Sample ${i + 1}`);
+        dot.addEventListener('click', () => {
+          stop();
+          sampleIdx = i;
+          frame = manifest[sampleId()].axial.default_frame;
+          resetZooms();
+          loadAll();
+          play();
+        });
+        dotsEl.appendChild(dot);
+      });
+    }
+
+    function updateFrame() {
+      panels.forEach(p => { p.frameImg.src = framePath(p); });
+      slider.value = frame;
+      count.textContent = `${frame + 1} / ${frameCount()}`;
+    }
+
+    function loadAll() {
+      slider.max = frameCount() - 1;
+      updateFrame();
+      renderDots();
+    }
+
+    function play() {
+      if (playing) return;
+      playing = true;
+      iconPlay.style.display = 'none';
+      iconPause.style.display = '';
+      timer = setInterval(() => {
+        frame = (frame + 1) % frameCount();
+        updateFrame();
+      }, 110);
+    }
+
+    function stop() {
+      if (!playing && !timer) return;
+      playing = false;
+      iconPlay.style.display = '';
+      iconPause.style.display = 'none';
+      clearInterval(timer);
+    }
+
+    playBtn.addEventListener('click', () => { playing ? stop() : play(); });
+    slider.addEventListener('input', () => { stop(); frame = parseInt(slider.value, 10); updateFrame(); });
+    prevBtn.addEventListener('click', () => {
+      stop();
+      sampleIdx = (sampleIdx - 1 + sampleIds.length) % sampleIds.length;
+      frame = manifest[sampleId()].axial.default_frame;
+      resetZooms();
+      loadAll();
+      play();
+    });
+    nextBtn.addEventListener('click', () => {
+      stop();
+      sampleIdx = (sampleIdx + 1) % sampleIds.length;
+      frame = manifest[sampleId()].axial.default_frame;
+      resetZooms();
+      loadAll();
+      play();
+    });
+
+    frame = manifest[sampleId()].axial.default_frame;
+    loadAll();
+    attachViewerAutoplay(root, play, stop);
+  }
+
+  function initTextureViewer(root, sampleIds, manifest, textureIds, nodulePoints) {
+    const axes = ['axial', 'coronal', 'sagittal'];
+    let sampleIdx = 0;
+    let axis = 'axial';
+    let frame = 0;
+    let playing = false;
+    let overlayOpacity = 1;
+    let timer = null;
+
+    const axisSelect = root.querySelector('.viewer-axis-select');
+    const slider = root.querySelector('.scrubber-slider');
+    const count = root.querySelector('.scrubber-count');
+    const playBtn = root.querySelector('.scrubber-play');
+    const iconPlay = playBtn.querySelector('.icon-play');
+    const iconPause = playBtn.querySelector('.icon-pause');
+    const dotsEl = root.querySelector('.gallery-dots');
+    const prevBtn = root.querySelector('.scrubber-prev-sample');
+    const nextBtn = root.querySelector('.scrubber-next-sample');
+    const overlaySlider = root.querySelector('.texture-overlay-opacity');
+    const zoomNoduleBtn = root.querySelector('.texture-zoom-nodule');
+
+    let noduleZoomed = false;
+
+    function clearNoduleZoom() {
+      noduleZoomed = false;
+      zoomNoduleBtn.classList.remove('active');
+    }
+
+    const panelEls = Array.from(root.querySelectorAll('.scrubber-panel'));
+    const panels = panelEls.map((el, i) => {
+      const player = el.querySelector('.scrubber-player');
+      const zoomWrap = el.querySelector('.scrubber-zoom');
+      const zoomApi = attachZoomPan(player, zoomWrap, clearNoduleZoom);
+      return {
+        textureId: textureIds[i],
+        frameImg: el.querySelector('.scrubber-frame'),
+        overlayImg: el.querySelector('.scrubber-overlay'),
+        zoomApi,
+      };
+    });
+
+    function sampleId() { return sampleIds[sampleIdx]; }
+    function pad(n) { return String(n).padStart(3, '0'); }
+    function framePath(panel) { return `../figs/land-slices-texture/${String(sampleId()).padStart(5, '0')}/texture${panel.textureId}/${axis}/${pad(frame)}.jpg`; }
+    function overlayPath() { return `../figs/land-slices-texture/${String(sampleId()).padStart(5, '0')}/overlay/${axis}/${pad(frame)}.png`; }
+    function frameCount() { return manifest[sampleId()][axis].frames; }
+    function resetZooms() { panels.forEach(p => p.zoomApi.reset()); clearNoduleZoom(); }
+
+    axes.forEach(a => {
+      const opt = document.createElement('option');
+      opt.value = a;
+      opt.textContent = a.charAt(0).toUpperCase() + a.slice(1);
+      axisSelect.appendChild(opt);
+    });
+    axisSelect.addEventListener('change', () => {
+      stop();
+      axis = axisSelect.value;
+      frame = manifest[sampleId()][axis].default_frame;
+      resetZooms();
+      loadAll();
+    });
+
+    overlaySlider.addEventListener('input', () => {
+      overlayOpacity = parseFloat(overlaySlider.value);
+      panels.forEach(p => { p.overlayImg.style.opacity = overlayOpacity; });
+    });
+
+    zoomNoduleBtn.addEventListener('click', () => {
+      if (noduleZoomed) {
+        panels.forEach(p => p.zoomApi.reset());
+        noduleZoomed = false;
+      } else {
+        stop();
+        frame = manifest[sampleId()][axis].default_frame;
+        updateFrame();
+        const pt = nodulePoints[sampleId()][axis];
+        panels.forEach(p => p.zoomApi.zoomToPoint(pt.fx, pt.fy, 4));
+        noduleZoomed = true;
+      }
+      zoomNoduleBtn.classList.toggle('active', noduleZoomed);
+    });
+
+    function renderDots() {
+      dotsEl.innerHTML = '';
+      sampleIds.forEach((id, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'gallery-dot' + (i === sampleIdx ? ' active' : '');
+        dot.setAttribute('aria-label', `Sample ${i + 1}`);
+        dot.addEventListener('click', () => {
+          stop();
+          sampleIdx = i;
+          frame = manifest[sampleId()][axis].default_frame;
+          resetZooms();
+          loadAll();
+          play();
+        });
+        dotsEl.appendChild(dot);
+      });
+    }
+
+    function updateFrame() {
+      panels.forEach(p => {
+        p.frameImg.src = framePath(p);
+        p.overlayImg.src = overlayPath();
+        p.overlayImg.style.opacity = overlayOpacity;
+      });
+      slider.value = frame;
+      count.textContent = `${frame + 1} / ${frameCount()}`;
+    }
+
+    function loadAll() {
+      slider.max = frameCount() - 1;
+      updateFrame();
+      renderDots();
+    }
+
+    function play() {
+      if (playing) return;
+      playing = true;
+      iconPlay.style.display = 'none';
+      iconPause.style.display = '';
+      timer = setInterval(() => {
+        frame = (frame + 1) % frameCount();
+        updateFrame();
+      }, 110);
+    }
+
+    function stop() {
+      if (!playing && !timer) return;
+      playing = false;
+      iconPlay.style.display = '';
+      iconPause.style.display = 'none';
+      clearInterval(timer);
+    }
+
+    playBtn.addEventListener('click', () => { playing ? stop() : play(); });
+    slider.addEventListener('input', () => { stop(); frame = parseInt(slider.value, 10); updateFrame(); });
+    prevBtn.addEventListener('click', () => {
+      stop();
+      sampleIdx = (sampleIdx - 1 + sampleIds.length) % sampleIds.length;
+      frame = manifest[sampleId()][axis].default_frame;
+      resetZooms();
+      loadAll();
+      play();
+    });
+    nextBtn.addEventListener('click', () => {
+      stop();
+      sampleIdx = (sampleIdx + 1) % sampleIds.length;
+      frame = manifest[sampleId()][axis].default_frame;
+      resetZooms();
+      loadAll();
+      play();
+    });
+
+    frame = manifest[sampleId()][axis].default_frame;
+    loadAll();
+    attachViewerAutoplay(root, play, stop);
+  }
+
+  initTripleAxisViewer(document.getElementById('viewer-unconditional'), [0, 70, 100, 150, 200, 208, 300], {
+    "0":   {"axial": {"frames": 256, "default_frame": 128}, "coronal": {"frames": 256, "default_frame": 128}, "sagittal": {"frames": 256, "default_frame": 128}},
+    "70":  {"axial": {"frames": 256, "default_frame": 128}, "coronal": {"frames": 256, "default_frame": 128}, "sagittal": {"frames": 256, "default_frame": 128}},
+    "100": {"axial": {"frames": 256, "default_frame": 128}, "coronal": {"frames": 256, "default_frame": 128}, "sagittal": {"frames": 256, "default_frame": 128}},
+    "150": {"axial": {"frames": 256, "default_frame": 128}, "coronal": {"frames": 256, "default_frame": 128}, "sagittal": {"frames": 256, "default_frame": 128}},
+    "200": {"axial": {"frames": 256, "default_frame": 128}, "coronal": {"frames": 256, "default_frame": 128}, "sagittal": {"frames": 256, "default_frame": 128}},
+    "208": {"axial": {"frames": 256, "default_frame": 128}, "coronal": {"frames": 256, "default_frame": 128}, "sagittal": {"frames": 256, "default_frame": 128}},
+    "300": {"axial": {"frames": 256, "default_frame": 128}, "coronal": {"frames": 256, "default_frame": 128}, "sagittal": {"frames": 256, "default_frame": 128}}
+  }, '../figs/land-slices-unconditional');
+
+  function initScrubber(root, sampleIds, manifest, nodulePoints) {
+    const axes = ['axial', 'coronal', 'sagittal'];
+    const models = [
+      { id: 'withVAE', label: 'LAND-LatentMask' },
+      { id: 'withoutVAE', label: 'LAND-Mask' },
+    ];
+    let sampleIdx = 0;
+    let frame = 0;
+    let playing = false;
+    let timer = null;
+    let noduleZoomed = false;
+
+    const slider = root.querySelector('.scrubber-slider');
+    const count = root.querySelector('.scrubber-count');
+    const playBtn = root.querySelector('.scrubber-play');
+    const iconPlay = playBtn.querySelector('.icon-play');
+    const iconPause = playBtn.querySelector('.icon-pause');
+    const dotsEl = root.querySelector('.gallery-dots');
+    const prevBtn = root.querySelector('.scrubber-prev-sample');
+    const nextBtn = root.querySelector('.scrubber-next-sample');
+    const zoomNoduleBtn = root.querySelector('.scrubber-zoom-nodule');
+
+    function clearNoduleZoom() {
+      noduleZoomed = false;
+      zoomNoduleBtn.classList.remove('active');
+    }
+
+    const panelEls = Array.from(root.querySelectorAll('.scrubber-panel'));
+    const panels = panelEls.map((el, i) => {
+      const player = el.querySelector('.scrubber-player');
+      const zoomWrap = el.querySelector('.scrubber-zoom');
+      return {
+        el,
+        model: i === 0 ? 'withVAE' : 'withoutVAE',
+        axis: 'axial',
+        overlayOpacity: 1,
+        frameImg: el.querySelector('.scrubber-frame'),
+        overlayImg: el.querySelector('.scrubber-overlay'),
+        modelSelect: el.querySelector('.panel-model-select'),
+        axisSelect: el.querySelector('.panel-axis-select'),
+        overlaySlider: el.querySelector('.overlay-opacity-slider'),
+        player,
+        zoomWrap,
+        zoomApi: attachZoomPan(player, zoomWrap, clearNoduleZoom),
+      };
+    });
+
+    zoomNoduleBtn.addEventListener('click', () => {
+      if (noduleZoomed) {
+        panels.forEach(p => p.zoomApi.reset());
+        noduleZoomed = false;
+      } else {
+        stop();
+        frame = Math.min(manifest[sampleId()][panels[0].axis].default_frame, maxFrameCount() - 1);
+        updateAll();
+        panels.forEach(p => {
+          const pt = nodulePoints[sampleId()][p.axis];
+          p.zoomApi.zoomToPoint(pt.fx, pt.fy, 4);
+        });
+        noduleZoomed = true;
+      }
+      zoomNoduleBtn.classList.toggle('active', noduleZoomed);
+    });
+
+    function sampleId() { return sampleIds[sampleIdx]; }
+    function pad(n) { return String(n).padStart(3, '0'); }
+    function framePath(panel, kind) {
+      const dir = kind === 'overlay' ? 'overlay' : panel.model;
+      const ext = kind === 'overlay' ? 'png' : 'jpg';
+      return `../figs/land-slices/${String(sampleId()).padStart(5, '0')}/${panel.axis}/${dir}/${pad(frame)}.${ext}`;
+    }
+    function maxFrameCount() {
+      return Math.max(...axes.map(a => manifest[sampleId()][a].frames));
+    }
+
+    function renderPanelControls(panel) {
+      if (!panel.modelSelect.dataset.built) {
+        models.forEach(m => {
+          const opt = document.createElement('option');
+          opt.value = m.id;
+          opt.textContent = m.label;
+          panel.modelSelect.appendChild(opt);
+        });
+        panel.modelSelect.addEventListener('change', () => {
+          panel.model = panel.modelSelect.value;
+          updatePanel(panel);
+        });
+        panel.modelSelect.dataset.built = '1';
+      }
+      panel.modelSelect.value = panel.model;
+
+      if (!panel.axisSelect.dataset.built) {
+        axes.forEach(a => {
+          const opt = document.createElement('option');
+          opt.value = a;
+          opt.textContent = a.charAt(0).toUpperCase() + a.slice(1);
+          panel.axisSelect.appendChild(opt);
+        });
+        panel.axisSelect.addEventListener('change', () => {
+          panel.axis = panel.axisSelect.value;
+          panel.zoomApi.reset();
+          clearNoduleZoom();
+          updatePanel(panel);
+        });
+        panel.axisSelect.dataset.built = '1';
+      }
+      panel.axisSelect.value = panel.axis;
+
+      if (!panel.overlaySlider.dataset.built) {
+        panel.overlaySlider.addEventListener('input', () => {
+          panel.overlayOpacity = parseFloat(panel.overlaySlider.value);
+          panel.overlayImg.style.opacity = panel.overlayOpacity;
+        });
+        panel.overlaySlider.dataset.built = '1';
+      }
+      panel.overlaySlider.value = panel.overlayOpacity;
+    }
+
+    function renderDots() {
+      dotsEl.innerHTML = '';
+      sampleIds.forEach((id, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'gallery-dot' + (i === sampleIdx ? ' active' : '');
+        dot.setAttribute('aria-label', `Sample ${i + 1}`);
+        dot.addEventListener('click', () => {
+          stop();
+          sampleIdx = i;
+          panels.forEach(p => p.zoomApi.reset());
+          clearNoduleZoom();
+          loadAll();
+          play();
+        });
+        dotsEl.appendChild(dot);
+      });
+    }
+
+    function updatePanel(panel) {
+      panel.frameImg.src = framePath(panel, 'base');
+      panel.overlayImg.src = framePath(panel, 'overlay');
+      panel.overlayImg.style.opacity = panel.overlayOpacity;
+    }
+
+    function updateAll() {
+      panels.forEach(updatePanel);
+      slider.value = frame;
+      count.textContent = `${frame + 1} / ${maxFrameCount()}`;
+    }
+
+    function loadAll() {
+      slider.max = maxFrameCount() - 1;
+      frame = Math.min(frame, slider.max);
+      panels.forEach(renderPanelControls);
+      updateAll();
+      renderDots();
+    }
+
+    function play() {
+      if (playing) return;
+      playing = true;
+      iconPlay.style.display = 'none';
+      iconPause.style.display = '';
+      timer = setInterval(() => {
+        frame = (frame + 1) % maxFrameCount();
+        updateAll();
+      }, 110);
+    }
+
+    function stop() {
+      if (!playing && !timer) return;
+      playing = false;
+      iconPlay.style.display = '';
+      iconPause.style.display = 'none';
+      clearInterval(timer);
+    }
+
+    playBtn.addEventListener('click', () => { playing ? stop() : play(); });
+    slider.addEventListener('input', () => { stop(); frame = parseInt(slider.value, 10); updateAll(); });
+    prevBtn.addEventListener('click', () => {
+      stop();
+      sampleIdx = (sampleIdx - 1 + sampleIds.length) % sampleIds.length;
+      panels.forEach(p => p.zoomApi.reset());
+      clearNoduleZoom();
+      loadAll();
+      play();
+    });
+    nextBtn.addEventListener('click', () => {
+      stop();
+      sampleIdx = (sampleIdx + 1) % sampleIds.length;
+      panels.forEach(p => p.zoomApi.reset());
+      clearNoduleZoom();
+      loadAll();
+      play();
+    });
+
+    frame = manifest[sampleId()].axial.default_frame;
+    loadAll();
+    attachViewerAutoplay(root, play, stop);
+  }
+
+  initScrubber(document.getElementById('scrubber-conditional'), [1, 156, 301, 401], {
+    "1":   {"axial": {"frames": 256, "default_frame": 38},  "coronal": {"frames": 256, "default_frame": 210}, "sagittal": {"frames": 256, "default_frame": 172}},
+    "156": {"axial": {"frames": 256, "default_frame": 23},  "coronal": {"frames": 256, "default_frame": 180}, "sagittal": {"frames": 256, "default_frame": 221}},
+    "301": {"axial": {"frames": 256, "default_frame": 79},  "coronal": {"frames": 256, "default_frame": 126}, "sagittal": {"frames": 256, "default_frame": 228}},
+    "401": {"axial": {"frames": 256, "default_frame": 112}, "coronal": {"frames": 256, "default_frame": 184}, "sagittal": {"frames": 256, "default_frame": 89}}
+  }, {
+    "1":   {"axial": {"fx": 0.6747, "fy": 0.8245}, "coronal": {"fx": 0.6747, "fy": 0.1499}, "sagittal": {"fx": 0.8245, "fy": 0.1499}},
+    "156": {"axial": {"fx": 0.8557, "fy": 0.6961}, "coronal": {"fx": 0.8557, "fy": 0.1035}, "sagittal": {"fx": 0.6961, "fy": 0.1035}},
+    "301": {"axial": {"fx": 0.8932, "fy": 0.495},  "coronal": {"fx": 0.8932, "fy": 0.3071}, "sagittal": {"fx": 0.495,  "fy": 0.3071}},
+    "401": {"axial": {"fx": 0.3425, "fy": 0.7216}, "coronal": {"fx": 0.3425, "fy": 0.4474}, "sagittal": {"fx": 0.7216, "fy": 0.4474}}
+  });
+
+  initTextureViewer(document.getElementById('viewer-texture'), [0, 394], {
+    "0":   {"axial": {"frames": 256, "default_frame": 122}, "coronal": {"frames": 256, "default_frame": 91},  "sagittal": {"frames": 256, "default_frame": 91}},
+    "394": {"axial": {"frames": 256, "default_frame": 15},  "coronal": {"frames": 256, "default_frame": 168}, "sagittal": {"frames": 256, "default_frame": 222}}
+  }, [1, 2, 3, 4, 5], {
+    "0":   {"axial": {"fx": 0.3623, "fy": 0.3676}, "coronal": {"fx": 0.3657, "fy": 0.487},  "sagittal": {"fx": 0.3663, "fy": 0.4826}},
+    "394": {"axial": {"fx": 0.8795, "fy": 0.6667}, "coronal": {"fx": 0.8667, "fy": 0.0847}, "sagittal": {"fx": 0.6591, "fy": 0.0838}}
+  });
+</script>
+
+</body>
+</html>

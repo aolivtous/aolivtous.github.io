@@ -4,233 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anna Oliveras Tous — Computer Vision &amp; Generative AI Research</title>
-<meta name="description" content="Anna Oliveras Tous — PhD researcher in generative AI for medical imaging at Universitat de Barcelona &amp; Eurecat. Publications, projects, experience.">
+<meta name="description" content="Anna Oliveras Tous — PhD researcher in generative AI for medical imaging at Universitat de Barcelona &amp; Eurecat. Publications, research, CV.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<style>
-  :root{
-    --bg:        #F4F6F5;
-    --bg-warm:   #EFF2F0;
-    --panel:     #E8ECEA;
-    --ink:       #121A20;
-    --ink-soft:  #55636B;
-    --ink-faint: #8A959B;
-    --teal:      #1F5D6B;
-    --teal-deep: #143F49;
-    --teal-pale: #DCE9E7;
-    --marker:    #A8433E;
-    --line:      #D2D9D6;
-    --line-soft: #E2E7E4;
-
-    --serif: "Source Serif 4", Georgia, serif;
-    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    --mono:  "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
-
-    --maxw: 780px;
-  }
-
-  *{ box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior:auto; }
-    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
-  }
-
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--ink);
-    font-family:var(--sans);
-    font-size:16px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    background-image:
-      linear-gradient(var(--line-soft) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-    background-size: 100% 96px, 96px 100%;
-    background-position: 0 0, 0 0;
-    background-attachment: fixed;
-  }
-
-  a{ color:var(--teal); text-decoration:none; }
-  a:hover{ text-decoration:underline; text-underline-offset:3px; }
-  a:focus-visible, button:focus-visible{ outline:2px solid var(--marker); outline-offset:3px; border-radius:2px; }
-
-  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
-
-  /* ---------- header ---------- */
-  header{
-    position:sticky; top:0; z-index:50;
-    background:rgba(244,246,245,0.86);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  header .wrap{ display:flex; align-items:center; justify-content:space-between; height:60px; max-width:920px; }
-  .brand{ font-family:var(--mono); font-size:13px; letter-spacing:0.04em; color:var(--ink); }
-  .brand strong{ font-weight:500; }
-  .brand .dot{ color:var(--marker); }
-  nav{ display:flex; gap:22px; overflow-x:auto; -ms-overflow-style:none; scrollbar-width:none; }
-  nav::-webkit-scrollbar{ display:none; }
-  nav a{
-    font-family:var(--mono); font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase;
-    color:var(--ink-soft); white-space:nowrap; padding:4px 2px; border-bottom:1px solid transparent;
-  }
-  nav a:hover{ color:var(--teal); text-decoration:none; border-bottom-color:var(--teal); }
-
-  main{ max-width:920px; margin:0 auto; }
-
-  /* ---------- eyebrow / section heads ---------- */
-  .eyebrow{
-    font-family:var(--mono); font-size:11.5px; letter-spacing:0.09em; text-transform:uppercase;
-    color:var(--marker); display:flex; align-items:center; gap:10px; margin-bottom:14px;
-  }
-  .eyebrow::before{ content:""; width:22px; height:1px; background:var(--marker); display:inline-block; }
-
-  section{ padding:88px 28px; border-bottom:1px solid var(--line); }
-  section:last-of-type{ border-bottom:none; }
-  .section-inner{ max-width:var(--maxw); margin:0 auto; }
-  h2.htitle{
-    font-family:var(--serif); font-weight:600; font-size:clamp(28px,4vw,38px);
-    margin:0 0 34px; color:var(--ink); letter-spacing:-0.01em;
-  }
-
-  /* ---------- hero ---------- */
-  #hero{ padding-top:64px; padding-bottom:80px; border-bottom:1px solid var(--line); }
-  .hero-grid{ display:grid; grid-template-columns:1.35fr 0.9fr; gap:40px; align-items:center; max-width:920px; margin:0 auto; padding:0 28px; }
-  .hero-eyebrow{ font-family:var(--mono); font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--teal); margin-bottom:18px; }
-  h1{
-    font-family:var(--serif); font-weight:600; font-size:clamp(38px,6vw,58px);
-    line-height:1.04; margin:0 0 18px; color:var(--ink); letter-spacing:-0.015em;
-    overflow:hidden;
-  }
-  h1 span.reveal{ display:inline-block; animation:sweep 900ms cubic-bezier(.2,.9,.25,1) both; }
-  @keyframes sweep{ from{ clip-path:inset(0 100% 0 0); } to{ clip-path:inset(0 0 0 0); } }
-
-  .tagline{ font-family:var(--serif); font-style:italic; font-size:19px; color:var(--ink-soft); margin:0 0 20px; max-width:52ch; }
-  .bio{ color:var(--ink-soft); font-size:15.5px; max-width:56ch; margin:0 0 26px; }
-  .link-row{ display:flex; flex-wrap:wrap; gap:10px; }
-  .pill{
-    font-family:var(--mono); font-size:12px; letter-spacing:0.02em;
-    border:1px solid var(--line); border-radius:20px; padding:7px 14px;
-    color:var(--ink); background:var(--bg-warm); transition:border-color 150ms, color 150ms, background 150ms;
-  }
-  .pill:hover{ border-color:var(--teal); color:var(--teal); background:var(--teal-pale); text-decoration:none; }
-
-  /* gantry graphic */
-  .gantry{ display:flex; align-items:center; justify-content:center; }
-  .gantry svg{ width:100%; max-width:260px; height:auto; }
-  .gantry-rotor{ transform-origin:130px 130px; animation:spin 14s linear infinite; }
-  @keyframes spin{ to{ transform:rotate(360deg); } }
-
-  /* ---------- profile ---------- */
-  .bio-large{ font-size:17px; color:var(--ink-soft); max-width:64ch; }
-  .bio-large strong{ color:var(--ink); font-weight:600; }
-
-  /* ---------- publications ---------- */
-  .pub{ padding:26px 0; border-top:1px solid var(--line-soft); }
-  .pub:first-of-type{ border-top:none; padding-top:0; }
-  .pub-status{ display:flex; align-items:center; gap:8px; font-family:var(--mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px; }
-  .status-dot{ width:8px; height:8px; border-radius:50%; display:inline-block; }
-  .status-dot.published{ background:var(--teal); }
-  .status-dot.presented{ background:transparent; border:1.5px solid var(--ink-faint); }
-  .pub-title{ font-family:var(--serif); font-weight:600; font-size:20px; margin:0 0 8px; line-height:1.35; color:var(--ink); }
-  .pub-authors{ font-size:13.5px; color:var(--ink-soft); margin:0 0 4px; }
-  .pub-authors .me{ color:var(--ink); font-weight:600; }
-  .pub-venue{ font-family:var(--mono); font-size:12px; color:var(--ink-faint); margin:0 0 12px; }
-  .pub-abstract{ color:var(--ink-soft); font-size:14.5px; max-width:64ch; margin:0 0 14px; }
-  .pub-links{ display:flex; gap:16px; flex-wrap:wrap; }
-  .pub-links a{ font-family:var(--mono); font-size:12.5px; letter-spacing:0.03em; }
-  .pub-links a::after{ content:" ↗"; }
-  .tag-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
-  .tag{ font-family:var(--mono); font-size:10.5px; letter-spacing:0.04em; text-transform:uppercase; color:var(--teal-deep); background:var(--teal-pale); border-radius:3px; padding:4px 8px; }
-
-  /* ---------- experience timeline ---------- */
-  .tl{ position:relative; padding-left:28px; border-left:1px solid var(--line); }
-  .tl-item{ position:relative; padding-bottom:40px; }
-  .tl-item:last-child{ padding-bottom:0; }
-  .tl-item::before{ content:""; position:absolute; left:-33px; top:5px; width:9px; height:9px; border-radius:50%; background:var(--bg); border:2px solid var(--teal); }
-  .tl-item.current::before{ background:var(--marker); border-color:var(--marker); }
-  .tl-date{ font-family:var(--mono); font-size:11.5px; letter-spacing:0.05em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px; }
-  .tl-role{ font-family:var(--serif); font-weight:600; font-size:19px; margin:0 0 2px; color:var(--ink); }
-  .tl-org{ font-size:14px; color:var(--teal-deep); margin:0 0 10px; font-weight:500; }
-  .tl-desc{ color:var(--ink-soft); font-size:14.5px; margin:0; padding-left:18px; }
-  .tl-desc li{ margin-bottom:5px; }
-  .current-flag{ display:inline-block; font-family:var(--mono); font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:var(--marker); border:1px solid var(--marker); border-radius:20px; padding:2px 9px; margin-left:10px; vertical-align:middle; }
-
-  /* ---------- projects ---------- */
-  .proj-grid{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
-  .proj-card{ border:1px solid var(--line); border-radius:6px; padding:22px; background:var(--bg-warm); transition:border-color 150ms, transform 150ms; }
-  .proj-card:hover{ border-color:var(--teal); transform:translateY(-2px); }
-  .proj-meta{ font-family:var(--mono); font-size:11px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:8px; }
-  .proj-title{ font-family:var(--serif); font-weight:600; font-size:17.5px; margin:0 0 8px; color:var(--ink); }
-  .proj-desc{ font-size:14px; color:var(--ink-soft); margin:0 0 14px; }
-  .proj-note{ font-size:12.5px; color:var(--ink-faint); font-style:italic; margin:0 0 10px; }
-
-  /* ---------- education ---------- */
-  .edu-item{ padding:20px 0; border-top:1px solid var(--line-soft); }
-  .edu-item:first-of-type{ border-top:none; padding-top:0; }
-  .edu-degree{ font-family:var(--serif); font-weight:600; font-size:18.5px; margin:0 0 3px; color:var(--ink); }
-  .edu-school{ font-size:14px; color:var(--teal-deep); font-weight:500; margin:0 0 4px; }
-  .edu-date{ font-family:var(--mono); font-size:11.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:8px; }
-  .edu-detail{ font-size:14px; color:var(--ink-soft); margin:0; }
-
-  .distinctions{ margin-top:34px; }
-  .distinctions h3, .langs h3{ font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-faint); margin:0 0 12px; }
-  .distinctions ul{ margin:0; padding-left:18px; color:var(--ink-soft); font-size:14px; }
-  .distinctions li{ margin-bottom:6px; }
-
-  .skills-grid{ display:grid; grid-template-columns:1fr 1fr; gap:26px; margin-top:34px; }
-  .skill-group h3{ font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-faint); margin:0 0 10px; }
-  .skill-tags{ display:flex; flex-wrap:wrap; gap:7px; }
-  .skill-tag{ font-family:var(--mono); font-size:12px; border:1px solid var(--line); border-radius:4px; padding:5px 9px; color:var(--ink-soft); }
-
-  /* ---------- contact / footer ---------- */
-  #contact{ text-align:left; }
-  .contact-cta{ font-family:var(--serif); font-size:clamp(26px,4vw,34px); font-weight:600; color:var(--ink); margin:0 0 22px; max-width:20ch; }
-  .contact-links{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:40px; }
-  .contact-links a{
-    font-family:var(--mono); font-size:13px; border:1px solid var(--line); border-radius:20px;
-    padding:9px 18px; color:var(--ink); background:var(--bg-warm);
-  }
-  .contact-links a:hover{ border-color:var(--teal); color:var(--teal); background:var(--teal-pale); text-decoration:none; }
-  footer{ padding:36px 28px 60px; }
-  .footer-inner{ max-width:920px; margin:0 auto; display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; border-top:1px solid var(--line); padding-top:24px; }
-  .footer-note{ font-family:var(--mono); font-size:11.5px; color:var(--ink-faint); }
-  .footer-aside{ font-family:var(--serif); font-style:italic; font-size:13px; color:var(--ink-faint); text-align:right; }
-
-  /* reveal-on-scroll */
-  .reveal-up{ opacity:0; transform:translateY(14px); transition:opacity 600ms ease, transform 600ms ease; }
-  .reveal-up.in{ opacity:1; transform:translateY(0); }
-
-  @media (max-width:760px){
-    .hero-grid{ grid-template-columns:1fr; }
-    .gantry{ order:-1; max-width:150px; margin:0 auto 10px; }
-    section{ padding:64px 22px; }
-    .proj-grid{ grid-template-columns:1fr; }
-    .skills-grid{ grid-template-columns:1fr; }
-    header .wrap{ height:auto; padding:12px 22px; flex-direction:column; align-items:flex-start; gap:10px; }
-    nav{ width:100%; }
-    .footer-inner{ flex-direction:column; align-items:flex-start; }
-    .footer-aside{ text-align:left; }
-  }
-</style>
+<link rel="stylesheet" href="styles.css">
+<script src="site.js" defer></script>
 <noscript><style>.reveal-up{ opacity:1 !important; transform:none !important; }</style></noscript>
 </head>
-<body>
+<body class="portfolio-home">
 
 
 <header>
   <div class="wrap">
     <div class="brand"><strong>ANNA OLIVERAS TOUS</strong> <span class="dot">·</span> CV / RESEARCH</div>
     <nav>
-      <a href="#profile">Profile</a>
+      <a href="#hero">Profile</a>
       <a href="#research">Research</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -239,33 +30,49 @@
 <main>
 
   <!-- ================= HERO ================= -->
-  <section id="hero" style="border-bottom:1px solid var(--line);">
+  <section id="hero">
     <div class="hero-grid">
       <div>
         <div class="hero-eyebrow">PhD Researcher — Generative AI for Medical Imaging</div>
-        <h1><span class="reveal">Anna Oliveras</span><br><span class="reveal" style="animation-delay:120ms;">Tous</span></h1>
-        <p class="tagline">Teaching diffusion models to see inside the chest — one CT slice at a time.</p>
-        <p class="bio">Computer Vision MSc, currently a PhD researcher at <strong>Universitat de Barcelona</strong> &amp; <strong>Eurecat</strong>, working on generative synthesis of medical images. Based in Barcelona.</p>
-        <div class="link-row">
-          <a class="pill" href="mailto:aoliverastous@gmail.com">Email</a>
-          <a class="pill" href="https://github.com/aolivtous" target="_blank" rel="noopener">GitHub ↗</a>
-          <a class="pill" href="https://www.linkedin.com/in/anna-oliveras-tous" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a class="pill" href="https://scholar.google.com/citations?user=SObLaIkAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
-        </div>
+        <h1><span class="reveal hero-name">Anna Oliveras</span><br><span class="reveal hero-name" style="animation-delay:120ms;">Tous</span></h1>
+        <p class="bio">Computer Vision MSc, currently a PhD researcher at <strong>Universitat de Barcelona</strong> &amp; <strong>Eurecat</strong>, working on generative models and medical image synthesis. Based in Barcelona.</p>
       </div>
-      <div class="gantry" aria-hidden="true">
-        <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="130" cy="130" r="118" fill="none" stroke="var(--line)" stroke-width="1"/>
-          <circle cx="130" cy="130" r="86" fill="none" stroke="var(--line)" stroke-width="1"/>
-          <circle cx="130" cy="130" r="54" fill="none" stroke="var(--line)" stroke-width="1"/>
-          <line x1="130" y1="6" x2="130" y2="254" stroke="var(--line-soft)" stroke-width="1"/>
-          <line x1="6" y1="130" x2="254" y2="130" stroke="var(--line-soft)" stroke-width="1"/>
-          <g class="gantry-rotor">
-            <line x1="130" y1="130" x2="130" y2="12" stroke="var(--teal)" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="130" cy="12" r="4" fill="var(--marker)"/>
-          </g>
-          <circle cx="130" cy="130" r="4" fill="var(--ink)"/>
-        </svg>
+      <div class="gantry">
+        <div class="orbit">
+          <svg class="orbit-ring" viewBox="0 0 100 100" aria-hidden="true">
+            <line class="orbit-spoke orbit-spoke-out" x1="50" y1="50" x2="50" y2="-11"></line>
+            <line class="orbit-spoke orbit-spoke-in" x1="50" y1="50" x2="108" y2="32"></line>
+            <line class="orbit-spoke orbit-spoke-out" x1="50" y1="50" x2="83" y2="93"></line>
+            <line class="orbit-spoke orbit-spoke-out" x1="50" y1="50" x2="13" y2="101"></line>
+            <line class="orbit-spoke orbit-spoke-in" x1="50" y1="50" x2="-3" y2="34"></line>
+          </svg>
+          <div class="photo-swap" tabindex="0">
+            <div class="photo-flip">
+              <img class="photo-a" src="figs/profile-photo.jpg" alt="Anna Oliveras Tous smiling outdoors in the mountains" width="260" height="260">
+              <img class="photo-b" src="figs/profile-photo-alt.jpg" alt="Anna Oliveras Tous hiking, with the surrounding mountain valley in view" width="260" height="260">
+            </div>
+          </div>
+          <a class="orbit-node orbit-node-cv" href="cv.pdf" download aria-label="Download CV PDF">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8L14 2Zm0 2.5L18.5 9H14V4.5ZM8 13h8v1.6H8V13Zm0 3.2h8v1.6H8v-1.6Z"/></svg>
+            <span class="orbit-tip">CV PDF</span>
+          </a>
+          <a class="orbit-node orbit-node-email" data-email-link href="#" aria-label="Email">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>
+            <span class="orbit-tip">Email</span>
+          </a>
+          <a class="orbit-node orbit-node-scholar" href="https://scholar.google.com/citations?user=SObLaIkAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 1 8l11 6 9-4.91V17h2V8L12 2Zm-7 9.82V16l7 4 7-4v-4.18L12 15.64 5 11.82Z"/></svg>
+            <span class="orbit-tip">Google Scholar</span>
+          </a>
+          <a class="orbit-node orbit-node-github" href="https://github.com/aolivtous" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-1.96c-3.2.7-3.88-1.36-3.88-1.36-.52-1.31-1.27-1.66-1.27-1.66-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.3 1.18-3.11-.12-.29-.51-1.47.11-3.06 0 0 .97-.31 3.17 1.19a10.93 10.93 0 0 1 5.77 0c2.2-1.5 3.17-1.19 3.17-1.19.62 1.59.23 2.77.11 3.06.73.81 1.18 1.85 1.18 3.11 0 4.43-2.69 5.41-5.25 5.69.42.36.79 1.06.79 2.15v3.19c0 .31.21.67.79.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+            <span class="orbit-tip">GitHub</span>
+          </a>
+          <a class="orbit-node orbit-node-linkedin" href="https://www.linkedin.com/in/anna-oliveras-tous" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.94 8.75H3.56V20h3.38V8.75ZM5.25 3.5a1.97 1.97 0 1 0 0 3.94 1.97 1.97 0 0 0 0-3.94ZM20.44 13.56c0-3.39-1.81-4.97-4.23-4.97-1.95 0-2.82 1.07-3.31 1.83V8.75H9.56V20h3.34v-5.57c0-1.47.28-2.89 2.1-2.89 1.79 0 1.82 1.68 1.82 2.99V20h3.62v-6.44Z"/></svg>
+            <span class="orbit-tip">LinkedIn</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -273,181 +80,116 @@
   <!-- ================= PROFILE ================= -->
   <section id="profile">
     <div class="section-inner reveal-up">
-      <div class="eyebrow">Slice 01 — Profile</div>
+      <div class="eyebrow">Profile</div>
       <h2 class="htitle">About</h2>
-      <p class="bio-large">I hold a <strong>Master's degree in Computer Vision</strong> (UAB) and a <strong>Bachelor's in Telecommunications Engineering</strong> (UPC), and have built my expertise in signal processing, machine learning and deep learning through industry roles and research internships across Barcelona, Lausanne and beyond. I'm currently a <strong>PhD researcher</strong> at the Universitat de Barcelona and Eurecat, supervised by <strong>Prof. Petia Radeva</strong> and <strong>Dr. Vicent Ribas</strong>, focused on generative models for synthetic medical imaging — mainly CT and MRI. What draws me to the field is the chance to put AI to work on problems that matter clinically, alongside people who care about getting the details right.</p>
+      <p class="bio-large">I hold a <strong>Master's degree in <a href="https://mcv.uab.cat/" target="_blank" rel="noopener">Computer Vision</a></strong> (UAB) and a <strong>Bachelor's in <a href="https://telecos.upc.edu/en" target="_blank" rel="noopener">Telecommunications Engineering</a></strong> (UPC), and have built my expertise in signal processing, machine learning and deep learning through industry roles and research internships across Barcelona, Lausanne (<a href="https://www.epfl.ch/labs/lts5/" target="_blank" rel="noopener">LTS5, EPFL</a>) and beyond. I'm currently a <strong>researcher</strong> in the <a href="https://eurecat.org/en/field-of-knowledge/digital-health/" target="_blank" rel="noopener">Digital Health Unit at Eurecat</a>, and a <strong>PhD candidate</strong> with the <a href="https://www.ub.edu/aiba/" target="_blank" rel="noopener">AIBA group at University of Barcelona</a>, supervised by <strong>Prof. Petia Radeva</strong> and <strong>Dr. Vicent Ribas</strong>, focused on generative models for synthetic medical imaging. What draws me to the field is the chance to put AI to work on problems that matter clinically, alongside people who care about getting the details right.</p>
     </div>
   </section>
 
   <!-- ================= RESEARCH ================= -->
   <section id="research">
     <div class="section-inner reveal-up">
-      <div class="eyebrow">Slice 02 — Research</div>
+      <div class="eyebrow">Research</div>
       <h2 class="htitle">Publications</h2>
 
-      <div class="pub">
-        <div class="pub-status"><span class="status-dot published"></span> Published — Scientific Reports, 2026</div>
-        <h3 class="pub-title">Anatomically Guided Latent Diffusion for High-Resolution 3D Chest CT Synthesis</h3>
-        <p class="pub-authors"><span class="me">Anna Oliveras</span>, Roger Marí, Rafael Redondo, Oriol Guardià, Cynthia Ifeyinwa Ugwu, Ana Tost, Bhalaji Nagarajan, Carolina Migliorelli, Vicent Ribas, Petia Radeva</p>
-        <p class="pub-venue">Scientific Reports · Eurecat &amp; Universitat de Barcelona</p>
-        <p class="pub-abstract">A latent diffusion model that generates high-resolution 3D chest CT volumes conditioned on anatomical masks — producing realistic, high-quality synthetic scans at a fraction of the usual computational cost.</p>
-        <div class="pub-links">
-          <a href="https://doi.org/10.1038/s41598-026-51634-4" target="_blank" rel="noopener">Scientific Reports (DOI)</a>
-          <a href="https://arxiv.org/abs/2510.18446" target="_blank" rel="noopener">arXiv preprint</a>
-        </div>
-        <div class="tag-row">
-          <span class="tag">Diffusion Models</span><span class="tag">3D Medical Imaging</span><span class="tag">Chest CT</span><span class="tag">Synthetic Data</span>
-        </div>
-      </div>
+      <div class="research-block">
 
-      <div class="pub">
-        <div class="pub-status"><span class="status-dot presented"></span> Presented — MICAD 2023, University of Leicester</div>
-        <h3 class="pub-title">Automated Cervix Region Detection for Cervical Cancer Screening</h3>
-        <p class="pub-authors"><span class="me">Anna Oliveras</span> · Supervised by Prof. Jean-Philippe Thiran</p>
-        <p class="pub-venue">3rd Conference on Medical Imaging and Computer-Aided Diagnosis · endorsed by the MICCAI Society</p>
-        <p class="pub-abstract">Bachelor's thesis work at LTS5, EPFL: fine-tuned YOLOv5 to automatically crop the cervix region of interest for VIA screening, reaching a 0.96 Dice score robust to blood, mucus, low light and blur.</p>
-        <div class="tag-row">
-          <span class="tag">Segmentation</span><span class="tag">YOLOv5</span><span class="tag">Medical Imaging</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= EXPERIENCE ================= -->
-  <section id="experience">
-    <div class="section-inner reveal-up">
-      <div class="eyebrow">Slice 03 — Experience</div>
-      <h2 class="htitle">Experience</h2>
-
-      <div class="tl">
-        <div class="tl-item current">
-          <div class="tl-date">Dec 2024 — Present</div>
-          <div class="tl-role">PhD Researcher, Generative AI for Digital Health <span class="current-flag">Current</span></div>
-          <div class="tl-org">Universitat de Barcelona × Eurecat · Barcelona, Spain</div>
-          <ul class="tl-desc">
-            <li>PhD in Mathematics &amp; Computer Science (UB), co-supervised with Eurecat's Digital Health Unit — advised by Prof. Petia Radeva and Dr. Vicent Ribas.</li>
-            <li>Researching generative synthesis of medical images, primarily CT and MRI, including latent diffusion models for 3D chest CT.</li>
-          </ul>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-date">Nov 2023 — Nov 2024</div>
-          <div class="tl-role">Computer Vision Engineer</div>
-          <div class="tl-org">Intek Medical · Barcelona, Spain</div>
-          <ul class="tl-desc">
-            <li>Built AI-driven software for automated hair and skin analysis, supporting personalized, patient-centric treatment plans.</li>
-            <li>Applied deep learning to human 3D reconstruction to extract anthropometric measurements.</li>
-            <li>Designed AI-assisted data acquisition and annotation tools to scale up training dataset creation.</li>
-          </ul>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-date">May 2023 — Sept 2023</div>
-          <div class="tl-role">Research Intern</div>
-          <div class="tl-org">Computer Vision Center (CVC) · Barcelona, Spain</div>
-          <ul class="tl-desc">
-            <li>Applied large language models to Document Visual Question Answering with PyTorch and Hugging Face.</li>
-            <li>Improved performance by injecting spatial layout information (bounding boxes) into prompts.</li>
-            <li>Added a Vision Transformer module so the language model could interpret visual tokens directly.</li>
-          </ul>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-date">Jun 2022 — Aug 2022</div>
-          <div class="tl-role">Research Intern</div>
-          <div class="tl-org">LTS5, EPFL · Lausanne, Switzerland</div>
-          <ul class="tl-desc">
-            <li>Contributed to the "3T-study" cervical cancer screening program with the Geneva University Hospitals (HUG) and Dschang District Hospital, Cameroon.</li>
-            <li>Built deep learning models to detect strong motion artifacts in smartphone-captured VIA screening videos.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= PROJECTS ================= -->
-  <section id="projects">
-    <div class="section-inner reveal-up">
-      <div class="eyebrow">Slice 04 — Projects</div>
-      <h2 class="htitle">Projects &amp; Coursework</h2>
-
-      <div class="proj-grid">
-        <div class="proj-card">
-          <div class="proj-meta">UPC · Mar – Apr 2023</div>
-          <h3 class="proj-title">Road Traffic Monitoring for ADAS</h3>
-          <p class="proj-desc">Video object detection, segmentation and optical flow estimation to track vehicles across multi-target, multi-camera scenarios for driver-assistance systems.</p>
-          <p class="proj-note">Dedicated project page coming soon.</p>
-          <div class="tag-row"><span class="tag">Object Tracking</span><span class="tag">Optical Flow</span></div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-meta">UPF · Dec 2022 – Mar 2023</div>
-          <h3 class="proj-title">3D Recovery of Urban Scenes</h3>
-          <p class="proj-desc">Reconstructed real-world scenes from uncalibrated image sets — panoramas, depth computation, 3D reconstruction and novel view synthesis.</p>
-          <p class="proj-note">Dedicated project page coming soon.</p>
-          <div class="tag-row"><span class="tag">3D Vision</span><span class="tag">SfM</span></div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-meta">Accenture × UPC · Sep 2021 – Feb 2022</div>
-          <h3 class="proj-title">Smart Trend</h3>
-          <p class="proj-desc">Advanced Engineering Project with Accenture: analyzed fashion trends using deep learning and web scraping to power a fashion recommendation blog.</p>
-          <p class="proj-note">Dedicated project page coming soon.</p>
-          <div class="tag-row"><span class="tag">Deep Learning</span><span class="tag">Web Scraping</span></div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-meta">EPFL / LTS5 · Feb – Jun 2022</div>
-          <h3 class="proj-title">Cervical Cancer Image Segmentation</h3>
-          <p class="proj-desc">Bachelor's thesis — see the full write-up under <a href="#research">Research</a>, presented at MICAD 2023.</p>
-          <p class="proj-note">Grade: 5/5</p>
-          <div class="tag-row"><span class="tag">Thesis</span><span class="tag">Segmentation</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= EDUCATION ================= -->
-  <section id="education">
-    <div class="section-inner reveal-up">
-      <div class="eyebrow">Slice 05 — Education</div>
-      <h2 class="htitle">Education</h2>
-
-      <div class="edu-item">
-        <div class="edu-date">Sep 2022 — Sep 2023</div>
-        <div class="edu-degree">Master's Degree in Computer Vision</div>
-        <div class="edu-school">Autonomous University of Barcelona (UAB)</div>
-        <p class="edu-detail">Grade: 8.9/10 — Top 5 best students award. Relevant courses: Machine Learning, Deep Learning, 3D Vision, Video Analysis.</p>
-      </div>
-
-      <div class="edu-item">
-        <div class="edu-date">Sep 2018 — Jun 2022</div>
-        <div class="edu-degree">Bachelor's Degree in Telecommunications Engineering</div>
-        <div class="edu-school">Polytechnic University of Catalonia (UPC)</div>
-        <p class="edu-detail">Grade: 7.9/10 — Top 10% of class. Relevant courses: Signal Processing, Audiovisual Processing, Networks, Programming.</p>
-      </div>
-
-      <div class="distinctions">
-        <h3>Distinctions</h3>
-        <ul>
-          <li>Top 5 MCV List Award (Sep 2023) — top 5 GPA, Master's in Computer Vision, UAB</li>
-          <li>Recognition for the university entrance exams, PAU (Jun 2018)</li>
-        </ul>
-      </div>
-
-      <div class="skills-grid">
-        <div class="skill-group">
-          <h3>Languages &amp; Tools</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Python</span><span class="skill-tag">PyTorch</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">Keras</span><span class="skill-tag">OpenCV</span><span class="skill-tag">Scikit-Learn</span><span class="skill-tag">C / C++</span><span class="skill-tag">Java</span><span class="skill-tag">MATLAB</span><span class="skill-tag">Blender</span><span class="skill-tag">MeshLab</span>
+      <div class="pub reveal-up">
+        <div class="pub-body">
+          <div class="pub-status"><span class="status-dot published"></span> Scientific Reports, 2026</div>
+          <h3 class="pub-title"><a href="publications/land.html">Anatomically Guided Latent Diffusion for High-Resolution 3D Chest CT Synthesis</a></h3>
+          <p class="pub-authors"><span class="me">Anna Oliveras</span>, Roger Marí, Rafael Redondo, Oriol Guardià, Cynthia Ifeyinwa Ugwu, Ana Tost, Bhalaji Nagarajan, Carolina Migliorelli, Vicent Ribas, Petia Radeva</p>
+          <p class="pub-venue">Scientific Reports by Nature</p>
+          <p class="pub-abstract">A latent diffusion model that generates high-resolution 3D chest CT volumes conditioned on anatomical masks — producing realistic, high-quality synthetic scans at a fraction of the usual computational cost.</p>
+          <div class="pub-links">
+            <a class="pill pill-primary" href="publications/land.html">Project page</a>
+            <a class="pill" href="https://doi.org/10.1038/s41598-026-51634-4" target="_blank" rel="noopener">Paper ↗</a>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Diffusion Models</span><span class="tag">3D Medical Imaging</span><span class="tag">Chest CT</span><span class="tag">Synthetic Data</span>
           </div>
         </div>
-        <div class="skill-group">
-          <h3>Spoken Languages</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Catalan — Native</span><span class="skill-tag">Spanish — Native</span><span class="skill-tag">English — C2</span><span class="skill-tag">French — A2</span>
+        <a class="pub-thumb land-preview" href="publications/land.html" aria-label="Open LAND project page">
+          <span class="land-preview-sample">
+            <img class="land-preview-base" src="figs/land-slices/00001/axial/withVAE/110.jpg" alt="Animated LAND axial chest CT sample 1." loading="lazy" data-prefix="figs/land-slices/00001/axial/withVAE/" data-ext="jpg" data-start="80" data-end="176" data-step="2" data-frame="110">
+            <img class="land-preview-mask" src="figs/land-slices/00001/axial/overlay/110.png" alt="Lung and nodule mask overlay on LAND generated CT sample 1." loading="lazy" data-prefix="figs/land-slices/00001/axial/overlay/" data-ext="png">
+          </span>
+          <span class="land-preview-sample">
+            <img class="land-preview-base" src="figs/land-slices/00301/axial/withVAE/128.jpg" alt="Animated LAND axial chest CT sample 2." loading="lazy" data-prefix="figs/land-slices/00301/axial/withVAE/" data-ext="jpg" data-start="80" data-end="176" data-step="2" data-frame="128">
+            <img class="land-preview-mask" src="figs/land-slices/00301/axial/overlay/128.png" alt="Lung and nodule mask overlay on LAND generated CT sample 2." loading="lazy" data-prefix="figs/land-slices/00301/axial/overlay/" data-ext="png">
+          </span>
+        </a>
+      </div>
+      </div>
+
+      <div class="research-block">
+      <div class="research-subhead">Talks</div>
+
+      <div class="pub pub-talk reveal-up">
+        <div class="pub-body">
+          <div class="pub-status"><span class="status-dot presented"></span> CIDAI - May 2026, Barcelona, Spain</div>
+          <h3 class="pub-title">Phase IV-AI LAND: 3D Thoracic CT Synthesis with Anatomical Guidance via Lung and Nodule Diffusion</h3>
+          <p class="pub-venue">CIDAI - Centre of Innovation for Data Tech and Artificial Intelligence · Presentation of Proofs of Concept in Data and AI</p>
+          <p class="pub-abstract">Invited talk presenting LAND's proof-of-concept.</p>
+          <div class="pub-links">
+            <a class="pill" href="publications/land.html">Project page →</a>
+            <a class="pill" href="https://cidai.eu/en/events/proofs-of-concept-in-data-and-ai/" target="_blank" rel="noopener">Event page ↗</a>
+            <a class="pill pill-icon" href="https://www.youtube.com/watch?v=joK72yMtApc" target="_blank" rel="noopener" aria-label="Watch on YouTube"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 7.2a3.03 3.03 0 0 0-2.13-2.15C19.49 4.5 12 4.5 12 4.5s-7.49 0-9.37.55A3.03 3.03 0 0 0 .5 7.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 4.8 3.03 3.03 0 0 0 2.13 2.15c1.88.55 9.37.55 9.37.55s7.49 0 9.37-.55a3.03 3.03 0 0 0 2.13-2.15A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-4.8ZM9.6 15.08V8.92L15.2 12 9.6 15.08Z"/></svg></a>
+            <a class="pill pill-icon" href="https://www.linkedin.com/posts/anaivazquez_el-cidai-centre-of-innovation-for-data-activity-7459878681650409472-LFVI?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC6CkD0BG5WxA6KKOiSNaygobBhr2nI9YpQ" target="_blank" rel="noopener" aria-label="View on LinkedIn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.94 8.75H3.56V20h3.38V8.75ZM5.25 3.5a1.97 1.97 0 1 0 0 3.94 1.97 1.97 0 0 0 0-3.94ZM20.44 13.56c0-3.39-1.81-4.97-4.23-4.97-1.95 0-2.82 1.07-3.31 1.83V8.75H9.56V20h3.34v-5.57c0-1.47.28-2.89 2.1-2.89 1.79 0 1.82 1.68 1.82 2.99V20h3.62v-6.44Z"/></svg></a>
+            <img class="pub-event-logo" src="figs/logo-cidai.png" alt="CIDAI logo">
           </div>
         </div>
+      </div>
+
+      <div class="pub pub-talk reveal-up">
+        <div class="pub-body">
+          <div class="pub-status"><span class="status-dot presented"></span> MICAD - November 2022, University of Leicester, United Kingdom</div>
+          <h3 class="pub-title">Pre-processing for Automatic Cervical Cancer Screening: Image Segmentation and Movement Detection</h3>
+          <p class="pub-venue">MICAD 3rd Conference on Medical Imaging and Computer-Aided Diagnosis</p>
+          <p class="pub-abstract">Abstract oral presentation of the bachelor's thesis work carried out at LTS5, EPFL.</p>
+          <div class="pub-links">
+            <a class="pill" href="publications/cervix.html">Project page →</a>
+            <a class="pill" href="https://www.micad.org/2022/index.html" target="_blank" rel="noopener">Event page ↗</a>
+            <a class="pill pill-icon" href="https://www.youtube.com/watch?v=uEgjukwbEYc" target="_blank" rel="noopener" aria-label="Watch on YouTube"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 7.2a3.03 3.03 0 0 0-2.13-2.15C19.49 4.5 12 4.5 12 4.5s-7.49 0-9.37.55A3.03 3.03 0 0 0 .5 7.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 4.8 3.03 3.03 0 0 0 2.13 2.15c1.88.55 9.37.55 9.37.55s7.49 0 9.37-.55a3.03 3.03 0 0 0 2.13-2.15A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-4.8ZM9.6 15.08V8.92L15.2 12 9.6 15.08Z"/></svg></a>
+            <img class="pub-event-logo" src="figs/logo-micad.png" alt="MICAD logo">
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="research-block">
+      <div class="research-subhead">Posters</div>
+
+      <div class="pub pub-talk reveal-up">
+        <div class="pub-body">
+          <div class="pub-status"><span class="status-dot presented"></span> Phase IV-AI Final Conference - June 2026, University of Turku, Finland</div>
+          <h3 class="pub-title">Phase IV-AI LAND: 3D Thoracic CT Synthesis with Anatomical Guidance via Lung and Nodule Diffusion</h3>
+          <p class="pub-venue">Phase IV-AI Project Ending Conference</p>
+          <p class="pub-abstract">Poster presenting LAND at the Phase IV-AI project's closing conference.</p>
+          <div class="pub-links">
+            <a class="pill" href="publications/land.html">Project page →</a>
+            <a class="pill" href="5_EURECAT_LAND_poster.pdf" target="_blank" rel="noopener">Poster ↗</a>
+            <a class="pill" href="https://www.phase4ai-project.eu/?p=2738" target="_blank" rel="noopener">Event page ↗</a>
+            <a class="pill pill-icon" href="https://www.linkedin.com/posts/phaseivai-artificialintelligence-healthdata-ugcPost-7470460254128877568-rEEa/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC6CkD0BG5WxA6KKOiSNaygobBhr2nI9YpQ" target="_blank" rel="noopener" aria-label="View on LinkedIn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.94 8.75H3.56V20h3.38V8.75ZM5.25 3.5a1.97 1.97 0 1 0 0 3.94 1.97 1.97 0 0 0 0-3.94ZM20.44 13.56c0-3.39-1.81-4.97-4.23-4.97-1.95 0-2.82 1.07-3.31 1.83V8.75H9.56V20h3.34v-5.57c0-1.47.28-2.89 2.1-2.89 1.79 0 1.82 1.68 1.82 2.99V20h3.62v-6.44Z"/></svg></a>
+            <img class="pub-event-logo" src="figs/logo-phase4ai.png" alt="Phase IV-AI logo">
+          </div>
+        </div>
+      </div>
+      <div class="pub pub-talk reveal-up">
+        <div class="pub-body">
+          <div class="pub-status"><span class="status-dot presented"></span> MedEurIPS - December 2025, University of Copenhagen, Denmark</div>
+          <h3 class="pub-title">LAND: 3D Thoracic CT Synthesis with Anatomical Guidance via Lung and Nodule Diffusion</h3>
+          <p class="pub-venue">MedEurIPS Workshop: Medical Imaging meets EurIPS</p>
+          <p class="pub-abstract">Poster session presenting LAND alongside the oral paper presentation.</p>
+          <div class="pub-links">
+            <a class="pill" href="publications/land.html">Project page →</a>
+            <a class="pill" href="5_EURECAT_LAND_poster.pdf" target="_blank" rel="noopener">Poster ↗</a>
+            <a class="pill" href="https://www.medeurips.com/" target="_blank" rel="noopener">Event page ↗</a>
+            <a class="pill pill-icon" href="https://www.linkedin.com/posts/aiba-consolidated-research-group-273288309_medeurips-eurips-aiba-activity-7404998678853181440-A0ZZ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC6CkD0BG5WxA6KKOiSNaygobBhr2nI9YpQ" target="_blank" rel="noopener" aria-label="View on LinkedIn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.94 8.75H3.56V20h3.38V8.75ZM5.25 3.5a1.97 1.97 0 1 0 0 3.94 1.97 1.97 0 0 0 0-3.94ZM20.44 13.56c0-3.39-1.81-4.97-4.23-4.97-1.95 0-2.82 1.07-3.31 1.83V8.75H9.56V20h3.34v-5.57c0-1.47.28-2.89 2.1-2.89 1.79 0 1.82 1.68 1.82 2.99V20h3.62v-6.44Z"/></svg></a>
+            <img class="pub-event-logo" src="figs/logo-medeurips.png" alt="MedEurIPS logo">
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </section>
@@ -455,10 +197,10 @@
   <!-- ================= CONTACT ================= -->
   <section id="contact">
     <div class="section-inner reveal-up">
-      <div class="eyebrow">Slice 06 — Contact</div>
+      <div class="eyebrow">Contact</div>
       <h2 class="contact-cta">Working on something in medical imaging or generative AI? Let's talk.</h2>
       <div class="contact-links">
-        <a href="mailto:aoliverastous@gmail.com">aoliverastous@gmail.com</a>
+        <a data-email-link data-email-text href="#">Email</a>
         <a href="https://github.com/aolivtous" target="_blank" rel="noopener">github.com/aolivtous</a>
         <a href="https://www.linkedin.com/in/anna-oliveras-tous" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://scholar.google.com/citations?user=SObLaIkAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
@@ -469,23 +211,21 @@
 </main>
 
 <footer>
-  <div class="footer-inner">
+  <div class="footer-inner reveal-up">
     <div class="footer-note">© 2026 Anna Oliveras Tous · Barcelona, Spain</div>
-    <div class="footer-aside">Viola player, hiker, trail runner.</div>
+    <div class="footer-aside">Viola player, cyclist, trail runner, outdoor enthusiast.</div>
   </div>
 </footer>
 
 <script>
-  // reveal-on-scroll
-  const revealEls = document.querySelectorAll('.reveal-up');
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => io.observe(el));
-  } else {
-    revealEls.forEach(el => el.classList.add('in'));
-  }
+  (function () {
+    // built at runtime rather than left as plain text, to cut down on scraper spam
+    var email = ['a', 'oliveras', 'tous'].join('') + '@' + ['gmail', 'com'].join('.');
+    document.querySelectorAll('[data-email-link]').forEach(function (el) {
+      el.href = 'mailto:' + email;
+      if (el.hasAttribute('data-email-text')) el.textContent = email;
+    });
+  })();
 </script>
 
 </body>
