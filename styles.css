@@ -334,6 +334,8 @@ h1 span.reveal{ display:inline-block; animation:sweep 800ms cubic-bezier(.2,.9,.
 .pub-authors .me{ color:var(--ink); font-weight:600; }
 .pub-authors a{ color:var(--ink-soft); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:2px; }
 .pub-authors a:hover{ color:var(--teal); text-decoration-color:var(--teal); }
+.pub-authors a.me{ color:var(--ink); }
+.pub-authors a.me:hover{ color:var(--teal); }
 .pub-authors sup{ color:var(--ink-faint); margin-right:2px; }
 .pub-affiliations{ font-family:var(--mono); font-size:11px; color:var(--ink-faint); margin:0 0 10px; line-height:1.7; }
 .pub-affiliations sup{ margin-right:1px; }
