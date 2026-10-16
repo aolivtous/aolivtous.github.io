@@ -1,0 +1,33 @@
+/* MUMINS-specific additions to the shared publication layout. */
+.mumins-lead{
+  margin:30px auto 0; text-align:center; font-size:18px;
+  line-height:1.7; color:var(--ink-soft);
+}
+.mumins-section-links{
+  margin-top:24px; display:flex; flex-wrap:wrap; gap:12px 24px;
+  justify-content:center; font-family:var(--mono); font-size:12px;
+}
+.mumins-method-figure{ padding:20px 20px 0; background:#fff; }
+.mumins-method-figure figcaption{ margin:0 -20px; }
+.pub-page-figure img{ background:#fff; }
+.pub-page-figure > a{ display:block; cursor:zoom-in; }
+.variant-table-wrap{ margin:24px 0; }
+.variant-table caption{
+  padding:14px; text-align:left; color:var(--ink);
+  font-family:var(--mono); font-size:12px; background:var(--teal-pale);
+}
+.variant-table tbody th{
+  padding:10px; text-align:left; font-weight:400;
+  color:var(--ink-soft); border-bottom:1px solid var(--line-soft);
+}
+.variant-table tbody tr:last-child th{ border-bottom:none; }
+.variant-table .mumins-result{ background:var(--teal-pale); }
+.variant-table .mumins-result th{ font-weight:600; color:var(--teal-deep); }
+.pub-page-section .mumins-note, .mumins-note{
+  font-size:13px; color:var(--ink-soft); line-height:1.7;
+}
+#citation-status{ display:block; min-height:24px; margin-top:8px; }
+@media (max-width:760px){
+  .mumins-method-figure{ padding:10px 10px 0; }
+  .mumins-method-figure figcaption{ margin:0 -10px; }
+}

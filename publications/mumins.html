@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUMINS: Medical Image Next-state Synthesis — Anna Oliveras Tous</title>
+<meta name="description" content="MUMINS: Metadata-conditioned Uncertainty-aware Medical Image Next-state Synthesis. Accepted to WACV 2027. Follow-up 3D scan synthesis and voxel-wise uncertainty for lung CT and brain MRI.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script src="../site.js" defer></script>
+<link rel="stylesheet" href="mumins.css">
+<script src="mumins.js" defer></script>
+<noscript><style>.reveal-up{ opacity:1 !important; transform:none !important; }</style></noscript>
+</head>
+<body class="publication-page" data-disable-toc-rail>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="../index.html" style="color:inherit;"><strong>ANNA OLIVERAS TOUS</strong> <span class="dot">·</span> CV / RESEARCH</a>
+    <nav>
+      <a href="../index.html#hero">Profile</a>
+      <a href="../index.html#research">Research</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="pub-page-header" id="overview" data-toc="Overview">
+    <div class="section-inner reveal-up">
+      <a class="back-link" href="../index.html#research">Back to publications</a>
+      <div class="eyebrow">Accepted — WACV 2027</div>
+      <h1 class="pub-page-title">MUMINS: Metadata-conditioned Uncertainty-aware Medical Image Next-state Synthesis</h1>
+      <p class="pub-authors">
+        <a class="me" href="https://scholar.google.com/citations?user=SObLaIkAAAAJ&hl=en" target="_blank" rel="noopener">Anna Oliveras</a><sup>1,2</sup>,
+        <a href="https://rogermm14.github.io/" target="_blank" rel="noopener">Roger Marí</a><sup>1</sup>,
+        <a href="https://scholar.google.es/citations?user=QKaQVQkAAAAJ&hl=es" target="_blank" rel="noopener">Rafael Redondo</a><sup>1</sup>,
+        <a href="https://scholar.google.com/citations?user=ZKpO5C0AAAAJ&hl=es" target="_blank" rel="noopener">Oriol Guardià-Olivella</a><sup>1</sup>,
+        <a href="https://scholar.google.com/citations?user=H4JkQrEAAAAJ&hl=it" target="_blank" rel="noopener">Cynthia Ifeyinwa Ugwu</a><sup>1</sup>,
+        <a href="https://www.researchgate.net/profile/Ana-Tost" target="_blank" rel="noopener">Ana Tost</a><sup>1</sup>,
+        <span style="white-space:nowrap;"><a href="https://www.bsc.es/nagarajan-bhalaji" target="_blank" rel="noopener">Bhalaji Nagarajan</a><sup>3</sup>,</span>
+        <a href="https://scholar.google.com/citations?user=VcXRxRUAAAAJ&hl=en" target="_blank" rel="noopener">Carolina Migliorelli</a><sup>1</sup>,
+        <a href="https://scholar.google.com/citations?user=1Gf8UfQAAAAJ&hl=es" target="_blank" rel="noopener">Vicent Ribas</a><sup>1</sup>,
+        <a href="https://www.ub.edu/aiba/petiaradeva/" target="_blank" rel="noopener">Petia Radeva</a><sup>2,4</sup>
+      </p>
+      <p class="pub-affiliations">
+        <span class="aff-line"><sup>1</sup><a href="https://eurecat.org/en/" target="_blank" rel="noopener">Eurecat, Centre Tecnològic de Catalunya, Barcelona, Spain</a></span><br>
+        <span class="aff-line"><sup>2</sup><a href="https://mat.ub.edu/" target="_blank" rel="noopener">Dept. de Matemàtiques i Informàtica, Universitat de Barcelona, Spain</a></span><br>
+        <span class="aff-line"><sup>3</sup><a href="https://www.bsc.es/" target="_blank" rel="noopener">Barcelona Supercomputing Center (BSC), Spain</a></span><br>
+        <span class="aff-line"><sup>4</sup><a href="https://www.neurociencies.ub.edu/" target="_blank" rel="noopener">Institut de Neurociències, Universitat de Barcelona, Barcelona, Spain</a></span>
+      </p>
+      <div class="aff-logos">
+        <a href="https://eurecat.org/home/en/" target="_blank" rel="noopener"><img src="../figs/logo-eurecat.png" alt="Eurecat"></a>
+        <a href="https://www.ub.edu/" target="_blank" rel="noopener"><img src="../figs/logo-ub.png" alt="Universitat de Barcelona"></a>
+        <a href="https://www.bsc.es/" target="_blank" rel="noopener"><img src="../figs/logo-bsc.png" alt="Barcelona Supercomputing Center"></a>
+      </div>
+      <div class="link-row" style="margin-top:22px;">
+        <a class="pill pill-primary" href="https://arxiv.org/abs/2609.17169" target="_blank" rel="noopener">Preprint ↗</a>
+        <a class="pill" href="https://arxiv.org/pdf/2609.17169" target="_blank" rel="noopener">PDF ↗</a>
+        <a class="pill" href="https://github.com/aolivtous/MUMINS" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="pill" href="#citation">Cite</a>
+      </div>
+      <p class="mumins-lead">A future scan, and a map of where it is uncertain.<br>From one baseline scan and a target time interval.</p>
+      <nav class="mumins-section-links" aria-label="Project sections">
+        <a href="#method">Method</a><a href="#results">Results</a><a href="#uncertainty">Uncertainty</a><a href="#citation">Citation</a>
+      </nav>
+    </div>
+  </div>
+
+  <section class="pub-page-section" id="method" data-toc="Method">
+    <div class="section-inner reveal-up">
+      <div class="eyebrow">Baseline → follow-up</div>
+      <h2>Forecasting change while preserving anatomy</h2>
+      <p>MUMINS models longitudinal change as a residual added to an observed baseline scan. A 3D diffusion model jointly learns the baseline and residual, conditioned on the follow-up interval, age, and acquisition metadata. During synthesis, the observed baseline is re-injected at every denoising step to keep the predicted change tied to the patient's anatomy.</p>
+      <figure class="pub-page-figure mumins-method-figure">
+        <a href="../figs/mumins/method.png" target="_blank" rel="noopener" aria-label="Open MUMINS method diagram at full resolution">
+          <img src="../figs/mumins/method.png" alt="MUMINS architecture: a metadata-conditioned 3D U-Net jointly denoises a baseline and follow-up residual. Noise and variance heads learn synthesis and uncertainty. At inference, the known baseline guides each reverse step; the residual is added back to reconstruct the follow-up.">
+        </a>
+        <figcaption>Training and inference in MUMINS. The noise head learns denoising; the variance head learns voxel-wise uncertainty. Figure 1 from the <a href="https://arxiv.org/html/2609.17169v1#S0.F1" target="_blank" rel="noopener">preprint</a>. Open the figure to enlarge.</figcaption>
+      </figure>
+      <h3>One sampling process, two outputs</h3>
+      <p>A learned variance head estimates uncertainty alongside each noise prediction. These estimates are propagated through the reverse process, producing a spatial uncertainty map together with the synthesized follow-up, without repeatedly sampling the model for Monte Carlo uncertainty.</p>
+      <ul class="contrib-list">
+        <li><span class="hl">Joint baseline–residual diffusion</span> separates relatively stable anatomy from the change to be synthesized.</li>
+        <li><span class="hl">Temporal and metadata conditioning</span> controls the follow-up horizon and accounts for age and acquisition-related sharpness changes.</li>
+        <li><span class="hl">Baseline reinjection</span> anchors the predicted residual to the observed scan throughout denoising.</li>
+        <li><span class="hl">Single-pass uncertainty</span> highlights regions where the synthesized follow-up is less reliable.</li>
+      </ul>
+      <div class="tag-row">
+        <span class="tag">Diffusion Models</span><span class="tag">Longitudinal Imaging</span><span class="tag">Lung CT</span><span class="tag">Brain MRI</span><span class="tag">Uncertainty Quantification</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="pub-page-section" id="results" data-toc="Results">
+    <div class="section-inner reveal-up">
+      <h2>From pulmonary nodules to brain MRI</h2>
+      <p>The same architecture is trained separately on two longitudinal datasets: PNG for pulmonary nodule progression in chest CT, and OASIS-3 for brain MRI progression. Each dataset has its own trained model; no organ-specific architectural components are introduced.</p>
+      <figure class="pub-page-figure">
+        <a href="../figs/mumins/comparison.png" target="_blank" rel="noopener" aria-label="Open synthesis comparison figure at full resolution">
+          <img src="../figs/mumins/comparison.png" width="2021" height="1225" alt="Qualitative comparison of baseline, true follow-up, MUMINS, and domain-specific methods, with absolute error maps. Three lung CT examples are above three brain MRI examples." loading="lazy">
+        </a>
+        <figcaption>Follow-up synthesis on lung CT (top) and brain MRI (bottom), with absolute error maps. MUMINS uses Δb = 0. Figure 2 from the <a href="https://arxiv.org/html/2609.17169v1#S4.F2" target="_blank" rel="noopener">preprint</a>. Open the figure to enlarge.</figcaption>
+      </figure>
+      <h3>Quantitative synthesis results</h3>
+      <p>The tables report whole-image means across all test pairs from Table 1 of the preprint. MUMINS uses <strong>Δb = 0</strong>, preserving baseline sharpness without needing the true follow-up. The paper also reports an oracle setting using the true follow-up's blur difference; those oracle results are excluded here.</p>
+      <div class="variant-table-wrap" role="region" aria-label="Lung CT synthesis results; scroll horizontally on smaller screens" tabindex="0">
+        <table class="variant-table">
+          <caption>PNG · Lung CT</caption>
+          <thead><tr><th scope="col">Method</th><th scope="col">MAE (×10⁻²) ↓</th><th scope="col">PSNR (dB) ↑</th><th scope="col">SSIM (%) ↑</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Copy baseline</th><td>4.54</td><td>21.91</td><td>65.21</td></tr>
+            <tr><th scope="row">GM-AE</th><td>4.05</td><td>22.88</td><td>65.69</td></tr>
+            <tr><th scope="row">TADM-3D</th><td>4.91</td><td>21.39</td><td>66.77</td></tr>
+            <tr><th scope="row">NGP-Net</th><td>4.13</td><td>22.85</td><td>71.34</td></tr>
+            <tr class="mumins-result"><th scope="row">MUMINS (Δb = 0)</th><td><strong>3.95</strong></td><td><strong>23.53</strong></td><td><strong>71.40</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="variant-table-wrap" role="region" aria-label="Brain MRI synthesis results; scroll horizontally on smaller screens" tabindex="0">
+        <table class="variant-table">
+          <caption>OASIS-3 · Brain MRI</caption>
+          <thead><tr><th scope="col">Method</th><th scope="col">MAE (×10⁻²) ↓</th><th scope="col">PSNR (dB) ↑</th><th scope="col">SSIM (%) ↑</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Copy baseline</th><td>1.14</td><td><strong>30.91</strong></td><td><strong>95.55</strong></td></tr>
+            <tr><th scope="row">BrLP</th><td>1.57</td><td>27.12</td><td>94.12</td></tr>
+            <tr><th scope="row">TADM-3D</th><td>1.21</td><td>30.12</td><td>94.99</td></tr>
+            <tr class="mumins-result"><th scope="row">MUMINS (Δb = 0)</th><td><strong>1.13</strong></td><td>30.87</td><td>95.34</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mumins-note">Lower MAE and higher PSNR/SSIM are better. On brain MRI, copying the baseline is a strong reference because longitudinal changes are subtle. See <a href="https://arxiv.org/html/2609.17169v1#S4.T1" target="_blank" rel="noopener">Table 1</a> for standard deviations, subgroup results, and region-of-interest metrics.</p>
+    </div>
+  </section>
+
+  <section class="pub-page-section" id="uncertainty" data-toc="Uncertainty">
+    <div class="section-inner reveal-up">
+      <h2>Where is the predicted follow-up uncertain?</h2>
+      <p>Compare the observed baseline, actual follow-up, synthesized follow-up, learned uncertainty, and absolute error on held-out examples. Brighter uncertainty regions indicate greater predicted uncertainty; absolute error is computed against the observed follow-up.</p>
+      <figure class="pub-page-figure">
+        <a href="../figs/mumins/uncertainty.png" target="_blank" rel="noopener" aria-label="Open follow-up and uncertainty examples at full resolution">
+          <img src="../figs/mumins/uncertainty.png" width="1813" height="1468" alt="Three lung CT and three brain MRI test examples. Rows show the baseline, actual follow-up, predicted follow-up, predicted uncertainty in purple-orange, and absolute error in purple-green-yellow." loading="lazy">
+        </a>
+        <figcaption>Follow-up predictions and uncertainty maps for lung CT (left) and brain MRI (right). Inter-scan intervals are given in months (m) or years (y). Figure 3 from the <a href="https://arxiv.org/html/2609.17169v1#S4.F3" target="_blank" rel="noopener">preprint</a>. Open the figure to enlarge.</figcaption>
+      </figure>
+      <p>The uncertainty map is evaluated against true voxel-wise error, rather than treating Monte Carlo variation as ground truth. Whole-image Spearman correlations are 0.61 for lung CT and 0.54 for brain MRI. Nominal 95% interval coverage is 0.91 and 0.98, respectively. See <a href="https://arxiv.org/html/2609.17169v1#S4.T2" target="_blank" rel="noopener">Table 2</a> for calibration, region-of-interest results, and the 20-sample Monte Carlo comparison.</p>
+    </div>
+  </section>
+
+  <section class="pub-page-section" id="code" data-toc="Code">
+    <div class="section-inner reveal-up">
+      <h2>Code and reproducibility</h2>
+      <p>The official PyTorch implementation includes dataset preparation guidance, training configurations, and inference scripts for follow-up volumes and uncertainty maps. The repository also documents the OASIS-3 sample selection used in the experiments.</p>
+      <div class="link-row">
+        <a class="pill pill-primary" href="https://github.com/aolivtous/MUMINS" target="_blank" rel="noopener">Explore the code ↗</a>
+        <a class="pill" href="https://arxiv.org/html/2609.17169v1" target="_blank" rel="noopener">Read the preprint ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="pub-page-section" id="citation" data-toc="Cite">
+    <div class="section-inner reveal-up">
+      <h2>Cite</h2>
+      <p>Accepted to WACV 2027. The citation below refers to the arXiv preprint.</p>
+      <div class="citation-wrap">
+        <button type="button" class="copy-btn" id="copy-cite" aria-label="Copy citation" title="Copy citation">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+        </button>
+        <pre class="citation-block" id="bibtex">@misc{oliveras2026mumins,
+  title         = {MUMINS: Metadata-conditioned Uncertainty-aware Medical Image Next-state Synthesis},
+  author        = {Anna Oliveras and Roger Marí and Rafael Redondo and Oriol Guardià-Olivella and Cynthia Ifeyinwa Ugwu and Ana Tost and Bhalaji Nagarajan and Carolina Migliorelli and Vicent Ribas and Petia Radeva},
+  year          = {2026},
+  eprint        = {2609.17169},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  url           = {https://arxiv.org/abs/2609.17169}
+}</pre>
+      </div>
+      <span id="citation-status" class="mumins-note" role="status" aria-live="polite"></span>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-note">© 2026 Anna Oliveras Tous · Barcelona, Spain</div>
+    <div class="footer-aside"><a href="../index.html#research">← Back to publications</a></div>
+  </div>
+</footer>
+</body>
+</html>
