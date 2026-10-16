@@ -106,7 +106,12 @@
         <figcaption>Follow-up synthesis on lung CT (top) and brain MRI (bottom), with absolute error maps. MUMINS uses Δb = 0. Figure 2 from the <a href="https://arxiv.org/html/2609.17169v1#S4.F2" target="_blank" rel="noopener">preprint</a>. Open the figure to enlarge.</figcaption>
       </figure>
       <h3>Quantitative synthesis results</h3>
-      <p>The tables report whole-image means across all test pairs from Table 1 of the preprint. MUMINS uses <strong>Δb = 0</strong>, preserving baseline sharpness without needing the true follow-up. The paper also reports an oracle setting using the true follow-up's blur difference; those oracle results are excluded here.</p>
+      <p>The tables report whole-image means across all test pairs from Table 1 of the preprint, including both MUMINS blur-conditioning settings. Δb describes the change in acquisition blur between the baseline and follow-up scans.</p>
+      <ul class="contrib-list">
+        <li><span class="hl">MUMINS (Δb = 0)</span> preserves the baseline scan's sharpness and requires no information from the unseen follow-up. This is the deployable forecasting setting, used for comparison with methods that also lack access to the true follow-up.</li>
+        <li><span class="hl">MUMINS (Δb = GT)</span> uses the blur difference measured from the ground-truth follow-up. It is an oracle diagnostic upper bound: it requires the true follow-up, so it cannot be used to forecast an unseen scan.</li>
+      </ul>
+      <p>Reporting both settings helps separate acquisition-related appearance changes from anatomical progression. The benchmark scans contain real changes in blur between visits: Δb = 0 preserves baseline sharpness, while Δb = GT accounts for that observed drift, improving agreement with the recorded follow-up. See <a href="https://arxiv.org/html/2609.17169v1#S3.SS3" target="_blank" rel="noopener">Section 3.3</a> and <a href="https://arxiv.org/html/2609.17169v1#S4.SS4" target="_blank" rel="noopener">Section 4.4</a> of the preprint.</p>
       <div class="variant-table-wrap" role="region" aria-label="Lung CT synthesis results; scroll horizontally on smaller screens" tabindex="0">
         <table class="variant-table">
           <caption>PNG · Lung CT</caption>
@@ -116,7 +121,8 @@
             <tr><th scope="row">GM-AE</th><td>4.05</td><td>22.88</td><td>65.69</td></tr>
             <tr><th scope="row">TADM-3D</th><td>4.91</td><td>21.39</td><td>66.77</td></tr>
             <tr><th scope="row">NGP-Net</th><td>4.13</td><td>22.85</td><td>71.34</td></tr>
-            <tr class="mumins-result"><th scope="row">MUMINS (Δb = 0)</th><td><strong>3.95</strong></td><td><strong>23.53</strong></td><td><strong>71.40</strong></td></tr>
+            <tr class="mumins-result"><th scope="row">MUMINS (Δb = 0)</th><td>3.95</td><td>23.53</td><td>71.40</td></tr>
+            <tr class="mumins-result"><th scope="row">MUMINS (Δb = GT, oracle)</th><td><strong>3.18</strong></td><td><strong>25.50</strong></td><td><strong>78.01</strong></td></tr>
           </tbody>
         </table>
       </div>
@@ -125,14 +131,15 @@
           <caption>OASIS-3 · Brain MRI</caption>
           <thead><tr><th scope="col">Method</th><th scope="col">MAE (×10⁻²) ↓</th><th scope="col">PSNR (dB) ↑</th><th scope="col">SSIM (%) ↑</th></tr></thead>
           <tbody>
-            <tr><th scope="row">Copy baseline</th><td>1.14</td><td><strong>30.91</strong></td><td><strong>95.55</strong></td></tr>
+            <tr><th scope="row">Copy baseline</th><td>1.14</td><td>30.91</td><td>95.55</td></tr>
             <tr><th scope="row">BrLP</th><td>1.57</td><td>27.12</td><td>94.12</td></tr>
             <tr><th scope="row">TADM-3D</th><td>1.21</td><td>30.12</td><td>94.99</td></tr>
-            <tr class="mumins-result"><th scope="row">MUMINS (Δb = 0)</th><td><strong>1.13</strong></td><td>30.87</td><td>95.34</td></tr>
+            <tr class="mumins-result"><th scope="row">MUMINS (Δb = 0)</th><td>1.13</td><td>30.87</td><td>95.34</td></tr>
+            <tr class="mumins-result"><th scope="row">MUMINS (Δb = GT, oracle)</th><td><strong>1.05</strong></td><td><strong>31.35</strong></td><td><strong>95.64</strong></td></tr>
           </tbody>
         </table>
       </div>
-      <p class="mumins-note">Lower MAE and higher PSNR/SSIM are better. On brain MRI, copying the baseline is a strong reference because longitudinal changes are subtle. See <a href="https://arxiv.org/html/2609.17169v1#S4.T1" target="_blank" rel="noopener">Table 1</a> for standard deviations, subgroup results, and region-of-interest metrics.</p>
+      <p class="mumins-note">Lower MAE and higher PSNR/SSIM are better. Bold values are the best across the listed rows, including the GT oracle setting. On brain MRI, copying the baseline is a strong reference because longitudinal changes are subtle. See <a href="https://arxiv.org/html/2609.17169v1#S4.T1" target="_blank" rel="noopener">Table 1</a> for standard deviations, subgroup results, and region-of-interest metrics.</p>
     </div>
   </section>
 
