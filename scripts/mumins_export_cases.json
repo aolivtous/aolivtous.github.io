@@ -1,0 +1,63 @@
+{
+  "display": {
+    "CT": {
+      "scan": {"limits": [-1, 1]},
+      "uncertainty": {"limits": null, "percentiles": [0.5, 99.5], "colormap": "magma"},
+      "error": {"limits": null, "percentile": 99.5, "colormap": "viridis"}
+    },
+    "MRI": {
+      "scan": {"limits": [-1, 1]},
+      "uncertainty": {"limits": null, "percentiles": [0.5, 99.5], "colormap": "magma"},
+      "error": {"limits": null, "percentile": 99.5, "colormap": "viridis"}
+    }
+  },
+  "cases": [
+    {
+      "id": "ct_01",
+      "modality": "CT",
+      "profile": "ngp",
+      "interval_days": 51,
+      "age_years": null,
+      "seed": null,
+      "prediction_axes": "zyx",
+      "baseline": "NGP/34040094/01/20180917_01_img.nii",
+      "followup": "NGP/34040094/01/20181107_01_img.nii",
+      "predictions": {
+        "0": {
+          "image": {"path": "NGP/34040094/01/pred_34040094_1_20180917_20181107.npy", "select": [0, 0]},
+          "uncertainty": {"path": "NGP/34040094/01/pred_34040094_1_20180917_20181107_var.npy", "select": [0, 1]},
+          "uncertainty_kind": "variance",
+          "residual_scale": 2,
+          "saved_error": {"path": "NGP/34040094/01/pred_34040094_1_20180917_20181107_error.npy", "select": [0, 0]}
+        }
+      }
+    },
+    {
+      "id": "mri_01",
+      "modality": "MRI",
+      "profile": "oasis",
+      "interval_days": 611,
+      "age_years": null,
+      "seed": null,
+      "prediction_axes": "xyz",
+      "baseline": "OASIS/OAS30062_MR_d1134.nii.gz",
+      "followup": "OASIS/OAS30062_MR_d1745.nii.gz",
+      "intensity_scope": [-88, 25],
+      "mask_dilation": 4,
+      "brain_masks": {
+        "baseline": "OASIS/OAS30062_MR_d1134segm.nii.gz",
+        "followup": "OASIS/OAS30062_MR_d1745segm.nii.gz"
+      },
+      "model_ready": null,
+      "predictions": {
+        "0": {
+          "image": {"path": "OASIS/pred_OAS30062_OAS30062_1134_1745.npy", "select": [0, 0]},
+          "uncertainty": {"path": "OASIS/pred_OAS30062_OAS30062_1134_1745_var.npy", "select": [0, 1]},
+          "uncertainty_kind": "variance",
+          "residual_scale": 2,
+          "saved_error": {"path": "OASIS/pred_OAS30062_OAS30062_1134_1745_error.npy", "select": [0, 0]}
+        }
+      }
+    }
+  ]
+}

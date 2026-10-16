@@ -13,6 +13,8 @@
 <script src="../site.js" defer></script>
 <link rel="stylesheet" href="mumins.css">
 <script src="mumins.js" defer></script>
+<script src="../figs/mumins/viewer/viewer-data.js" defer></script>
+<script src="mumins-viewer.js" defer></script>
 <noscript><style>.reveal-up{ opacity:1 !important; transform:none !important; }</style></noscript>
 </head>
 <body class="publication-page" data-disable-toc-rail>
@@ -65,7 +67,7 @@
       </div>
       <p class="mumins-lead">A future scan, and a map of where it is uncertain.<br>From one baseline scan and a target time interval.</p>
       <nav class="mumins-section-links" aria-label="Project sections">
-        <a href="#method">Method</a><a href="#results">Results</a><a href="#uncertainty">Uncertainty</a><a href="#citation">Citation</a>
+        <a href="#method">Method</a><a href="#examples">Explore scans</a><a href="#results">Results</a><a href="#uncertainty">Uncertainty</a><a href="#citation">Citation</a>
       </nav>
     </div>
   </div>
@@ -92,6 +94,100 @@
       <div class="tag-row">
         <span class="tag">Diffusion Models</span><span class="tag">Longitudinal Imaging</span><span class="tag">Lung CT</span><span class="tag">Brain MRI</span><span class="tag">Uncertainty Quantification</span>
       </div>
+    </div>
+  </section>
+
+  <section class="pub-page-section mumins-examples" id="examples" data-toc="Explore scans">
+    <div class="section-inner">
+      <div class="eyebrow">Interactive examples</div>
+      <h2>Explore the predicted follow-up, slice by slice</h2>
+      <p class="mumins-examples-intro">Compare the baseline, observed follow-up, and MUMINS prediction alongside uncertainty and absolute error. Each viewer keeps its five panels synchronized. Choose an anatomical plane, scrub through slices, or press play to explore the volume. This lung CT example uses Δb = 0.</p>
+      <h3 id="ct-01-heading">Lung CT · PNG</h3>
+      <div class="mumins-live-viewer" id="viewer-ct-01" data-case="ct_01" data-plane="axial" data-frame="32" data-playing="false" aria-labelledby="ct-01-heading">
+        <div class="mumins-viewer-toolbar">
+          <span class="mumins-case-summary">Follow-up: 51 days <span class="mumins-setting">Δb = 0</span></span>
+          <label class="mumins-plane-control" for="ct-01-plane">Plane
+            <select id="ct-01-plane" class="mumins-plane" disabled><option value="axial">Axial</option><option value="coronal">Coronal</option><option value="sagittal">Sagittal</option></select>
+          </label>
+          <div class="mumins-zoom-controls" aria-label="Lung CT linked zoom controls">
+            <button type="button" data-action="zoom-out" aria-label="Zoom out all Lung CT panels" disabled>−</button>
+            <button type="button" data-action="zoom-in" aria-label="Zoom in all Lung CT panels" disabled>+</button>
+            <button type="button" data-action="reset" disabled>Reset zoom</button>
+          </div>
+        </div>
+        <div class="mumins-slice-grid">
+          <figure class="mumins-slice-panel mumins-scan-panel" data-series="baseline">
+            <figcaption>Baseline</figcaption>
+            <div class="mumins-image-area" tabindex="0" aria-label="Lung CT baseline: scroll or use plus/minus to zoom; drag to pan; press 0 to reset">
+              <div class="mumins-view-image"><img src="../figs/mumins/viewer/ct_01/axial/baseline/032.png" width="64" height="64" alt="Lung CT baseline, axial slice 33" loading="lazy" draggable="false"></div>
+              <span class="mumins-edge mumins-edge-top" data-edge="top" aria-hidden="true">A</span>
+              <span class="mumins-edge mumins-edge-bottom" data-edge="bottom" aria-hidden="true">P</span>
+              <span class="mumins-edge mumins-edge-left" data-edge="left" aria-hidden="true">R</span>
+              <span class="mumins-edge mumins-edge-right" data-edge="right" aria-hidden="true">L</span>
+            </div>
+          </figure>
+          <figure class="mumins-slice-panel mumins-scan-panel" data-series="followup">
+            <figcaption>True follow-up</figcaption>
+            <div class="mumins-image-area" tabindex="0" aria-label="Lung CT true follow-up: scroll or use plus/minus to zoom; drag to pan; press 0 to reset">
+              <div class="mumins-view-image"><img src="../figs/mumins/viewer/ct_01/axial/followup/032.png" width="64" height="64" alt="Lung CT true follow-up, axial slice 33" loading="lazy" draggable="false"></div>
+              <span class="mumins-edge mumins-edge-top" data-edge="top" aria-hidden="true">A</span>
+              <span class="mumins-edge mumins-edge-bottom" data-edge="bottom" aria-hidden="true">P</span>
+              <span class="mumins-edge mumins-edge-left" data-edge="left" aria-hidden="true">R</span>
+              <span class="mumins-edge mumins-edge-right" data-edge="right" aria-hidden="true">L</span>
+            </div>
+          </figure>
+          <figure class="mumins-slice-panel mumins-scan-panel" data-series="prediction_0">
+            <figcaption>MUMINS prediction</figcaption>
+            <div class="mumins-image-area" tabindex="0" aria-label="Lung CT mumins prediction: scroll or use plus/minus to zoom; drag to pan; press 0 to reset">
+              <div class="mumins-view-image"><img src="../figs/mumins/viewer/ct_01/axial/prediction_0/032.png" width="64" height="64" alt="Lung CT mumins prediction, axial slice 33" loading="lazy" draggable="false"></div>
+              <span class="mumins-edge mumins-edge-top" data-edge="top" aria-hidden="true">A</span>
+              <span class="mumins-edge mumins-edge-bottom" data-edge="bottom" aria-hidden="true">P</span>
+              <span class="mumins-edge mumins-edge-left" data-edge="left" aria-hidden="true">R</span>
+              <span class="mumins-edge mumins-edge-right" data-edge="right" aria-hidden="true">L</span>
+            </div>
+          </figure>
+          <figure class="mumins-slice-panel mumins-map-panel" data-series="uncertainty_0">
+            <figcaption>Uncertainty σ</figcaption>
+            <div class="mumins-image-area" tabindex="0" aria-label="Lung CT uncertainty σ: scroll or use plus/minus to zoom; drag to pan; press 0 to reset">
+              <div class="mumins-view-image"><img src="../figs/mumins/viewer/ct_01/axial/uncertainty_0/032.png" width="64" height="64" alt="Lung CT uncertainty σ, axial slice 33" loading="lazy" draggable="false"></div>
+              <span class="mumins-edge mumins-edge-top" data-edge="top" aria-hidden="true">A</span>
+              <span class="mumins-edge mumins-edge-bottom" data-edge="bottom" aria-hidden="true">P</span>
+              <span class="mumins-edge mumins-edge-left" data-edge="left" aria-hidden="true">R</span>
+              <span class="mumins-edge mumins-edge-right" data-edge="right" aria-hidden="true">L</span>
+            </div>
+          </figure>
+          <figure class="mumins-slice-panel mumins-map-panel" data-series="error_0">
+            <figcaption>Absolute error</figcaption>
+            <div class="mumins-image-area" tabindex="0" aria-label="Lung CT absolute error: scroll or use plus/minus to zoom; drag to pan; press 0 to reset">
+              <div class="mumins-view-image"><img src="../figs/mumins/viewer/ct_01/axial/error_0/032.png" width="64" height="64" alt="Lung CT absolute error, axial slice 33" loading="lazy" draggable="false"></div>
+              <span class="mumins-edge mumins-edge-top" data-edge="top" aria-hidden="true">A</span>
+              <span class="mumins-edge mumins-edge-bottom" data-edge="bottom" aria-hidden="true">P</span>
+              <span class="mumins-edge mumins-edge-left" data-edge="left" aria-hidden="true">R</span>
+              <span class="mumins-edge mumins-edge-right" data-edge="right" aria-hidden="true">L</span>
+            </div>
+          </figure>
+        </div>
+        <div class="mumins-playback-controls">
+          <button type="button" class="mumins-play" data-action="play" aria-label="Play Lung CT slices" aria-pressed="false" disabled>▶ Play</button>
+          <label class="mumins-sr-only" for="ct-01-slice">Lung CT slice position</label>
+          <input class="mumins-slice-slider" id="ct-01-slice" type="range" min="0" max="63" value="32" aria-valuetext="Slice 33 of 64" disabled>
+          <output class="mumins-frame-count" for="ct-01-slice">33 / 64</output>
+        </div>
+        <div class="mumins-color-keys">
+          <div class="mumins-color-key" data-map="uncertainty">
+            <span>Uncertainty σ</span><img src="../figs/mumins/viewer/magma.png" width="256" height="1" alt="">
+            <span class="mumins-color-limits"><span>0.110</span><span>0.131</span></span>
+          </div>
+          <div class="mumins-color-key" data-map="error">
+            <span>Absolute error</span><img src="../figs/mumins/viewer/viridis.png" width="256" height="1" alt="">
+            <span class="mumins-color-limits"><span>2.12e-06</span><span>1.031</span></span>
+          </div>
+        </div>
+        <div class="mumins-viewer-footer"><span>Linked zoom · scroll to zoom · drag to pan · double-click to reset</span><span class="mumins-load-status" role="status" aria-live="polite"></span><button type="button" data-action="retry" hidden>Retry slice</button></div>
+      </div>
+
+      <p class="mumins-note mumins-display-note">The animation moves through spatial slices at a fixed follow-up interval. Uncertainty σ is predicted standard deviation; absolute error compares the prediction with the true follow-up. Color scales use normalized intensity units and remain fixed across slices within each modality; values outside the displayed limits are clipped.</p>
+      <noscript><p class="mumins-note">These are static axial views. Enable JavaScript to play slices, change planes, or zoom.</p></noscript>
     </div>
   </section>
 

@@ -229,4 +229,44 @@
     }
   }
 
+  // ---------- MUMINS prediction + uncertainty thumbnail ----------
+  const muminsPreview = document.querySelector('.mumins-home-grid');
+  if (muminsPreview) {
+    const frames = Array.from(muminsPreview.querySelectorAll('img')).map(img => ({
+      img, frame: Number(img.dataset.frame), start: Number(img.dataset.start),
+      end: Number(img.dataset.end), step: Number(img.dataset.step), prefix: img.dataset.prefix,
+    }));
+    let visible = false, running = false, generation = 0, timer = null;
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const stop = () => { running = false; generation++; window.clearTimeout(timer); };
+    const start = () => {
+      if (running || !visible || document.hidden || motion.matches) return;
+      running = true;
+      const token = ++generation;
+      const tick = async () => {
+        const next = frames.map(f => f.frame + f.step > f.end ? f.start : f.frame + f.step);
+        const paths = frames.map((f, i) => `${f.prefix}${String(next[i]).padStart(3, '0')}.png`);
+        try {
+          await Promise.all(paths.map(src => new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = resolve;
+            img.onerror = reject;
+            img.src = src;
+          })));
+          if (token !== generation || !running) return;
+          frames.forEach((f, i) => { f.frame = next[i]; f.img.src = paths[i]; });
+          timer = window.setTimeout(tick, 160);
+        } catch { if (token === generation) stop(); }
+      };
+      timer = window.setTimeout(tick, 160);
+    };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries => {
+        visible = entries[0].isIntersecting;
+        if (visible) start(); else stop();
+      }, {threshold: 0}).observe(muminsPreview);
+    } else { visible = true; start(); }
+    document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else start(); });
+    motion.addEventListener('change', () => { if (motion.matches) stop(); else start(); });
+  }
 })();

@@ -1,1 +1,6 @@
 
+
+__pycache__/
+
+# Keep the local OASIS MRI stack out of the public website repository.
+/figs/mumins/viewer/mri_01/
