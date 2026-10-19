@@ -128,8 +128,8 @@ and pauses off-screen or when the document is hidden. Reduced-motion changes
 also pause playback. Zoom uses the +, −, and Reset buttons, shared across all
 panels; hovering, mouse movement, dragging, and wheel/trackpad scrolling do
 not change zoom. The plane's physical aspect ratio comes from metadata.
-CT and MRI appear beside each other on wide screens. Image panels stay in a
-single row; on narrow screens, CT panels scroll horizontally inside the viewer.
+MRI appears below CT at every screen size. Image panels stay in a single row;
+on narrow screens, CT panels scroll horizontally inside the viewer.
 The image overlays omit anatomical initial letters; plane choices include
 plain-language view descriptions.
 The current local website candidate packages all 64 slices per plane for the
