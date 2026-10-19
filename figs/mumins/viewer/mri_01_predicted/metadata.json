@@ -1,0 +1,99 @@
+{
+  "id": "mri_01_predicted",
+  "modality": "MRI",
+  "age_years": null,
+  "interval_days": 611,
+  "seed": null,
+  "shape_xyz": [
+    128,
+    128,
+    128
+  ],
+  "orientation": "RAS",
+  "spacing_xyz_mm": [
+    1.7102803738317756,
+    1.7109375,
+    1.7102803738317756
+  ],
+  "uncertainty_kind": "std",
+  "intensity_units": "model-normalized [-1, 1]",
+  "uncertainty_units": "model-normalized intensity",
+  "display": {
+    "scan": {
+      "limits": [
+        -1,
+        1
+      ],
+      "limits_source": "explicit"
+    },
+    "uncertainty": {
+      "limits": [
+        0.11027813702821732,
+        0.13390693128108963
+      ],
+      "percentiles": [
+        0.5,
+        99.5
+      ],
+      "colormap": "magma",
+      "limits_source": "pooled percentiles"
+    }
+  },
+  "settings": {
+    "0": {
+      "delta_b": "0",
+      "oracle": false,
+      "uncertainty_multiplier": 2
+    }
+  },
+  "series": {
+    "prediction_0": "{plane}/prediction_0/{frame:03d}.png",
+    "uncertainty_0": "{plane}/uncertainty_0/{frame:03d}.png"
+  },
+  "planes": {
+    "axial": {
+      "frames": 128,
+      "default_frame": 64,
+      "width": 128,
+      "height": 128,
+      "edge_labels": {
+        "top": "A",
+        "bottom": "P",
+        "left": "R",
+        "right": "L"
+      },
+      "pixel_aspect_ratio": 0.9996159262578415,
+      "physical_aspect_ratio": 0.9996159262578415
+    },
+    "coronal": {
+      "frames": 128,
+      "default_frame": 64,
+      "width": 128,
+      "height": 128,
+      "edge_labels": {
+        "top": "S",
+        "bottom": "I",
+        "left": "R",
+        "right": "L"
+      },
+      "pixel_aspect_ratio": 1.0,
+      "physical_aspect_ratio": 1.0
+    },
+    "sagittal": {
+      "frames": 128,
+      "default_frame": 64,
+      "width": 128,
+      "height": 128,
+      "edge_labels": {
+        "top": "S",
+        "bottom": "I",
+        "left": "A",
+        "right": "P"
+      },
+      "pixel_aspect_ratio": 1.0003842213114755,
+      "physical_aspect_ratio": 1.0003842213114755
+    }
+  },
+  "comparison_complete": false,
+  "view": "prediction_and_uncertainty_only"
+}

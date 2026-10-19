@@ -54,6 +54,9 @@
 .mumins-live-viewer button:hover{ background:#244553; border-color:#67c5d3; }
 .mumins-live-viewer button:disabled, .mumins-live-viewer select:disabled{ opacity:0.45; cursor:default; }
 .mumins-slice-grid{ display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:1px; background:#2c404a; }
+.mumins-prediction-viewer{ max-width:720px; margin-left:auto; margin-right:auto; }
+.mumins-prediction-viewer .mumins-slice-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+.mumins-prediction-viewer .mumins-slice-panel{ grid-column:auto; }
 .mumins-slice-panel{ margin:0; min-width:0; background:#080e13; }
 .mumins-slice-panel figcaption{
   padding:9px 5px; text-align:center; font-family:var(--mono);

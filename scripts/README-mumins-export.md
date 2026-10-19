@@ -105,26 +105,36 @@ MRI resizing/padding, and the explicit partial-export behavior.
 MPLCONFIGDIR=/tmp/mumins-mpl-cache /tmp/mumins-export-venv/bin/python \
   scripts/prepare_mumins_web_assets.py \
   /home/anna.oliveras@local.eurecat.org/Documents/mumins-viewer-complete \
-  --case ct_01
+  --case ct_01 --case mri_01 --prediction-only-case mri_01 \
+  --destination /tmp/mumins-web-review
 ```
 
-The helper requires explicit case selection and complete cases, verifies every
-frame path, and copies the selected cases to `figs/mumins/viewer`. It prepares the JavaScript metadata bundle
+The helper requires explicit case selection, verifies every frame path, and
+copies only the selected series. Full comparisons require complete cases.
+`--prediction-only-case mri_01` packages just `prediction_0` and
+`uncertainty_0` under `mri_01_predicted`: no baseline, observed follow-up,
+error images, contact sheets, original scan headers, or error-validation
+metadata are copied. Manifest counts and display scales reflect that subset.
+It prepares the JavaScript metadata bundle
 and exact colormap strips used for the webpage legends. It refuses to
 overwrite an existing destination; use a new `--destination` to prepare
 an updated bundle for review before replacing existing assets.
 
 `publications/mumins-viewer.js` reads the bundle directly, so static local
 page previews work without a fetch-based JSON loader. Each viewer loads
-five images before displaying a new slice, uses a bounded image cache,
+all panel images before displaying a new slice, uses a bounded image cache,
 and preloads only two nearby slices. Playback pauses off-screen and when
 the document is hidden; automatic playback respects reduced motion.
 Zoom and pan use normalized image coordinates shared across all panels.
 The plane's physical aspect ratio and orientation labels come from metadata.
-The current website candidate packages only the CT example (Δb = 0).
-OASIS MRI stacks are excluded from the website assets and the outgoing Git
-commit. Existing paper figures remain unchanged. No GT controls appear
-without GT data.
+The current local website candidate packages all 64 slices per plane for the
+CT comparison, plus all 128 slices per plane for MRI prediction and predicted
+uncertainty, both at Δb = 0. The MRI source/reference stacks remain outside
+the website repository; `/figs/mumins/viewer/mri_01/` is also ignored by Git.
+Existing paper figures and quantitative GT-oracle rows remain unchanged.
+Preparing this local bundle does not publish it or establish permission to
+redistribute patient-conditioned predictions; verify the applicable OASIS
+agreement before public release.
 
 ## Local central-slice MRI illustration
 

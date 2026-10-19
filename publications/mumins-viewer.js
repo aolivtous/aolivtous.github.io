@@ -1,4 +1,4 @@
-// All five images are loaded before a slice is displayed, keeping comparisons aligned.
+// All panel images are loaded before a slice is displayed, keeping comparisons aligned.
 (function () {
   'use strict';
   const assets = '../figs/mumins/viewer/';

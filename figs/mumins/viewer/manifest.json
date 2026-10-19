@@ -6,7 +6,25 @@
       "modality": "CT",
       "metadata": "ct_01/metadata.json",
       "comparison_complete": true,
+      "series": [
+        "prediction_0",
+        "uncertainty_0",
+        "baseline",
+        "followup",
+        "error_0"
+      ],
       "png_frames": 960
+    },
+    {
+      "id": "mri_01_predicted",
+      "modality": "MRI",
+      "metadata": "mri_01_predicted/metadata.json",
+      "comparison_complete": false,
+      "series": [
+        "prediction_0",
+        "uncertainty_0"
+      ],
+      "png_frames": 768
     }
   ],
   "display": {
@@ -39,10 +57,27 @@
         "colormap": "viridis",
         "limits_source": "pooled percentiles"
       }
+    },
+    "MRI": {
+      "scan": {
+        "limits": [
+          -1,
+          1
+        ],
+        "limits_source": "explicit"
+      },
+      "uncertainty": {
+        "limits": [
+          0.11027813702821732,
+          0.13390693128108963
+        ],
+        "percentiles": [
+          0.5,
+          99.5
+        ],
+        "colormap": "magma",
+        "limits_source": "pooled percentiles"
+      }
     }
-  },
-  "notes": [
-    "Partial cases exclude baseline/follow-up rather than substituting unmatched original scans.",
-    "Error maps are computed before display clipping; partial cases use supplied error volumes."
-  ]
+  }
 }

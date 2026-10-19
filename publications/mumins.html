@@ -101,7 +101,7 @@
     <div class="section-inner">
       <div class="eyebrow">Interactive examples</div>
       <h2>Explore the predicted follow-up, slice by slice</h2>
-      <p class="mumins-examples-intro">Compare the baseline, observed follow-up, and MUMINS prediction alongside uncertainty and absolute error. Each viewer keeps its five panels synchronized. Choose an anatomical plane, scrub through slices, or press play to explore the volume. This lung CT example uses Δb = 0.</p>
+      <p class="mumins-examples-intro">Explore every slice in axial, coronal, and sagittal views. The lung CT example includes baseline, observed follow-up, prediction, uncertainty, and absolute error; the brain MRI example shows prediction and predicted uncertainty. Panels stay synchronized as you scrub or press play. Both examples use Δb = 0.</p>
       <h3 id="ct-01-heading">Lung CT · PNG</h3>
       <div class="mumins-live-viewer" id="viewer-ct-01" data-case="ct_01" data-plane="axial" data-frame="32" data-playing="false" aria-labelledby="ct-01-heading">
         <div class="mumins-viewer-toolbar">
@@ -181,6 +181,57 @@
           <div class="mumins-color-key" data-map="error">
             <span>Absolute error</span><img src="../figs/mumins/viewer/viridis.png" width="256" height="1" alt="">
             <span class="mumins-color-limits"><span>2.12e-06</span><span>1.031</span></span>
+          </div>
+        </div>
+        <div class="mumins-viewer-footer"><span>Linked zoom · scroll to zoom · drag to pan · double-click to reset</span><span class="mumins-load-status" role="status" aria-live="polite"></span><button type="button" data-action="retry" hidden>Retry slice</button></div>
+      </div>
+
+      <h3 id="mri-01-heading">Brain MRI · OASIS-3</h3>
+      <p class="mumins-note">Predicted follow-up and predicted uncertainty only, across all 128 slices in each plane.</p>
+      <div class="mumins-live-viewer mumins-prediction-viewer" id="viewer-mri-01" data-case="mri_01_predicted" data-plane="axial" data-frame="64" data-playing="false" aria-labelledby="mri-01-heading">
+        <div class="mumins-viewer-toolbar">
+          <span class="mumins-case-summary">Follow-up: 611 days <span class="mumins-setting">Δb = 0</span></span>
+          <label class="mumins-plane-control" for="mri-01-plane">Plane
+            <select id="mri-01-plane" class="mumins-plane" disabled><option value="axial">Axial</option><option value="coronal">Coronal</option><option value="sagittal">Sagittal</option></select>
+          </label>
+          <div class="mumins-zoom-controls" aria-label="Brain MRI linked zoom controls">
+            <button type="button" data-action="zoom-out" aria-label="Zoom out all Brain MRI panels" disabled>−</button>
+            <button type="button" data-action="zoom-in" aria-label="Zoom in all Brain MRI panels" disabled>+</button>
+            <button type="button" data-action="reset" disabled>Reset zoom</button>
+          </div>
+        </div>
+        <div class="mumins-slice-grid">
+          <figure class="mumins-slice-panel mumins-scan-panel" data-series="prediction_0">
+            <figcaption>MUMINS prediction</figcaption>
+            <div class="mumins-image-area" tabindex="0" aria-label="Brain MRI mumins prediction: scroll or use plus/minus to zoom; drag to pan; press 0 to reset">
+              <div class="mumins-view-image"><img src="../figs/mumins/viewer/mri_01_predicted/axial/prediction_0/064.png" width="128" height="128" alt="Brain MRI mumins prediction, axial slice 65" loading="lazy" draggable="false"></div>
+              <span class="mumins-edge mumins-edge-top" data-edge="top" aria-hidden="true">A</span>
+              <span class="mumins-edge mumins-edge-bottom" data-edge="bottom" aria-hidden="true">P</span>
+              <span class="mumins-edge mumins-edge-left" data-edge="left" aria-hidden="true">R</span>
+              <span class="mumins-edge mumins-edge-right" data-edge="right" aria-hidden="true">L</span>
+            </div>
+          </figure>
+          <figure class="mumins-slice-panel mumins-map-panel" data-series="uncertainty_0">
+            <figcaption>Uncertainty σ</figcaption>
+            <div class="mumins-image-area" tabindex="0" aria-label="Brain MRI uncertainty σ: scroll or use plus/minus to zoom; drag to pan; press 0 to reset">
+              <div class="mumins-view-image"><img src="../figs/mumins/viewer/mri_01_predicted/axial/uncertainty_0/064.png" width="128" height="128" alt="Brain MRI uncertainty σ, axial slice 65" loading="lazy" draggable="false"></div>
+              <span class="mumins-edge mumins-edge-top" data-edge="top" aria-hidden="true">A</span>
+              <span class="mumins-edge mumins-edge-bottom" data-edge="bottom" aria-hidden="true">P</span>
+              <span class="mumins-edge mumins-edge-left" data-edge="left" aria-hidden="true">R</span>
+              <span class="mumins-edge mumins-edge-right" data-edge="right" aria-hidden="true">L</span>
+            </div>
+          </figure>
+        </div>
+        <div class="mumins-playback-controls">
+          <button type="button" class="mumins-play" data-action="play" aria-label="Play Brain MRI slices" aria-pressed="false" disabled>▶ Play</button>
+          <label class="mumins-sr-only" for="mri-01-slice">Brain MRI slice position</label>
+          <input class="mumins-slice-slider" id="mri-01-slice" type="range" min="0" max="127" value="64" aria-valuetext="Slice 65 of 128" disabled>
+          <output class="mumins-frame-count" for="mri-01-slice">65 / 128</output>
+        </div>
+        <div class="mumins-color-keys">
+          <div class="mumins-color-key" data-map="uncertainty">
+            <span>Uncertainty σ</span><img src="../figs/mumins/viewer/magma.png" width="256" height="1" alt="">
+            <span class="mumins-color-limits"><span>0.110</span><span>0.134</span></span>
           </div>
         </div>
         <div class="mumins-viewer-footer"><span>Linked zoom · scroll to zoom · drag to pan · double-click to reset</span><span class="mumins-load-status" role="status" aria-live="polite"></span><button type="button" data-action="retry" hidden>Retry slice</button></div>
