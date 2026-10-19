@@ -23,9 +23,8 @@
       this.playToken = 0;
       this.playing = false;
       this.visible = false;
-      this.wantsPlay = !reducedMotion.matches;
+      this.wantsPlay = false;
       this.scale = 1;
-      this.pan = {x: 0, y: 0};
       this.cache = new Map();
       this.slider = root.querySelector('.mumins-slice-slider');
       this.selector = root.querySelector('.mumins-plane');
@@ -91,7 +90,6 @@
           image.width = info.width;
           image.height = info.height;
           panel.querySelector('.mumins-image-area').style.setProperty('--physical-aspect', info.physical_aspect_ratio);
-          panel.querySelectorAll('[data-edge]').forEach(el => { el.textContent = info.edge_labels[el.dataset.edge]; });
         });
         this.frame = index;
         this.slider.max = info.frames - 1;
@@ -170,29 +168,20 @@
     }
 
     applyZoom() {
-      const bound = (this.scale - 1) / 2;
-      this.pan.x = clamp(this.pan.x, -bound, bound);
-      this.pan.y = clamp(this.pan.y, -bound, bound);
-      this.root.classList.toggle('is-zoomed', this.scale > 1);
       this.panels.forEach(panel => {
         panel.querySelector('.mumins-view-image').style.transform =
-          `translate(${this.pan.x * 100}%, ${this.pan.y * 100}%) scale(${this.scale})`;
+          `scale(${this.scale})`;
       });
       this.root.dataset.zoom = String(this.scale);
     }
 
-    zoom(factor, position = {x: 0, y: 0}) {
-      const next = clamp(this.scale * factor, 1, 6);
-      const ratio = next / this.scale;
-      this.pan.x = position.x - (position.x - this.pan.x) * ratio;
-      this.pan.y = position.y - (position.y - this.pan.y) * ratio;
-      this.scale = next;
+    zoom(factor) {
+      this.scale = clamp(this.scale * factor, 1, 3);
       this.applyZoom();
     }
 
     reset() {
       this.scale = 1;
-      this.pan = {x: 0, y: 0};
       this.applyZoom();
     }
 
@@ -229,42 +218,6 @@
           this.root.querySelectorAll('button, select, input').forEach(el => { el.disabled = false; });
           this.observe();
         }
-      });
-      this.panels.forEach(panel => {
-        const area = panel.querySelector('.mumins-image-area');
-        area.addEventListener('wheel', event => {
-          event.preventDefault();
-          const rect = area.getBoundingClientRect();
-          this.zoom(Math.exp(clamp(-event.deltaY * 0.002, -0.4, 0.4)),
-            {x: (event.clientX - rect.left) / rect.width - 0.5,
-             y: (event.clientY - rect.top) / rect.height - 0.5});
-        }, {passive: false});
-        area.addEventListener('dblclick', () => this.reset());
-        area.addEventListener('keydown', event => {
-          if (['+', '=', '-', '0', 'Escape'].includes(event.key)) {
-            event.preventDefault();
-            if (['0', 'Escape'].includes(event.key)) this.reset();
-            else this.zoom(event.key === '-' ? 1 / 1.3 : 1.3);
-          }
-        });
-        let drag = null;
-        area.addEventListener('pointerdown', event => {
-          if (this.scale <= 1 || event.button !== 0) return;
-          const rect = area.getBoundingClientRect();
-          drag = {x: event.clientX, y: event.clientY, pan: {...this.pan}, rect};
-          area.setPointerCapture(event.pointerId);
-          this.root.classList.add('is-dragging');
-        });
-        area.addEventListener('pointermove', event => {
-          if (!drag) return;
-          this.pan = {x: drag.pan.x + (event.clientX - drag.x) / drag.rect.width,
-                      y: drag.pan.y + (event.clientY - drag.y) / drag.rect.height};
-          this.applyZoom();
-        });
-        const endDrag = () => { drag = null; this.root.classList.remove('is-dragging'); };
-        area.addEventListener('pointerup', endDrag);
-        area.addEventListener('pointercancel', endDrag);
-        area.addEventListener('lostpointercapture', endDrag);
       });
     }
   }

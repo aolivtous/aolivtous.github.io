@@ -123,10 +123,15 @@ an updated bundle for review before replacing existing assets.
 `publications/mumins-viewer.js` reads the bundle directly, so static local
 page previews work without a fetch-based JSON loader. Each viewer loads
 all panel images before displaying a new slice, uses a bounded image cache,
-and preloads only two nearby slices. Playback pauses off-screen and when
-the document is hidden; automatic playback respects reduced motion.
-Zoom and pan use normalized image coordinates shared across all panels.
-The plane's physical aspect ratio and orientation labels come from metadata.
+and preloads only two nearby slices. Playback starts only after pressing Play,
+and pauses off-screen or when the document is hidden. Reduced-motion changes
+also pause playback. Zoom uses the +, −, and Reset buttons, shared across all
+panels; hovering, mouse movement, dragging, and wheel/trackpad scrolling do
+not change zoom. The plane's physical aspect ratio comes from metadata.
+CT and MRI appear beside each other on wide screens. Image panels stay in a
+single row; on narrow screens, CT panels scroll horizontally inside the viewer.
+The image overlays omit anatomical initial letters; plane choices include
+plain-language view descriptions.
 The current local website candidate packages all 64 slices per plane for the
 CT comparison, plus all 128 slices per plane for MRI prediction and predicted
 uncertainty, both at Δb = 0. The MRI source/reference stacks remain outside
