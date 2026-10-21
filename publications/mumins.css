@@ -27,6 +27,8 @@
   font-size:13px; color:var(--ink-soft); line-height:1.7;
 }
 #citation-status{ display:block; min-height:24px; margin-top:8px; }
+/* The interactive section stays visible instead of using the reveal animation. */
+.mumins-examples .eyebrow::before{ transform:scaleX(1); }
 .mumins-examples p, .mumins-examples .mumins-note{
   font-size:16px; line-height:1.8;
   text-align:left; text-justify:auto; hyphens:none;
@@ -43,6 +45,11 @@
   scroll-margin-top:12px;
   overflow:hidden; background:#101a22; color:var(--viewer-ink);
 }
+/* Two panels match the CT viewer's five columns, including borders and gaps.
+   The minimum follows the CT grid's 640px scrolling width on small screens. */
+.mumins-prediction-viewer{ width:max(257.4px, calc(40% + 0.6px)); max-width:100%; }
+.mumins-prediction-viewer .mumins-viewer-toolbar{ display:flex; flex-wrap:wrap; }
+.mumins-prediction-viewer .mumins-case-summary{ width:100%; }
 .mumins-viewer-toolbar{
   display:grid; grid-template-columns:1fr auto; align-items:center;
   gap:12px; padding:14px 12px; border-bottom:1px solid #2c404a;
