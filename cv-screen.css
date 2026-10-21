@@ -1,0 +1,20 @@
+/* Screen presentation only: the original A4 print layout is retained. */
+:root{--ink:#121a20;--ink-soft:#52616a;--ink-faint:#6b7c86;--teal:#0b6d82;--teal-deep:#073e4a;--marker:#b23a72;--line:#d7dfdd}
+html{background:#e7edeb;padding:36px 24px}
+body{max-width:980px;margin:auto;background:#f8faf9;padding:50px 60px;font-size:17px;box-shadow:0 10px 60px #073e4a10}
+.cv-actions{display:flex;justify-content:space-between;gap:20px;padding-bottom:35px;font-size:15px}
+.cv-actions a{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+header.cv-header{gap:30px;padding-bottom:24px;margin-bottom:30px}
+.cv-name{font-size:36px}.cv-role{font-size:14px;line-height:1.6}.cv-contact{font-size:14px}
+section{margin-bottom:28px}.cv-h{font-size:15px;margin-bottom:16px;padding-bottom:10px}
+.summary{font-size:17px;line-height:1.9}.entry{margin-bottom:20px}.entry-role{font-size:18px}.entry-date{font-size:14px}.entry-org{font-size:16px;margin:5px 0}.entry ul{font-size:16px;line-height:1.8}
+.pub-entry{margin-bottom:16px}.pub-entry-title{font-size:18px}.pub-entry-meta{font-size:14px}.skill-item{font-size:14px}.distinctions li{font-size:16px;line-height:1.8}footer.cv-footer{font-size:13px;margin-top:30px}
+@media(max-width:700px){html{padding:0}body{padding:30px 22px}.cv-name{font-size:29px}header.cv-header{flex-direction:column;align-items:flex-start;gap:14px}.cv-contact{text-align:left}.two-col{grid-template-columns:1fr}.entry-top{flex-direction:column;gap:4px}.cv-actions{font-size:14px}}
+
+.cv-contact{max-width:48%;overflow-wrap:anywhere}
+.cv-contact a{text-decoration:underline;text-underline-offset:3px}
+.summary{text-align:justify;hyphens:auto}
+.pub-entry-meta{line-height:1.7;overflow-wrap:anywhere}
+@media(max-width:700px){.cv-contact{max-width:100%}}
+
+.entry-org em + em::before{content:" · "}

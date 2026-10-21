@@ -8,29 +8,29 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
 <script src="../site.js" defer></script>
 <noscript><style>.reveal-up{ opacity:1 !important; transform:none !important; }</style></noscript>
+<link rel="stylesheet" href="../modern.css?v=16">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
 </head>
 <body class="publication-page" data-disable-toc-rail>
 
-<header>
+<header class="site-header">
   <div class="wrap">
-    <a class="brand" href="../index.html" style="color:inherit;"><strong>ANNA OLIVERAS TOUS</strong> <span class="dot">·</span> CV / RESEARCH</a>
-    <nav>
-      <a href="../index.html#hero">Profile</a>
-      <a href="../index.html#research">Research</a>
-      <a href="../index.html#contact">Contact</a>
-    </nav>
+    <a class="site-name" href="../index.html">Anna Oliveras Tous</a>
+    <nav aria-label="Main navigation"><a href="../index.html#research">Research</a><a href="../index.html#profile">About</a><a href="../index.html#contact">Contact</a><a class="nav-cv" href="../cv.pdf?v=2" download>CV <span aria-hidden="true">↗</span></a></nav>
   </div>
 </header>
 
-<main>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<main id="main-content">
   <div class="pub-page-header" id="overview" data-toc="Overview">
     <div class="section-inner reveal-up">
       <a class="back-link" href="../index.html#research">Back to publications</a>
       <div class="eyebrow">Published — Scientific Reports, 2026</div>
+      <div class="project-masthead" aria-hidden="true">LAND<span>↗</span></div>
       <h1 class="pub-page-title">Anatomically Guided Latent Diffusion for High-Resolution 3D Chest CT Synthesis</h1>
       <p class="pub-authors">
         <a class="me" href="https://scholar.google.com/citations?user=SObLaIkAAAAJ&hl=en" target="_blank" rel="noopener">Anna Oliveras</a><sup>1,2</sup>,
@@ -185,12 +185,13 @@
       <p>Against 3D diffusion baselines, LAND achieves the lowest FID and MMD, producing sharper, more anatomically coherent volumes without sacrificing sample diversity. Browse real generated volumes across all three anatomical planes at once below. Scrub the slider or hit play to sweep through all 256 slices, and scroll on any panel to zoom.</p>
 
       <div class="viewer" id="viewer-unconditional">
+        <div class="project-explorer-heading"><span class="sample-kicker">01 / LAND model</span><h4>One volume. Three perspectives.</h4><p>Axial · top / Coronal · front / Sagittal · side</p></div>
         <div class="viewer-toolbar">
           <button type="button" class="help-btn" aria-label="How this viewer works">?
             <span class="help-tooltip">Three anatomical views of the same generated volume, shown side by side. Scroll on any panel to zoom, drag to pan, double-click to reset. Use the slider or play button to scrub through slices, and the arrows/dots below to switch case.</span>
           </button>
         </div>
-        <div class="viewer-stage texture-stage">
+        <div class="viewer-stage texture-stage" tabindex="0" role="region" aria-label="Comparison panels; scroll sideways on smaller screens">
           <div class="scrubber-panel" data-axis="axial">
             <div class="scrubber-player">
               <div class="scrubber-zoom">
@@ -216,6 +217,7 @@
             <div class="scrubber-panel-label">Sagittal</div>
           </div>
         </div>
+        <p class="project-gallery-hint">Swipe sideways to compare every panel.</p>
         <div class="viewer-controls">
           <button type="button" class="scrubber-play" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor" class="icon-play" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor" class="icon-pause" aria-hidden="true" style="display:none;"><path d="M6 5h4v14H6zm8 0h4v14h-4z"></path></svg></button>
           <input type="range" class="scrubber-slider" min="0" max="255" value="0" aria-label="Slice position">
@@ -235,6 +237,7 @@
       <p>Encoding the anatomical mask through a dedicated latent VAE (<strong>LAND-LatentMask</strong>) instead of simple downsampling (<strong>LAND-Mask</strong>) substantially improves shape fidelity to the conditioning mask, Dice rises from 0.518 to 0.684 and IoU from 0.385 to 0.543 on LIDC dataset, while overall image realism stays about the same. Each panel below is independently configurable: pick the model, the view plane, and the mask overlay opacity, so you can compare whatever you like side by side. </p>
 
       <div class="viewer" id="scrubber-conditional">
+        <div class="project-explorer-heading"><span class="sample-kicker">02 / LAND model</span><h4>Compare anatomical guidance</h4><p>Set each panel independently · Shared slice controls</p></div>
         <div class="viewer-toolbar">
           <div class="viewer-legend"><span class="dot-lung"></span>Lung<span class="dot-nodule"></span>Nodule</div>
           <button type="button" class="overlay-toggle scrubber-zoom-nodule">
@@ -279,6 +282,7 @@
             </div>
           </div>
         </div>
+        <p class="project-gallery-hint">Explore the panels, then use the shared controls below.</p>
         <div class="viewer-controls">
           <button type="button" class="scrubber-play" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor" class="icon-play" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor" class="icon-pause" aria-hidden="true" style="display:none;"><path d="M6 5h4v14H6zm8 0h4v14h-4z"></path></svg></button>
           <input type="range" class="scrubber-slider" min="0" max="255" value="0" aria-label="Slice position">
@@ -298,6 +302,7 @@
       <p><strong>LAND-LatentMask+</strong> additionally conditions on nodule texture, letting you steer solidity from non-solid (1) to solid (5). This adds only a small trade-off in shape fidelity (Dice 0.684 → 0.628) relative to LAND-LatentMask, in exchange for fine-grained control over nodule appearance. Explore samples generated with all five texture levels side by side below.</p>
 
       <div class="viewer" id="viewer-texture">
+        <div class="project-explorer-heading"><span class="sample-kicker">03 / LAND model</span><h4>Explore five textures</h4><p>From non-solid (1) to solid (5) · Synchronized slices</p></div>
         <div class="viewer-toolbar">
           <div class="viewer-legend"><span class="dot-lung"></span>Lung<span class="dot-nodule"></span>Nodule</div>
           <select class="panel-select-native viewer-axis-select"></select>
@@ -313,7 +318,7 @@
             <span class="help-tooltip">Five texture levels of the same case, shown side by side and kept in sync. Adjust the mask overlay opacity, or hit "Zoom on nodule" to snap every panel to a 64×64 crop centered on it. Scroll on any panel to zoom manually, drag to pan, double-click to reset. The slider/play and arrows/dots below control all panels together.</span>
           </button>
         </div>
-        <div class="viewer-stage texture-stage">
+        <div class="viewer-stage texture-stage" tabindex="0" role="region" aria-label="Comparison panels; scroll sideways on smaller screens">
           <div class="scrubber-panel" data-texture="1">
             <div class="scrubber-player">
               <div class="scrubber-zoom">
@@ -360,6 +365,7 @@
             <div class="scrubber-panel-label">Texture 5</div>
           </div>
         </div>
+        <p class="project-gallery-hint">Swipe sideways to compare every panel.</p>
         <div class="viewer-controls">
           <button type="button" class="scrubber-play" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor" class="icon-play" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor" class="icon-pause" aria-hidden="true" style="display:none;"><path d="M6 5h4v14H6zm8 0h4v14h-4z"></path></svg></button>
           <input type="range" class="scrubber-slider" min="0" max="255" value="0" aria-label="Slice position">
@@ -452,11 +458,10 @@
     </div>
   </section>
 
-  <section class="pub-page-section" id="acknowledgements" data-toc="Acknowledgements">
+  <section class="pub-page-section" id="acknowledgements" data-toc="Acknowledgments and funding">
     <div class="section-inner reveal-up">
-      <h2>Acknowledgements</h2>
+      <h2>Acknowledgments and funding</h2>
       <p>A.O. acknowledges support from Eurecat's "Vicente López" PhD grant program, the computer resources at Finis Terrae III (CESGA), and the technical support from Barcelona Supercomputing Center (RES-BCV-2025-2-0043).</p>
-      <h2 style="margin-top:36px;">Funding</h2>
       <p>B.N. received support through the AI4S fellowship within the "Generación D" initiative by Red.es, Ministerio para la Transformación Digital y de la Función Pública (C005/24-ED CV1), funded by NextGenerationEU through PRTR. C.M. and R.R. acknowledge that this research was conducted within the <a href="https://www.phase4ai-project.eu/?page_id=757" target="_blank" rel="noopener">PHASE IV AI</a> project, funded by the European Union's Horizon Europe research and innovation programme (grant agreement No. 101095384). P.R. received support from 2021-SGR-01094 (AGAUR), ICREA Academia 2022 (Generalitat de Catalunya), and the IDEATE project (AEI-MICINN, PID2022-141566NB-I00).</p>
     </div>
   </section>
@@ -464,7 +469,7 @@
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-note">© 2026 Anna Oliveras Tous · Barcelona, Spain</div>
+    <div class="footer-note">© 2026 · Barcelona, Spain</div>
     <div class="footer-aside"><a href="../index.html">← Back to portfolio</a></div>
   </div>
 </footer>

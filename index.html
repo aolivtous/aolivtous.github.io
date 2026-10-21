@@ -1,100 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anna Oliveras Tous — Computer Vision &amp; Generative AI Research</title>
-<meta name="description" content="Anna Oliveras Tous — PhD researcher in generative AI for medical imaging at Universitat de Barcelona &amp; Eurecat. Publications, research, CV.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=2">
-<script src="site.js" defer></script>
-<noscript><style>.reveal-up{ opacity:1 !important; transform:none !important; }</style></noscript>
+<meta name="description" content="Anna Oliveras Tous — PhD researcher in artificial intelligence, computer vision and generative models at Universitat de Barcelona &amp; Eurecat. Research, publications, code and interactive demos.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="modern.css?v=15">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script src="site.js" defer></script><script src="modern.js?v=5" defer></script>
 </head>
-<body class="portfolio-home">
-
-
-<header>
+<body class="portfolio-home modern-home">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header">
   <div class="wrap">
-    <div class="brand"><strong>ANNA OLIVERAS TOUS</strong> <span class="dot">·</span> CV / RESEARCH</div>
-    <nav>
-      <a href="#hero">Profile</a>
-      <a href="#research">Research</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <a class="site-name" href="#hero">Anna Oliveras Tous</a>
+    <nav aria-label="Main navigation"><a href="#profile">About</a><a href="#research">Research</a><a href="#contact">Contact</a><a class="nav-cv" href="cv.pdf?v=2" download>CV <span aria-hidden="true">↗</span></a></nav>
   </div>
 </header>
-
-<main>
-
-  <!-- ================= HERO ================= -->
-  <section id="hero">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-eyebrow">PhD Researcher — Generative AI for Medical Imaging</div>
-        <h1><span class="reveal hero-name">Anna Oliveras</span><br><span class="reveal hero-name" style="animation-delay:120ms;">Tous</span></h1>
-        <p class="bio">Computer Vision MSc, currently a PhD researcher at <strong>Universitat de Barcelona</strong> &amp; <strong>Eurecat</strong>, working on generative models and medical image synthesis. Based in Barcelona.</p>
-      </div>
-      <div class="gantry">
-        <div class="orbit">
-          <svg class="orbit-ring" viewBox="0 0 100 100" aria-hidden="true">
-            <line class="orbit-spoke orbit-spoke-out" x1="50" y1="50" x2="50" y2="-11"></line>
-            <line class="orbit-spoke orbit-spoke-in" x1="50" y1="50" x2="108" y2="32"></line>
-            <line class="orbit-spoke orbit-spoke-out" x1="50" y1="50" x2="83" y2="93"></line>
-            <line class="orbit-spoke orbit-spoke-out" x1="50" y1="50" x2="13" y2="101"></line>
-            <line class="orbit-spoke orbit-spoke-in" x1="50" y1="50" x2="-3" y2="34"></line>
-          </svg>
-          <div class="photo-swap" tabindex="0">
-            <div class="photo-flip">
-              <img class="photo-a" src="figs/profile-photo.jpg" alt="Anna Oliveras Tous smiling outdoors in the mountains" width="260" height="260">
-              <img class="photo-b" src="figs/profile-photo-alt.jpg" alt="Anna Oliveras Tous presenting her research at an academic conference" width="260" height="260">
-            </div>
-          </div>
-          <a class="orbit-node orbit-node-cv" href="cv.pdf" download aria-label="Download CV PDF">
+<main id="main-content">
+<section id="hero">
+ <div class="hero-meta"><span><span class="live-dot" aria-hidden="true"></span> PHD RESEARCHER / BARCELONA</span></div>
+ <div class="hero-layout">
+  <div class="hero-copy">
+   <h1>Hi, I’m <span class="hero-emphasis">Anna.</span></h1>
+   <p class="hero-specialty">Computer vision &amp; generative AI.</p>
+   <p class="hero-intro">I’m a PhD researcher working on diffusion models for medical imaging, exploring how AI can <span class="text-block">understand</span> and <span class="text-block text-block-lime">generate</span> visual information.</p>
+  </div>
+  <div class="about-portrait">
+   <div class="profile-orbit" role="group" aria-label="Portrait and profile links">
+    <svg class="orbit-ring" viewBox="0 0 100 100" aria-hidden="true">
+     <line class="orbit-spoke orbit-spoke-out" x1="50" y1="50" x2="50" y2="4"></line>
+     <line class="orbit-spoke orbit-spoke-in" x1="50" y1="50" x2="94" y2="36"></line>
+     <line class="orbit-spoke orbit-spoke-out" x1="50" y1="50" x2="79" y2="90"></line>
+     <line class="orbit-spoke orbit-spoke-out" x1="50" y1="50" x2="21" y2="90"></line>
+     <line class="orbit-spoke orbit-spoke-in" x1="50" y1="50" x2="6" y2="36"></line>
+    </svg>
+   <button class="portrait-toggle" type="button" aria-label="Show portrait of Anna presenting her research" aria-pressed="false">
+    <img class="portrait-outdoors" src="figs/profile-photo.jpg" alt="Anna Oliveras Tous outdoors in the mountains" width="831" height="884" loading="lazy">
+    <img class="portrait-research" src="figs/profile-photo-alt.jpg" alt="Anna presenting her research at an academic conference" loading="lazy">
+   </button>
+<a class="orbit-node orbit-node-cv" href="cv.pdf?v=2" download aria-label="Download CV PDF">
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8L14 2Zm0 2.5L18.5 9H14V4.5ZM8 13h8v1.6H8V13Zm0 3.2h8v1.6H8v-1.6Z"/></svg>
             <span class="orbit-tip">CV PDF</span>
           </a>
-          <a class="orbit-node orbit-node-email" data-email-link href="#" aria-label="Email">
+<a class="orbit-node orbit-node-email" data-email-link href="mailto:aoliverastous@gmail.com" aria-label="Email">
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>
             <span class="orbit-tip">Email</span>
           </a>
-          <a class="orbit-node orbit-node-scholar" href="https://scholar.google.com/citations?user=SObLaIkAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
+<a class="orbit-node orbit-node-scholar" href="https://scholar.google.com/citations?user=SObLaIkAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 1 8l11 6 9-4.91V17h2V8L12 2Zm-7 9.82V16l7 4 7-4v-4.18L12 15.64 5 11.82Z"/></svg>
             <span class="orbit-tip">Google Scholar</span>
           </a>
-          <a class="orbit-node orbit-node-github" href="https://github.com/aolivtous" target="_blank" rel="noopener" aria-label="GitHub">
+<a class="orbit-node orbit-node-github" href="https://github.com/aolivtous" target="_blank" rel="noopener" aria-label="GitHub">
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-1.96c-3.2.7-3.88-1.36-3.88-1.36-.52-1.31-1.27-1.66-1.27-1.66-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.3 1.18-3.11-.12-.29-.51-1.47.11-3.06 0 0 .97-.31 3.17 1.19a10.93 10.93 0 0 1 5.77 0c2.2-1.5 3.17-1.19 3.17-1.19.62 1.59.23 2.77.11 3.06.73.81 1.18 1.85 1.18 3.11 0 4.43-2.69 5.41-5.25 5.69.42.36.79 1.06.79 2.15v3.19c0 .31.21.67.79.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
             <span class="orbit-tip">GitHub</span>
           </a>
-          <a class="orbit-node orbit-node-linkedin" href="https://www.linkedin.com/in/anna-oliveras-tous" target="_blank" rel="noopener" aria-label="LinkedIn">
+<a class="orbit-node orbit-node-linkedin" href="https://www.linkedin.com/in/anna-oliveras-tous" target="_blank" rel="noopener" aria-label="LinkedIn">
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.94 8.75H3.56V20h3.38V8.75ZM5.25 3.5a1.97 1.97 0 1 0 0 3.94 1.97 1.97 0 0 0 0-3.94ZM20.44 13.56c0-3.39-1.81-4.97-4.23-4.97-1.95 0-2.82 1.07-3.31 1.83V8.75H9.56V20h3.34v-5.57c0-1.47.28-2.89 2.1-2.89 1.79 0 1.82 1.68 1.82 2.99V20h3.62v-6.44Z"/></svg>
             <span class="orbit-tip">LinkedIn</span>
           </a>
-        </div>
-      </div>
-    </div>
-  </section>
+   </div>
+  </div>
+ </div>
+</section>
+<section id="profile">
+ <div class="section-inner about-text-layout">
+  <div class="about-copy"><div class="eyebrow">01 / About</div><h2 class="htitle">Bio<span>.</span></h2><p class="bio-large">My background spans <strong>signal processing, machine learning and deep learning</strong>, with experience in 3D reconstruction and document understanding. I hold a <strong>Master’s in <a href="https://mcv.uab.cat/" target="_blank" rel="noopener">Computer Vision</a></strong> (UAB) and a <strong>Bachelor’s in <a href="https://telecos.upc.edu/en" target="_blank" rel="noopener">Telecommunications Engineering</a></strong> (UPC), and have worked in industry and research in Barcelona and Lausanne, including <a href="https://www.epfl.ch/labs/lts5/" target="_blank" rel="noopener">LTS5 at EPFL</a>.</p>
+   <p class="bio-large">Today, I’m a researcher in <a href="https://eurecat.org/en/field-of-knowledge/digital-health/" target="_blank" rel="noopener">Eurecat’s Digital Health Unit</a> and a PhD candidate with the <a href="https://www.ub.edu/aiba/" target="_blank" rel="noopener">AIBA group at Universitat de Barcelona</a>, supervised by <strong><a href="https://scholar.google.es/citations?user=p_MCjd4AAAAJ&amp;hl=en" target="_blank" rel="noopener">Prof. Petia Radeva</a></strong> and <strong><a href="https://scholar.google.com/citations?user=1Gf8UfQAAAAJ" target="_blank" rel="noopener">Dr. Vicent Ribas</a></strong>. My current work explores generative models and visual synthesis, applied to medical imaging.</p><div class="about-links"><a class="text-link" href="cv.html">Full experience ↗</a></div></div>
+ </div>
+</section>
+<section id="model-explorer" aria-labelledby="model-explorer-title">
+ <div class="section-inner">
+  <div class="research-preview">
+   <div class="research-preview-copy"><div class="eyebrow">02 / Interactive research</div><h2 class="htitle" id="model-explorer-title">Explore a model<br>in action<span>.</span></h2><p>MUMINS is a diffusion model that predicts a future medical scan and estimates its uncertainty from a baseline scan.</p><p>Explore a MUMINS sample: switch between brain MRI and lung CT, move through the slices, and compare each prediction with its uncertainty map.</p><a class="text-link" href="publications/mumins.html">About the MUMINS model ↗</a></div>
+  <div class="scan-art sample-explorer" data-sample="mri" data-frame="64" aria-label="MUMINS interactive sample explorer">
+   <div class="sample-heading"><span class="sample-kicker">MUMINS MODEL / SAMPLE EXPLORER</span><a class="sample-open" href="publications/mumins.html#examples" aria-label="Open the full MUMINS image explorer">↗</a></div>
+   <h2 class="sample-title">See the model<br><span>at work.</span></h2>
+   <div class="sample-tabs" role="group" aria-label="Choose a sample" hidden><button type="button" data-sample="mri" aria-pressed="true">Brain MRI</button><button type="button" data-sample="ct" aria-pressed="false">Lung CT</button></div>
+   <div class="sample-stage">
+    <figure class="sample-tile sample-prediction"><figcaption><span>01</span> Predicted scan</figcaption><div class="sample-image"><img id="hero-prediction" src="figs/mumins/viewer/mri_01_predicted/axial/prediction_0/064.png" width="128" height="128" alt="MUMINS predicted brain MRI, axial slice 65"></div><div class="sample-tile-footer">Synthesis <span aria-hidden="true">↗</span></div></figure>
+    <figure class="sample-tile sample-uncertainty"><figcaption><span>02</span> Uncertainty σ</figcaption><div class="sample-image"><img id="hero-uncertainty" src="figs/mumins/viewer/mri_01_predicted/axial/uncertainty_0/064.png" width="128" height="128" alt="Predicted uncertainty for brain MRI, axial slice 65"></div><div class="sample-tile-footer"><span>Low</span><img src="figs/mumins/viewer/magma.png" width="256" height="1" alt=""><span>High</span></div></figure>
+   </div>
+   <div class="sample-playback" hidden>
+    <div class="sample-control-row"><button type="button" class="motion-toggle" aria-label="Pause preview animation" aria-pressed="false">Ⅱ Pause</button><label for="sample-slice">Slice <output id="sample-counter" for="sample-slice">65 / 128</output></label></div>
+    <div class="sample-ruler"><input id="sample-slice" type="range" min="44" max="88" value="64" aria-label="Preview slice position" aria-valuetext="Slice 65 of 128"></div>
+   </div>
+   <div class="sample-footer"><span class="sample-view-label">Axial · central slices</span><span>Baseline age <strong id="sample-age">54 years</strong></span><span>Follow-up (Δt) <strong id="sample-interval">1.7 years</strong></span></div>
+   <p class="sample-status" role="status" aria-live="polite"></p>
+   <noscript><p class="sample-static-note">Static brain MRI preview. <a href="publications/mumins.html#examples">Open the project →</a></p></noscript>
+  </div>
+  </div>
+ </div>
+</section>
+<section id="research">
+ <div class="section-inner">
+  <div class="section-heading"><div><div class="eyebrow">03 / Publications</div><h2 class="htitle">Selected publications<span>.</span></h2></div></div>
+  <div class="project-grid">
 
-  <!-- ================= PROFILE ================= -->
-  <section id="profile">
-    <div class="section-inner reveal-up">
-      <div class="eyebrow">Profile</div>
-      <h2 class="htitle">About</h2>
-      <p class="bio-large">I hold a <strong>Master's degree in <a href="https://mcv.uab.cat/" target="_blank" rel="noopener">Computer Vision</a></strong> (UAB) and a <strong>Bachelor's in <a href="https://telecos.upc.edu/en" target="_blank" rel="noopener">Telecommunications Engineering</a></strong> (UPC), and have built my expertise in signal processing, machine learning and deep learning through industry roles and research internships across Barcelona, Lausanne (<a href="https://www.epfl.ch/labs/lts5/" target="_blank" rel="noopener">LTS5, EPFL</a>) and beyond. I'm currently a <strong>researcher</strong> in the <a href="https://eurecat.org/en/field-of-knowledge/digital-health/" target="_blank" rel="noopener">Digital Health Unit at Eurecat</a>, and a <strong>PhD candidate</strong> with the <a href="https://www.ub.edu/aiba/" target="_blank" rel="noopener">AIBA group at University of Barcelona</a>, supervised by <strong>Prof. Petia Radeva</strong> and <strong>Dr. Vicent Ribas</strong>, focused on generative models for synthetic medical imaging. What draws me to the field is the chance to put AI to work on problems that matter clinically, alongside people who care about getting the details right.</p>
-    </div>
-  </section>
-
-  <!-- ================= RESEARCH ================= -->
-  <section id="research">
-    <div class="section-inner reveal-up">
-      <div class="eyebrow">Research</div>
-      <h2 class="htitle">Publications</h2>
-
-      <div class="research-block">
-
-      <div class="pub reveal-up">
+      <div class="pub project-card reveal-up">
         <div class="pub-body">
           <div class="pub-status"><span class="status-dot published"></span> Accepted — WACV 2027</div>
           <h3 class="pub-title"><a href="publications/mumins.html">MUMINS: Metadata-conditioned Uncertainty-aware Medical Image Next-state Synthesis</a></h3>
@@ -111,7 +115,7 @@
           </div>
         </div>
         <a class="pub-thumb mumins-preview" href="publications/mumins.html" aria-label="Open MUMINS project page">
-          <span class="mumins-home-grid">
+          <span class="project-visual-label">01 / MUMINS <span>Explore project ↗</span></span><span class="mumins-home-grid">
             <span class="mumins-preview-sample">
               <img src="figs/mumins/viewer/ct_01/axial/prediction_0/032.png" width="64" height="64" alt="Animated MUMINS lung CT prediction" loading="lazy" data-prefix="figs/mumins/viewer/ct_01/axial/prediction_0/" data-start="16" data-end="48" data-step="1" data-frame="32">
             </span>
@@ -119,10 +123,11 @@
               <img src="figs/mumins/viewer/mri_01_predicted/axial/prediction_0/064.png" width="128" height="128" alt="Animated MUMINS brain MRI prediction" loading="lazy" data-prefix="figs/mumins/viewer/mri_01_predicted/axial/prediction_0/" data-start="40" data-end="88" data-step="1" data-frame="64">
             </span>
           </span>
+          <span class="preview-footer"><span>Lung CT</span><span>Brain MRI</span></span>
         </a>
       </div>
 
-      <div class="pub reveal-up">
+      <div class="pub project-card reveal-up">
         <div class="pub-body">
           <div class="pub-status"><span class="status-dot published"></span> Scientific Reports, 2026</div>
           <h3 class="pub-title"><a href="publications/land.html">Anatomically Guided Latent Diffusion for High-Resolution 3D Chest CT Synthesis</a></h3>
@@ -137,7 +142,7 @@
             <span class="tag">Diffusion Models</span><span class="tag">3D Medical Imaging</span><span class="tag">Chest CT</span><span class="tag">Synthetic Data</span>
           </div>
         </div>
-        <a class="pub-thumb land-preview" href="publications/land.html" aria-label="Open LAND project page">
+        <a class="pub-thumb land-preview" href="publications/land.html" aria-label="Open LAND project page"><span class="project-visual-label">02 / LAND <span>Explore project ↗</span></span>
           <span class="land-preview-sample">
             <img class="land-preview-base" src="figs/land-slices/00001/axial/withVAE/110.jpg" alt="Animated LAND axial chest CT sample 1." loading="lazy" data-prefix="figs/land-slices/00001/axial/withVAE/" data-ext="jpg" data-start="80" data-end="176" data-step="2" data-frame="110">
             <img class="land-preview-mask" src="figs/land-slices/00001/axial/overlay/110.png" alt="Lung and nodule mask overlay on LAND generated CT sample 1." loading="lazy" data-prefix="figs/land-slices/00001/axial/overlay/" data-ext="png">
@@ -146,14 +151,19 @@
             <img class="land-preview-base" src="figs/land-slices/00301/axial/withVAE/128.jpg" alt="Animated LAND axial chest CT sample 2." loading="lazy" data-prefix="figs/land-slices/00301/axial/withVAE/" data-ext="jpg" data-start="80" data-end="176" data-step="2" data-frame="128">
             <img class="land-preview-mask" src="figs/land-slices/00301/axial/overlay/128.png" alt="Lung and nodule mask overlay on LAND generated CT sample 2." loading="lazy" data-prefix="figs/land-slices/00301/axial/overlay/" data-ext="png">
           </span>
+          <span class="preview-footer"><span>Sample 01 · CT + mask</span><span>Sample 02 · CT + mask</span></span>
         </a>
       </div>
       </div>
+ </div>
+</section>
+<section id="dissemination">
+ <div class="section-inner">
+  <div class="section-heading"><div><div class="eyebrow">04 / Sharing the work</div><h2 class="htitle">Out of the lab<span>.</span></h2></div><div class="event-filters" aria-label="Filter talks and posters" hidden><button type="button" data-filter="all" aria-pressed="true">All <span>04</span></button><button type="button" data-filter="talk" aria-pressed="false">Talks <span>02</span></button><button type="button" data-filter="poster" aria-pressed="false">Posters <span>02</span></button></div></div>
+  <div class="event-list">
 
-      <div class="research-block">
-      <div class="research-subhead">Talks</div>
 
-      <div class="pub pub-talk reveal-up">
+      <div class="pub pub-talk reveal-up" data-kind="talk">
         <div class="pub-body">
           <div class="pub-status"><span class="status-dot presented"></span> CIDAI - May 2026, Barcelona, Spain</div>
           <h3 class="pub-title">Phase IV-AI LAND: 3D Thoracic CT Synthesis with Anatomical Guidance via Lung and Nodule Diffusion</h3>
@@ -169,7 +179,7 @@
         </div>
       </div>
 
-      <div class="pub pub-talk reveal-up">
+      <div class="pub pub-talk reveal-up" data-kind="talk">
         <div class="pub-body">
           <div class="pub-status"><span class="status-dot presented"></span> MICAD - November 2022, University of Leicester, United Kingdom</div>
           <h3 class="pub-title">Pre-processing for Automatic Cervical Cancer Screening: Image Segmentation and Movement Detection</h3>
@@ -183,12 +193,10 @@
           </div>
         </div>
       </div>
-      </div>
 
-      <div class="research-block">
-      <div class="research-subhead">Posters</div>
 
-      <div class="pub pub-talk reveal-up">
+
+      <div class="pub pub-talk reveal-up" data-kind="poster">
         <div class="pub-body">
           <div class="pub-status"><span class="status-dot presented"></span> Phase IV-AI Final Conference - June 2026, University of Turku, Finland</div>
           <h3 class="pub-title">Phase IV-AI LAND: 3D Thoracic CT Synthesis with Anatomical Guidance via Lung and Nodule Diffusion</h3>
@@ -203,7 +211,7 @@
           </div>
         </div>
       </div>
-      <div class="pub pub-talk reveal-up">
+      <div class="pub pub-talk reveal-up" data-kind="poster">
         <div class="pub-body">
           <div class="pub-status"><span class="status-dot presented"></span> MedEurIPS - December 2025, University of Copenhagen, Denmark</div>
           <h3 class="pub-title">LAND: 3D Thoracic CT Synthesis with Anatomical Guidance via Lung and Nodule Diffusion</h3>
@@ -218,33 +226,19 @@
           </div>
         </div>
       </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= CONTACT ================= -->
-  <section id="contact">
-    <div class="section-inner reveal-up">
-      <div class="eyebrow">Contact</div>
-      <h2 class="contact-cta">Working on something in medical imaging or generative AI? Let's talk.</h2>
-      <div class="contact-links">
+      </div><p class="filter-status sr-only" role="status" aria-live="polite"></p>
+ </div>
+</section>
+<section id="contact">
+ <div class="section-inner"><div class="eyebrow">05 / Get in touch</div><div class="contact-layout"><h2 class="contact-cta">Let’s connect<span>.</span></h2><a class="contact-arrow" data-email-link href="mailto:aoliverastous@gmail.com" aria-label="Email Anna Oliveras Tous">↗</a></div><p class="contact-intro">Interested in computer vision, generative models, or a research collaboration? Get in touch.</p><div class="contact-links">
         <a data-email-link data-email-text href="#">Email</a>
         <a href="https://github.com/aolivtous" target="_blank" rel="noopener">github.com/aolivtous</a>
         <a href="https://www.linkedin.com/in/anna-oliveras-tous" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://scholar.google.com/citations?user=SObLaIkAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
-      </div>
-    </div>
-  </section>
-
+      </div></div>
+</section>
 </main>
-
-<footer>
-  <div class="footer-inner reveal-up">
-    <div class="footer-note">© 2026 Anna Oliveras Tous · Barcelona, Spain</div>
-    <div class="footer-aside">Viola player, <a href="https://www.instagram.com/__dst.cc__?igsh=MTV3Y3ppbDAyaTM1OA%3D%3D&utm_source=qr">cyclist</a>, trail runner, and <a href="https://www.instagram.com/annaolivtous?igsh=N25waDFta3ljdG4=">outdoor enthusiast</a>.</div>
-  </div>
-</footer>
-
+<footer><div class="footer-inner"><div class="footer-aside">Viola player, <a href="https://www.instagram.com/__dst.cc__?igsh=MTV3Y3ppbDAyaTM1OA%3D%3D&utm_source=qr">cyclist</a>, trail runner, and <a href="https://www.instagram.com/annaolivtous?igsh=N25waDFta3ljdG4=">outdoor enthusiast</a>.</div><div class="footer-bottom"><span>© 2026 · Barcelona, Spain</span><a href="#hero">Back to top ↑</a></div></div></footer>
 <script>
   (function () {
     // built at runtime rather than left as plain text, to cut down on scraper spam
@@ -255,6 +249,5 @@
     });
   })();
 </script>
-
 </body>
 </html>

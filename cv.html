@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anna Oliveras Tous — CV</title>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   @page{ size:A4; margin:13mm 18mm; }
+  @media print{ .cv-actions{display:none;} }
   *{ box-sizing:border-box; }
   :root{
     --ink:       #121A20;
@@ -63,139 +65,160 @@
 
   footer.cv-footer{ margin-top:14px; padding-top:8px; border-top:1px solid var(--line); font-family:var(--mono); font-size:8px; color:var(--ink-faint); text-align:center; }
 </style>
+<link rel="stylesheet" href="cv-screen.css?v=3" media="screen">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
-
-<header class="cv-header">
-  <div>
-    <div class="cv-name">Anna Oliveras Tous</div>
-    <div class="cv-role">PhD Researcher — Generative AI for Medical Imaging</div>
-  </div>
-  <div class="cv-contact">
-    aoliverastous@gmail.com<br>
-    github.com/aolivtous · linkedin.com/in/anna-oliveras-tous<br>
-    Barcelona, Spain
-  </div>
-</header>
-
-<section>
-  <div class="cv-h">Profile</div>
-  <p class="summary">Master's in Computer Vision (UAB) and Bachelor's in Telecommunications Engineering (UPC), with expertise in signal processing, machine learning and deep learning built across industry roles and research internships in Barcelona and Lausanne. Currently a PhD researcher at Universitat de Barcelona &amp; Eurecat, supervised by Prof. Petia Radeva and Dr. Vicent Ribas, working on generative models for synthetic medical imaging — primarily CT and MRI.</p>
+<div class="cv-actions"><a href="index.html">← Back to portfolio</a><a href="cv.pdf?v=2" download>Download CV PDF ↗</a></div>
+<header class="cv-header"><div><h1 class="cv-name">Anna Oliveras Tous</h1><div class="cv-role">PhD Researcher — Generative AI for Medical Imaging</div></div><div class="cv-contact">Barcelona, Spain | +34 638 890 133 | <a href="mailto:aoliverastous@gmail.com">aoliverastous@gmail.com</a><br><a href="https://aolivtous.github.io/">aolivtous.github.io</a> | <a href="https://scholar.google.com/citations?user=SObLaIkAAAAJ">Google
+Scholar</a> | <a href="https://github.com/aolivtous">GitHub:
+aolivtous</a> | <a href="https://www.linkedin.com/in/anna-oliveras-tous">LinkedIn:
+anna-oliveras-tous</a></div></header>
+<section><h2 class="cv-h">Profile</h2>
+<p class="summary">PhD researcher in generative AI for medical imaging at the University
+of Barcelona and Eurecat, supervised by Prof. Petia Radeva and Dr.
+Vicent Ribas. I develop diffusion models that synthesise 3D medical
+images (CT and MRI) and forecast how a patient’s scan will evolve over
+time, with work published in Scientific Reports and accepted at WACV
+2027. Background in signal processing, machine learning and deep
+learning from an MSc in Computer Vision, a BSc in Telecommunications
+Engineering, industry experience in medical computer vision, and
+research internships in Barcelona and Lausanne.</p>
 </section>
-
-<section>
-  <div class="cv-h">Experience</div>
-
-  <div class="entry">
-    <div class="entry-top">
-      <div class="entry-role">PhD Researcher, Generative AI for Digital Health</div>
-      <div class="entry-date">Dec 2024 — Present</div>
-    </div>
-    <div class="entry-org">Universitat de Barcelona × Eurecat · Barcelona, Spain</div>
-    <ul>
-      <li>PhD in Mathematics &amp; Computer Science (UB), co-supervised with Eurecat's Digital Health Unit — advised by Prof. Petia Radeva and Dr. Vicent Ribas.</li>
-      <li>Researching generative synthesis of medical images, primarily CT and MRI, including latent diffusion models for 3D chest CT.</li>
-    </ul>
-  </div>
-
-  <div class="entry">
-    <div class="entry-top">
-      <div class="entry-role">Computer Vision Engineer</div>
-      <div class="entry-date">Nov 2023 — Nov 2024</div>
-    </div>
-    <div class="entry-org">Intek Medical · Barcelona, Spain</div>
-    <ul>
-      <li>Built AI-driven software for automated hair and skin analysis, supporting personalized, patient-centric treatment plans.</li>
-      <li>Applied deep learning to human 3D reconstruction to extract anthropometric measurements.</li>
-      <li>Designed AI-assisted data acquisition and annotation tools to scale up training dataset creation.</li>
-    </ul>
-  </div>
-
-  <div class="entry">
-    <div class="entry-top">
-      <div class="entry-role">Research Intern</div>
-      <div class="entry-date">May 2023 — Sept 2023</div>
-    </div>
-    <div class="entry-org">Computer Vision Center (CVC) · Barcelona, Spain</div>
-    <ul>
-      <li>Applied large language models to Document Visual Question Answering with PyTorch and Hugging Face.</li>
-      <li>Improved performance by injecting spatial layout information (bounding boxes) into prompts.</li>
-      <li>Added a Vision Transformer module so the language model could interpret visual tokens directly.</li>
-    </ul>
-  </div>
-
-  <div class="entry">
-    <div class="entry-top">
-      <div class="entry-role">Research Intern</div>
-      <div class="entry-date">Jun 2022 — Aug 2022</div>
-    </div>
-    <div class="entry-org">LTS5, EPFL · Lausanne, Switzerland</div>
-    <ul>
-      <li>Contributed to the "3T-study" cervical cancer screening program with the Geneva University Hospitals (HUG) and Dschang District Hospital, Cameroon.</li>
-      <li>Built deep learning models to detect strong motion artifacts in smartphone-captured VIA screening videos.</li>
-    </ul>
-  </div>
+<section><h2 class="cv-h">Professional Experience</h2>
+<div class="entry"><div class="entry-top"><h3 class="entry-role">AI Researcher in Digital Health</h3><span class="entry-date">Dec 2024 –
+Present</span></div><div class="entry-org"><em>Eurecat, Digital Health Unit</em> <em>Barcelona, Spain</em></div>
+<ul>
+<li>Develop generative models (pixel-space and latent diffusion) that
+synthesise medical images, mainly 3D chest CT, conditioned on anatomy
+and clinical metadata to create new training data and forecast tumour
+growth.</li>
+<li>Built LAND, an anatomically guided latent diffusion model for
+high-resolution 3D chest CT (Scientific Reports, 2026).</li>
+<li>Built MUMINS, which predicts a patient’s follow-up scan from a
+baseline scan with a per-voxel uncertainty map, validated on lung CT and
+brain MRI (WACV 2027).</li>
+<li>Trained 3D models both on low-memory GPUs (resource-constrained)
+and multi-GPU on HPC clusters.</li>
+</ul>
+</div>
+<div class="entry"><div class="entry-top"><h3 class="entry-role">Computer Vision Engineer</h3><span class="entry-date">Nov 2023 – Nov
+2024</span></div><div class="entry-org"><em>Intek Medical</em> <em>Barcelona, Spain</em></div>
+<ul>
+<li>Developed AI software for automated hair and skin analysis,
+supporting personalised, patient-specific treatments.</li>
+<li>Applied deep learning to 3D human reconstruction to obtain
+anthropometric measurements.</li>
+<li>Designed AI-assisted data acquisition and annotation tools, used
+to build a large dataset for model training.</li>
+</ul>
+</div>
+<div class="entry"><div class="entry-top"><h3 class="entry-role">Research Intern</h3><span class="entry-date">May 2023 – Sep
+2023</span></div><div class="entry-org"><em>Computer Vision Center (CVC)</em> <em>Barcelona, Spain</em></div>
+<ul>
+<li>Applied Large Language Models for Document Visual Question
+Answering using PyTorch and Hugging Face.</li>
+<li>Improved performance by adding spatial layout information
+(bounding boxes) to the prompt.</li>
+<li>Added the visual modality through a Vision Transformer so the
+language model could interpret visual tokens.</li>
+</ul>
+</div>
+<div class="entry"><div class="entry-top"><h3 class="entry-role">Research Intern</h3><span class="entry-date">Jun 2022 – Aug
+2022</span></div><div class="entry-org"><em>LTS5, EPFL</em> <em>Lausanne, Switzerland</em></div>
+<ul>
+<li>Worked on the “3T-study” (Test, Triage and Treat) cervical cancer
+screening programme led by the Geneva University Hospitals (HUG) and the
+Dschang District Hospital, Cameroon.</li>
+<li>Developed deep learning models to detect strong motion in
+smartphone videos recorded during VIA screening.</li>
+</ul>
+</div>
 </section>
-
-<section>
-  <div class="cv-h">Education</div>
-
-  <div class="entry">
-    <div class="entry-top">
-      <div class="entry-role">Master's Degree in Computer Vision</div>
-      <div class="entry-date">Sep 2022 — Sep 2023</div>
-    </div>
-    <div class="entry-org">Autonomous University of Barcelona (UAB)</div>
-    <div class="summary">Grade: 8.9/10 — Top 5 best students award. Relevant courses: Machine Learning, Deep Learning, 3D Vision, Video Analysis.</div>
-  </div>
-
-  <div class="entry">
-    <div class="entry-top">
-      <div class="entry-role">Bachelor's Degree in Telecommunications Engineering</div>
-      <div class="entry-date">Sep 2018 — Jun 2022</div>
-    </div>
-    <div class="entry-org">Polytechnic University of Catalonia (UPC)</div>
-    <div class="summary">Grade: 7.9/10 — Top 10% of class. Relevant courses: Signal Processing, Audiovisual Processing, Networks, Programming.</div>
-  </div>
+<section><h2 class="cv-h">Education</h2>
+<div class="entry"><div class="entry-top"><h3 class="entry-role">PhD in Computer Science</h3><span class="entry-date">Dec 2024 –
+Present</span></div><div class="entry-org"><em>University of Barcelona (UB) and Eurecat</em> <em>Barcelona,
+Spain</em></div>
+<ul>
+<li>Thesis: generative models for synthetic medical imaging, mainly
+CT and MRI.</li>
+<li>Supervisors: Prof. Petia Radeva (UB, AIBA group) and Dr. Vicent
+Ribas (Eurecat).</li>
+</ul>
+</div>
+<div class="entry"><div class="entry-top"><h3 class="entry-role">Master’s degree in Computer Vision</h3><span class="entry-date">Sep 2022
+– Sep 2023</span></div><div class="entry-org"><em>Autonomous University of Barcelona (UAB)</em> <em>Barcelona,
+Spain</em></div>
+<ul>
+<li><u>Relevant courses</u>: Machine Learning, Deep Learning, 3D
+Vision, Video analysis</li>
+<li><u>Grade:</u> 8.9/10. Top 5 MCV List Award (top 5 GPA of the
+programme)</li>
+</ul>
+</div>
+<div class="entry"><div class="entry-top"><h3 class="entry-role">Bachelor’s degree in Telecommunications Engineering</h3><span class="entry-date">Sep 2018 – Jun 2022</span></div><div class="entry-org"><em>Polytechnic University of Catalonia (UPC) Barcelona,
+Spain</em></div>
+<ul>
+<li><u>Relevant courses</u>: Signal processing, Audiovisual
+processing, Networks, Programming</li>
+</ul>
+<ul>
+<li><u>Grade:</u> 7.9/10. Top 10% of the class</li>
+<li>Thesis at LTS5, EPFL (Prof. Jean-Philippe Thiran): image
+segmentation for cervical cancer screening, presented at <a href="https://www.micad.org/2022/index.html">MICAD 2022</a>. Grade:
+5/5.</li>
+</ul>
+</div>
 </section>
-
-<section>
-  <div class="cv-h">Publications</div>
-
-  <div class="pub-entry">
-    <div class="pub-entry-title">Anatomically Guided Latent Diffusion for High-Resolution 3D Chest CT Synthesis</div>
-    <div class="pub-entry-meta">Oliveras, A., Marí, R., Redondo, R., et al. — Scientific Reports, 2026 — doi.org/10.1038/s41598-026-51634-4</div>
-  </div>
-
-  <div class="pub-entry">
-    <div class="pub-entry-title">Automated Cervix Region Detection for Cervical Cancer Screening</div>
-    <div class="pub-entry-meta">Oliveras, A. (supervised by Prof. J-P. Thiran) — MICAD 2023, endorsed by the MICCAI Society</div>
-  </div>
+<section><h2 class="cv-h">Publications</h2>
+<div class="pub-entry"><div class="entry-top"><h3 class="pub-entry-title">MUMINS: Metadata-conditioned Uncertainty-aware Medical Image
+Next-state Synthesis</h3><span class="entry-date">2027</span></div><p class="pub-entry-meta"><strong>A. Oliveras</strong>, R. Marí, R. Redondo, O.
+Guardià-Olivella, C. I. Ugwu, A. Tost, B. Nagarajan, C. Migliorelli, V.
+Ribas, P. Radeva</p>
+<p class="pub-entry-meta"><em>IEEE/CVF Winter Conference on Applications of Computer Vision
+(WACV 2027), accepted</em> | <a href="https://arxiv.org/abs/2609.17169">arXiv:2609.17169</a> | <a href="https://github.com/aolivtous/MUMINS">Code</a></p>
+</div>
+<div class="pub-entry"><div class="entry-top"><h3 class="pub-entry-title">Anatomically Guided Latent Diffusion for High-Resolution 3D
+Chest CT Synthesis</h3><span class="entry-date">2026</span></div><p class="pub-entry-meta"><strong>A. Oliveras</strong>, R. Marí, R. Redondo, O. Guardià, C. I.
+Ugwu, A. Tost, B. Nagarajan, C. Migliorelli, V. Ribas, P. Radeva</p>
+<p class="pub-entry-meta"><em>Scientific Reports (Nature Portfolio), 2026</em> | <a href="https://doi.org/10.1038/s41598-026-51634-4">doi:10.1038/s41598-026-51634-4</a>
+| <a href="https://aolivtous.github.io/publications/land.html">Project
+page</a></p>
+</div>
 </section>
-
-<section class="two-col">
-  <div>
-    <div class="cv-h">Skills</div>
-    <div class="skills-row">
-      <span class="skill-item">Python</span><span class="skill-item">PyTorch</span><span class="skill-item">TensorFlow</span><span class="skill-item">Keras</span><span class="skill-item">OpenCV</span><span class="skill-item">Scikit-Learn</span><span class="skill-item">C / C++</span><span class="skill-item">Java</span><span class="skill-item">MATLAB</span><span class="skill-item">Blender</span><span class="skill-item">MeshLab</span>
-    </div>
-    <div class="cv-h" style="margin-top:10px;">Languages</div>
-    <div class="skills-row">
-      <span class="skill-item">Catalan — Native</span><span class="skill-item">Spanish — Native</span><span class="skill-item">English — C2</span><span class="skill-item">French — A2</span>
-    </div>
-  </div>
-  <div>
-    <div class="cv-h">Distinctions</div>
-    <div class="distinctions">
-      <ul>
-        <li>Top 5 MCV List Award (Sep 2023) — top 5 GPA, Master's in Computer Vision, UAB</li>
-        <li>Recognition for the university entrance exams, PAU (Jun 2018)</li>
-      </ul>
-    </div>
-  </div>
+<section><h2 class="cv-h">Technical Skills</h2>
+<p class="summary"><strong>Machine learning:</strong> Diffusion models, generative
+models, uncertainty estimation, foundation model training and
+fine-tuning, Vision Transformers, LLMs and vision-language models</p>
+<p class="summary"><strong>Training at scale:</strong> PyTorch DDP, FSDP, mixed
+precision, gradient checkpointing, PyTorch Lightning</p>
+<p class="summary"><strong>Medical imaging:</strong> 3D CT and MRI, DICOM, NIfTI, MONAI,
+SimpleITK, nibabel, 3D Slicer</p>
+<p class="summary"><strong>HPC and MLOps:</strong> Slurm, Docker, Singularity, Linux,
+Weights &amp; Biases, TensorBoard, MLflow</p>
+<p class="summary"><strong>Programming:</strong> Python, C/C++, Java, MATLAB, Shell
+scripting, HTML5/CSS</p>
+<p class="summary"><strong>Libraries and tools:</strong> PyTorch, Hugging Face,
+TensorFlow, Keras, OpenCV, Scikit-Learn, NumPy, Pandas, PyQt,
+Git/GitHub, Blender, MeshLab</p>
+<p class="summary"><strong>Data and cloud:</strong> SQL, MongoDB, Microsoft Azure</p>
 </section>
-
-<footer class="cv-footer">Full portfolio with project pages and up-to-date publications available on request</footer>
-
+<section><h2 class="cv-h">Languages</h2>
+<p class="summary">Catalan (native), Spanish (native), English (C2, <a href="https://www.cambridgeenglish.org/exams-and-tests/proficiency/">Cambridge
+C2 Proficiency</a>), French (A2)</p>
+</section>
+<section><h2 class="cv-h">Distinctions</h2>
+<div class="distinctions"><ul>
+<li>Top 5 MCV List Award: <em>top 5 GPA in the Master’s in Computer
+Vision (UAB)</em> Sep 2023</li>
+<li>Recognition for the university entrance exams (PAU) Jun
+2018</li>
+</ul>
+</div></section>
+<section><h2 class="cv-h">Hobbies</h2>
+<p class="summary">Viola (professional conservatory studies), cycling, trail running and
+skiing</p>
+</section>
+<footer class="cv-footer"><a href="https://aolivtous.github.io/">aolivtous.github.io</a> · Anna Oliveras Tous</footer>
 </body>
 </html>
